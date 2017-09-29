@@ -1,0 +1,86 @@
+body {
+    font-size: 14pt;
+    font-family: 'Garamond', Georgia, serif;
+    margin: 0;
+    padding: 0;
+}
+
+body > * {
+    margin-bottom: 0;
+    padding: 1em;
+}
+
+body > * > * {
+    margin: 0 auto;
+    max-width: 45rem;
+}
+
+header {
+    text-align: center;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    display: block;
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #ccc;
+    text-shadow:
+        0.02em 0.02em 0 #f00,
+        -0.02em 0.02em 0 #0f0,
+        -0.02em -0.02em 0 #00f;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+a {
+    color: #a21919;
+    text-decoration: none;
+}
+a:hover {
+    color: #000;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 2em;
+    line-height: 1.15em;
+    letter-spacing: 0.1em;
+    color: #a21919;
+}
+
+h2 small {
+    display: block;
+    font-family: 'Garamond', Georgia, serif;
+    font-weight: normal;
+    font-size: 0.5em;
+    text-transform: none;
+    letter-spacing: 0;
+    color: #000;
+}
+
+.container {
+    line-height: 1.45em;
+}
+
+section {
+    background-color: #ccc;
+    border-radius: 0.5rem;
+    margin-bottom: 3em;
+    padding: 1em;
+}
+section.about {
+    background-color: #fff;
+}
+
+h3 {
+    text-transform: uppercase;
+    margin: 0;
+    position: relative;
+    top: -1.45em;
+}

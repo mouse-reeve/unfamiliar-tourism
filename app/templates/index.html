@@ -21,7 +21,7 @@
 <div class="container">
 <h2>
     <small>Explore the lush concrete jungle of</small>
-    [ City Name ]
+    {{ city.name | latin | capitalize }}
 </h2>
 
 <section class="about">
@@ -29,24 +29,33 @@
 </section>
 
 <section>
-    <h3><span>Visit</span> City Gardens</h3>
+    <h3>{{ city.name | latin }} cuisine</h3>
     <div>
         <div class="intro">
             <p>
-            City Gardens flank the Celestial Palace, and the gardeners grow only medicinal herbs.</p>
+            [ description ]
+            </p>
         </div>
         <div class="more">
-            <p>Blerp is an herb.</p>
-            <p>Bloop is also an herb.</p>
+            <p>Tea is central to {{ city.name | latin | capitalize }} life.
+            It is drunk from {{ cuisine.tea.cup_description }}, and
+            {{ cuisine.tea.description }}.
+            </p>
+            {% for fruit in cuisine.fruits %}
+            <p>
+            <strong>{{ fruit | latin | capitalize }}</strong> ({{ fruit | ipa }}):
+            {{ fruit.translation }}
+            </p>
+            {% endfor %}
         </div>
     </div>
 </section>
 
 <section>
-    <h3>Language</h3>
+    <h3>Gender</h3>
     <div>
         <div class="intro">
-            Lgthorpian has a grammatical case that indicates how badly the speaker needs to urinate.</p>
+            {{ city.name | latin | capitalize }}ian culture has {{ genders | length }} genders. 
         </div>
         <div class="more">
             Details, details, details

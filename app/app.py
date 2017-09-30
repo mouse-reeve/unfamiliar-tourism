@@ -191,5 +191,17 @@ def latin_filter(word):
     return get_latin(word)
 
 
+@app.template_filter('number_format')
+def number_format_filter(n):
+    ''' 1,000,000 not 1000000 '''
+    words = [
+        'zero', 'one', 'two', 'three', 'four', 'five',
+        'six', 'seven', 'eight', 'nine'
+    ]
+
+    if n < 10:
+        return words[n]
+    return '{:,}'.format(n)
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

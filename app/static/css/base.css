@@ -33,12 +33,24 @@ h1 {
         0.02em 0.02em 0 #f00,
         -0.02em 0.02em 0 #0f0,
         -0.02em -0.02em 0 #00f;
-    margin-top: 1em;
+    margin-top: 1.5em;
     margin-bottom: 1em;
 }
 
+h1::after {
+    content: '\2756';
+    margin-top: 2em;
+    font-size: 0.5em;
+    display: block;
+}
+
+nav {
+    text-align: center;
+    margin-bottom: 4em;
+}
+
 a {
-    color: #a21919;
+    color: #0000a5;
     text-decoration: none;
 }
 a:hover {
@@ -48,20 +60,28 @@ a:hover {
 h2 {
     text-align: center;
     font-size: 2em;
-    margin-top: 2em;
     line-height: 1.15em;
     letter-spacing: 0.1em;
     color: #a21919;
+    margin: 0 auto;
 }
 
 h2 small {
     display: block;
-    font-family: 'Garamond', Georgia, serif;
     font-weight: normal;
     font-size: 0.5em;
     text-transform: none;
     letter-spacing: 0;
     color: #000;
+}
+
+h2 span::before, h2 span::after {
+    content: '\2B29';
+    display: inline-block;
+    margin: 0 1em;
+    font-size: 0.6em;
+    position: relative;
+    bottom: 0.3em;
 }
 
 .container {
@@ -71,7 +91,8 @@ h2 small {
 section {
     background-color: #ccc;
     border-radius: 0.5rem;
-    margin-bottom: 3em;
+    margin-bottom: 1em;
+    margin-top: 1em;
     padding: 1em;
 }
 section.about {

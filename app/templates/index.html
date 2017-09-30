@@ -5,28 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="static/css/base.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato|EB+Garamond" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico">
 </head>
 <body>
 
 <header>
     <h1>Unfamiliar City</h1>
-
-    <nav>
-        <a href="/">New City</a>
-    </nav>
 </header>
 
 <div class="container">
-<h2>
-    <small>Explore the lush concrete jungle of</small>
-    {{ city.name | latin | capitalize }}
-</h2>
-
 <section class="about">
-    <p>Founded in 1987, City sprung up from the midst of political turmoil into a vibrant community.</p>
+    <p>Founded in 1987, {{ city.name | latin | capitalize }} sprung up from the midst of political turmoil into a vibrant community.</p>
+
+<h2>
+    <small>welcome to</small>
+    <span>{{ city.name | latin | capitalize }}</span>
+</h2>
 </section>
+
+<nav>
+    Or would you like to see a <a href="/">different city</a>?
+</nav>
+
 
 <section>
     <h3>{{ city.name | latin }} cuisine</h3>

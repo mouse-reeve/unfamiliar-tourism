@@ -61,10 +61,13 @@ def generate_city(seed=None):
 
     data['translate'] = lambda w, pos: lang.get_word(pos, w)
 
-    data['language'] = lang.get_word(
-        'NNP',
-        'The official language of ' + get_latin(data['country']) + \
-           ', spoken in ' + get_latin(data['city']['name']))
+    lang_definition = 'The official language of ' + \
+                       get_latin(data['country']) + \
+                      ', spoken in ' + get_latin(data['city']['name'])
+    data['language'] = {
+        'name': lang.get_word('NNP', lang_definition),
+        'stats': lang.get_stats()
+    }
 
 
     # GENDER

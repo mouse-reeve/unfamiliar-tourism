@@ -67,19 +67,6 @@ nav a:last-child::after {
     margin: 0;
 }
 
-small {
-    font-size: 1.5em;
-    display: block;
-    font-weight: normal;
-    letter-spacing: 0;
-}
-
-header small {
-    font-family: 'Sacramento';
-    text-transform: none;
-    color: #000;
-}
-
 a {
     color: #0000a5;
     text-decoration: none;
@@ -98,8 +85,10 @@ h2 {
 }
 
 h2 small {
-    font-size: 0.6rem;
-    letter-spacing: 0.5rem;
+    display: block;
+    font-weight: normal;
+    font-size: 0.7rem;
+    letter-spacing: 0.3rem;
 }
 
 .container {
@@ -155,6 +144,6 @@ footer {
     background-color: #dc4405;
 }
 
-.cuisine {
+.main-info {
     background-color: #516272;
 }

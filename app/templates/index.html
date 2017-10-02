@@ -1,6 +1,12 @@
 {% macro foreign_word(word, with_ipa=False, capitalize=False) %}
       <span class="word">{% if word.pos in ['LOC', 'NNP'] or capitalize%}{{ word | latin | capitalize }}{% else %}{{ word | latin }}{% endif %}</span>{%if with_ipa %}<span class="ipa"> ({{ word | ipa }})</span>{% endif %}{% endmacro %}
 
+{% macro section() %}
+<div>
+    {{ caller() }}
+</div>
+{% endmacro %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +15,9 @@
     <link type="text/css" rel="stylesheet" href="static/css/foundation.min.css">
     <link type="text/css" rel="stylesheet" href="static/css/base.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato|Sacramento" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico">
 
-    <script src="/static/js/vendor/jquery.js"></script>
-    <script src="/static/js/vendor/foundation.min.js"></script>
-    <script src="/static/js/app.js"></script>
 </head>
 <body>
 
@@ -22,7 +25,7 @@
     <h1>Unfamiliar City</h1>
     <nav>
         <a href="/">New city</a>
-        <a href="" target="_blank">Twitter</a>
+        <a href="https://twitter.com/unfamiliar_city" target="_blank">Twitter</a>
         <a href="/">About</a>
     </nav>
 </header>
@@ -32,65 +35,61 @@
     <div class="cell medium-8">
         <div class="grid-y">
             <section class="cell medium-7 weather">
+                {% call section() %}
                 <p>15&deg;C</p>
                 <p>11:31 AM PST</p>
 
                 <p>Autumn is the festival season in the city. Wow, music, lights, blood running in the streets</p>
+                {% endcall %}
             </section>
 
             <section class="cell medium-5 title">
+                {% call section() %}
                 <h2>
                     <small>Welcome to</small>
                     {{ foreign_word(city.name) }}
                 </h2>
                 <p>{{ foreign_word(city.name) }} is a real neat ancient city, build on the
                 bones of children sacrificed to the fanged god.</p>
+                {% endcall %}
             </section>
         </div>
     </div>
 
-    <section class="cell medium-4 cuisine">
-        <h3>{{ foreign_word(city.name) }} cuisine</h3>
-        <div>
-            <div class="intro">
-                <p>
-                [ description ]
-                </p>
-            </div>
-            <div class="more">
-                {% for fruit in cuisine.fruits %}
-                <p>
-                {{ foreign_word(fruit, with_ipa=True, capitalize=True) }}:
-                {{ fruit.translation }}
-                </p>
-                {% endfor %}
-            </div>
-        </div>
+    <section class="cell medium-4 main-info">
+        {% call section() %}
+        <h3>The {{ foreign_word(language.name) }} language</h3>
+        <p>The official language of {{ foreign_word(city.name) }} is {{ foreign_word(language.name) }}.</p>
+        {% if language.stats.vowels | length < 5 %}
+        <p>Did you know, {{ foreign_word(language.name) }} only has {{ language.stats.vowels | length | number_format }} vowels?</p>
+        {% endif %}
+        {% endcall %}
     </section>
 </div>
 <div class="grid-x list-block">
     <section class="cell medium-3">
+        {% call section() %}
         <h3>Gender</h3>
-        <div>
-            <div class="intro">
-                {{ foreign_word(city.name) }}ian culture has {{ genders | length | number_format }} genders. 
-            </div>
-            <div class="more">
-                Details, details, details
-            </div>
-        </div>
+        <p>{{ foreign_word(city.name) }}ian culture has {{ genders | length | number_format }} genders. 
+        {% endcall %}
     </section>
     <section class="cell medium-3">
+        {% call section() %}
         <h3>Buy</h3>
         <p>The local product to get is wool. just plain wool.</p>
+        {% endcall %}
     </section>
     <section class="cell medium-3">
+        {% call section() %}
         <h3>Drugs</h3>
         <p>oh yeah there are psychoactive plants yall</p>
+        {% endcall %}
     </section>
     <section class="cell medium-3">
+        {% call section() %}
         <h3>Religion</h3>
         <p>skdhfks fdkjzf jdgh dfkgjkdghj d</p>
+        {% endcall %}
     </section>
 </div>
 

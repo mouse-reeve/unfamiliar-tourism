@@ -10,8 +10,6 @@ import random
 
 app = Flask(__name__)
 
-city_cache = {}
-
 def before_request():
     ''' temp code for testing because this version of flask
     isn't picking up template changes '''
@@ -28,10 +26,6 @@ def load_city():
 @app.route('/<seed>')
 def generate_city(seed=None):
     ''' generate a city '''
-    if seed in city_cache and not app.debug:
-        city_cache[seed][1] += 1
-        return city_cache[seed][0]
-
     random.seed(seed)
     lang = Language()
 
@@ -148,8 +142,7 @@ def generate_city(seed=None):
     }
     for _ in range(0, 3):
         data['cuisine']['fruits'].append(
-            lang.get_word('NNP', cuisine.fruit())
-            )
+            lang.get_word('NNP', cuisine.fruit()))
 
 
     # fashion
@@ -157,11 +150,8 @@ def generate_city(seed=None):
     data['body_mod'] = fashion.body_mod()
 
 
-
     data['dictionary'] = lang.dictionary
-    rendered = render_template('index.html', **data)
-    city_cache[seed] = [rendered, 1]
-    return rendered
+    return render_template('index.html', **data)
 
 
 def create_pantheon_hierarchy(gods):

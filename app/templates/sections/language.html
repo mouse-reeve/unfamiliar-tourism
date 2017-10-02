@@ -1,0 +1,8 @@
+{% call section() %}
+<h3>The {{ foreign_word(language.name) }} language</h3>
+<p>The official language of {{ foreign_word(city.name) }} is {{ foreign_word(language.name) }}.</p>
+{% if language.stats.vowels | length < 5 %}
+<p>Did you know, {{ foreign_word(language.name) }} only has {{ language.stats.vowels | length | number_format }} vowels?</p>
+{% endif %}
+{% endcall %}
+

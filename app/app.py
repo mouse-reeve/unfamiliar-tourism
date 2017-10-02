@@ -101,9 +101,10 @@ def generate_city(seed=None):
         return render_template('error.html', error='Database failure')
 
     data.update(city.data)
-
-    # allow the weather to be calculated on the fly in the templates
-    app.jinja_env.globals.update(get_weather=city.weather)
+    month = ['January', 'February', 'March', 'April', 'May', 'June',
+             'July', 'August', 'September', 'October', 'November',
+             'December'][datetime.now().month]
+    data['weather'] = city.weather(month, seed, datetime.now().day)
 
 
     # ----- RELIGION

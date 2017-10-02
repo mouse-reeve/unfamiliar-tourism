@@ -70,8 +70,12 @@ class City(object):
 
 
 
-    def weather(self, month):
+    def weather(self, month, seed, date):
         ''' determine the weather for a given date '''
+        # re-randomize the weather every day
+        weather_seed = '%s %s %d' % (seed, month, date)
+        rand_state = random.getstate()
+        random.seed(weather_seed)
         # [temp, rainy days, snowy days, humidity]
         stats = self.data['climate']['stats'][month]
 
@@ -98,4 +102,5 @@ class City(object):
             'deviation': deviation,
             'climate': self.data['climate']['name'],
         }
+        random.setstate(rand_state)
         return report

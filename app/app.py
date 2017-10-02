@@ -29,7 +29,7 @@ def generate_city(seed=None):
     random.seed(seed)
     lang = Language()
 
-    # ---- Name the country, language, and citites
+    # ---- Name the city, country, and language
     data = {'seed': seed}
 
     def get_placename(definition):
@@ -64,6 +64,33 @@ def generate_city(seed=None):
     }
 
 
+    # ------- Graph data - climate, info, lotsa stuff
+    city = City()
+    if city.error:
+        return render_template('error.html', error='Database failure')
+
+    data.update(city.data)
+    month = ['January', 'February', 'March', 'April', 'May', 'June',
+             'July', 'August', 'September', 'October', 'November',
+             'December'][datetime.now().month]
+    data['weather'] = city.weather(month, seed, datetime.now().day)
+
+    # ------ Factoids
+    data['year_founded'] = 1987
+    data['history'] = [
+        {'description': 'The city is founded', 'year': data['year_founded']},
+        {'description': 'Barbarians sack the palace', 'year': 1995},
+    ]
+
+    # physical isolation
+    data['isolation'] = random.choice([1, 2, 2, 3, 3, 3, 4, 4, 5])
+    # how culturally conservative it is
+    data['insularity'] = random.randint(data['isolation'], 5)
+    # isolation means lower max population
+    data['population'] = random.randint(
+        1000 * data['isolation'], int(10000000/(data['isolation'] ** 4)))
+
+
     # GENDER
     data['genders'] = []
     gender_count = random.choice([2, 3, 5])
@@ -82,23 +109,11 @@ def generate_city(seed=None):
     else:
         for _ in range(0, gender_count):
             data['genders'].append({
-                'name': lang.get_word('NN', 'a gender'),
+                'name': lang.get_word('NN', 'A gender'),
                 'pronoun': lang.get_word(
                     'PRP',
-                    'a gender pronoun'),
+                    'A gender pronoun'),
             })
-
-
-    # ------- Graph data - climate, info, lotsa stuff
-    city = City()
-    if city.error:
-        return render_template('error.html', error='Database failure')
-
-    data.update(city.data)
-    month = ['January', 'February', 'March', 'April', 'May', 'June',
-             'July', 'August', 'September', 'October', 'November',
-             'December'][datetime.now().month]
-    data['weather'] = city.weather(month, seed, datetime.now().day)
 
 
     # ----- RELIGION

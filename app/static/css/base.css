@@ -7,12 +7,11 @@ body {
 
 body > * {
     margin-bottom: 0;
-    padding: 1em;
 }
 
 body > * > * {
     margin: 0 auto;
-    max-width: 45rem;
+    max-width: 85rem;
 }
 
 header {
@@ -29,6 +28,9 @@ h1 {
     font-size: 3em;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+}
+
+h1, header::after {
     color: #ccc;
     text-shadow:
         0.02em 0.02em 0 #f00,
@@ -36,26 +38,46 @@ h1 {
         -0.02em -0.02em 0 #00f;
 }
 
-h1::after {
+header::after {
     content: '\2756';
-    margin: 2em 0;
-    font-size: 0.5em;
+    margin: 1em 0;
+    font-size: 2em;
     display: block;
+}
+
+nav {
+    margin-top: 2em;
+}
+
+nav a {
+    color: black;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+nav a::after {
+    content: '\2B29';
+    color: #dc4405;
+    margin: 1em;
+}
+nav a:last-child::after {
+    content: '';
+    margin: 0;
 }
 
 small {
     font-size: 1.5em;
     display: block;
     font-weight: normal;
-    font-family: 'Sacramento';
-    text-transform: none;
     letter-spacing: 0;
-    color: #000;
 }
 
-nav {
-    text-align: center;
-    margin-bottom: 4em;
+header small {
+    font-family: 'Sacramento';
+    text-transform: none;
+    color: #000;
 }
 
 a {
@@ -68,52 +90,71 @@ a:hover {
 
 h2 {
     text-align: center;
-    font-size: 2em;
-    line-height: 1.15em;
+    font-size: 4em;
+    line-height: 0.7em;
     letter-spacing: 0.1em;
-    color: #a50000;
     margin: 0 auto;
+    text-transform: uppercase;
 }
 
 h2 small {
-    font-size: 0.9em;
-    margin-top: 2em;
-}
-
-h2 span::before, h2 span::after {
-    content: '\2B29';
-    display: inline-block;
-    margin: 0 1em;
-    font-size: 0.6em;
-    position: relative;
-    bottom: 0.3em;
+    font-size: 0.6rem;
+    letter-spacing: 0.5rem;
 }
 
 .container {
     line-height: 1.45em;
+    box-shadow: 0 -1em 5em #ccc;
+    border-top: 2px solid #ccc;
+}
+
+.grid-y {
+    height: 100%;
 }
 
 section {
-    border-radius: 0.5rem;
-    margin-bottom: 1em;
-    margin-top: 1em;
-    padding: 1em;
-    box-shadow:
-        0.02em 0.02em 0 #f00,
-        -0.02em 0.02em 0 #0f0,
-        -0.02em -0.02em 0 #00f;
-}
-section.about {
-    background-color: #fff;
+    padding: 2em;
+    color: white;
+    background-color: #3696a4;
 }
 
 h3 {
     text-transform: uppercase;
-    margin: 0;
-    position: relative;
-    top: -1.45em;
 }
 
 .ipa {
     font-family: serif;
+}
+
+footer {
+    padding: 0.5em 2em;
+    margin-top: 3em;
+}
+
+
+/* ---- MODULES -----*/
+.list-block section {
+    border-right: 1px solid #fff;
+}
+.list-block section:last-child {
+    border: none;
+}
+
+.panel-block {
+    margin: 2em;
+}
+.panel-block section {
+    background-color: #a59d4c;
+}
+
+.weather {
+    background-color: #3a537a;
+}
+
+.title {
+    background-color: #dc4405;
+}
+
+.cuisine {
+    background-color: #516272;
 }

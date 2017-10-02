@@ -6,63 +6,109 @@
 <head>
     <title>Unfamiliar City</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="static/css/foundation.min.css">
     <link type="text/css" rel="stylesheet" href="static/css/base.css">
 
     <link href="https://fonts.googleapis.com/css?family=Lato|Sacramento" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico">
+
+    <script src="/static/js/vendor/jquery.js"></script>
+    <script src="/static/js/vendor/foundation.min.js"></script>
+    <script src="/static/js/app.js"></script>
 </head>
 <body>
 
 <header>
-    <small>Greetings from</small>
     <h1>Unfamiliar City</h1>
+    <nav>
+        <a href="/">New city</a>
+        <a href="" target="_blank">Twitter</a>
+        <a href="/">About</a>
+    </nav>
 </header>
 
 <div class="container">
-<section class="about">
-    <p>Founded in 1987, {{ foreign_word(city.name) }} sprung up from the midst of political turmoil into a vibrant community. Wow, not a very long time ago. Lorem ipsum dolor est mat? And then there were another blep bbll sfish and then there were twice as many.</p>
+<div class="grid-x intro-block">
+    <div class="cell medium-8">
+        <div class="grid-y">
+            <section class="cell medium-7 weather">
+                <p>15&deg;C</p>
+                <p>11:31 AM PST</p>
 
+                <p>Autumn is the festival season in the city. Wow, music, lights, blood running in the streets</p>
+            </section>
 
-    <p>Welcome to {{ foreign_word(city.name) }}
-    Or would you like to see a <a href="/">different city</a>?
-    </p>
-</section>
-
-
-<section>
-    <h3>{{ foreign_word(city.name) }} cuisine</h3>
-    <div>
-        <div class="intro">
-            <p>
-            [ description ]
-            </p>
-        </div>
-        <div class="more">
-            <p>Tea is central to {{ foreign_word(city.name) }} life.
-            It is drunk from {{ cuisine.tea.cup_description }}, and
-            {{ cuisine.tea.description }}.
-            </p>
-            {% for fruit in cuisine.fruits %}
-            <p>
-            {{ foreign_word(fruit, with_ipa=True, capitalize=True) }}:
-            {{ fruit.translation }}
-            </p>
-            {% endfor %}
+            <section class="cell medium-5 title">
+                <h2>
+                    <small>Welcome to</small>
+                    {{ foreign_word(city.name) }}
+                </h2>
+                <p>{{ foreign_word(city.name) }} is a real neat ancient city, build on the
+                bones of children sacrificed to the fanged god.</p>
+            </section>
         </div>
     </div>
-</section>
 
-<section>
-    <h3>Gender</h3>
-    <div>
-        <div class="intro">
-            {{ foreign_word(city.name) }}ian culture has {{ genders | length | number_format }} genders. 
+    <section class="cell medium-4 cuisine">
+        <h3>{{ foreign_word(city.name) }} cuisine</h3>
+        <div>
+            <div class="intro">
+                <p>
+                [ description ]
+                </p>
+            </div>
+            <div class="more">
+                {% for fruit in cuisine.fruits %}
+                <p>
+                {{ foreign_word(fruit, with_ipa=True, capitalize=True) }}:
+                {{ fruit.translation }}
+                </p>
+                {% endfor %}
+            </div>
         </div>
-        <div class="more">
-            Details, details, details
+    </section>
+</div>
+<div class="grid-x list-block">
+    <section class="cell medium-3">
+        <h3>Gender</h3>
+        <div>
+            <div class="intro">
+                {{ foreign_word(city.name) }}ian culture has {{ genders | length | number_format }} genders. 
+            </div>
+            <div class="more">
+                Details, details, details
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+    <section class="cell medium-3">
+        <h3>Buy</h3>
+        <p>The local product to get is wool. just plain wool.</p>
+    </section>
+    <section class="cell medium-3">
+        <h3>Drugs</h3>
+        <p>oh yeah there are psychoactive plants yall</p>
+    </section>
+    <section class="cell medium-3">
+        <h3>Religion</h3>
+        <p>skdhfks fdkjzf jdgh dfkgjkdghj d</p>
+    </section>
+</div>
+
+<div class="grid-x grid-margin-x panel-block">
+    <section class="cell medium-4">
+        <h3>Language</h3>
+        <p>Here's a phrasebook for you: go home</p>
+    </section>
+    <section class="cell medium-4">
+        <h3>Language</h3>
+        <p>Here's a phrasebook for you: go home</p>
+    </section>
+    <section class="cell medium-4">
+        <h3>Language</h3>
+        <p>Here's a phrasebook for you: go home</p>
+    </section>
+</div>
+
 </div>
 
 <footer>

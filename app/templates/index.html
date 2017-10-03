@@ -30,7 +30,7 @@
     </nav>
 </header>
 
-<div class="container">
+<div class="container grid-container">
 <div class="grid-x intro-block">
     <div class="cell medium-8">
         <div class="grid-y">
@@ -59,7 +59,7 @@
     <section class="cell medium-3">
         {% call section() %}
         <h3>Gender</h3>
-        <p>{{ foreign_word(city.name) }}ian culture has {{ genders | length | number_format }} genders. 
+        <p>{{ foreign_word(city.name) }}ian culture has {{ genders | length | number_format }} genders.
         {% endcall %}
     </section>
     <section class="cell medium-3">

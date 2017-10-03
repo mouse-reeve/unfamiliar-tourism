@@ -86,8 +86,8 @@ h2 small {
 
 .container {
     line-height: 1.45em;
-    box-shadow: 0 -1em 5em #ccc;
-    border-top: 2px solid #ccc;
+    padding: 0;
+    max-width: 85em;
 }
 
 .grid-y {

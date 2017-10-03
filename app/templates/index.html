@@ -56,16 +56,10 @@
 </div>
 <div class="grid-x list-block">
     <section class="cell medium-3">
-        {% call section() %}
-        <h3>Gender</h3>
-        <p>{{ foreign_word(city.name) }}ian culture has {{ genders | length | number_format }} genders.
-        {% endcall %}
+        {% include '/sections/fruit.html' %}
     </section>
     <section class="cell medium-3">
-        {% call section() %}
-        <h3>Buy</h3>
-        <p>The local product to get is wool. just plain wool.</p>
-        {% endcall %}
+        {% include '/sections/industry.html' %}
     </section>
     <section class="cell medium-3">
         {% call section() %}

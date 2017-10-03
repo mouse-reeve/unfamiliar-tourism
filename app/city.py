@@ -33,10 +33,10 @@ class City(object):
         # location, climate, and architecture
         query = '''
         match (p:position)--(c:climate)--(t:city_type)--(m:primary_material)--(m2:secondary_material)--(x:motif),
-        (m)--(s:stories), (c)--(ter:terrain)--(t)
+        (m)--(s:stories), (c)--(ter:terrain)--(t), (i:industry)--(m)
         where (p)--(t) and (c)--(m) and (t)--(s)
         return * skip %d limit 1
-        ''' % random.randint(0, 38150)
+        ''' % random.randint(0, 335790)
         result = self.graph.run(query)
         data = result.data()
 

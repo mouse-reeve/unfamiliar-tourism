@@ -1,0 +1,9 @@
+{% call section() %}
+
+<h3>Eat</h3>
+
+<p>
+{{ foreign_word(cuisine.fruit, with_ipa=True, capitalize=True) }} is {{ cuisine.fruit.translation }}
+</p>
+
+{% endcall %}

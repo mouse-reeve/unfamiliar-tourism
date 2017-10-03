@@ -148,7 +148,7 @@ class Cuisine(object):
 
 
         rules = {
-            'start': 'A #shape# #fruit# #eating_part#',
+            'start': 'a #shape# #fruit# #eating_part#',
             'fruit': fruits,
             'fruit_detail': '#pit#. #outside_part#. ' \
                      + 'The flesh is #inside#, #inside_part#.',

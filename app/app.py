@@ -153,12 +153,8 @@ def generate_city(seed=None):
             'cup_description': cuisine.teacup(),
             'name': lang.get_word('NN', 'tea')
         },
-        'fruits': []
+        'fruit': lang.get_word('NNP', cuisine.fruit())
     }
-    for _ in range(0, 3):
-        data['cuisine']['fruits'].append(
-            lang.get_word('NNP', cuisine.fruit()))
-
 
     # fashion
     fashion = Fashion(gender_count, data['climate'], data['motif'])

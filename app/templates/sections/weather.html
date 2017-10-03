@@ -1,0 +1,28 @@
+{% call section() %}
+
+<h3>Weather today</h3>
+<p>{{ weather.temp | int }}&deg;C</p>
+<p>{{ weather.humidity}}% humidity</p>
+
+<p>{{ foreign_word(city.name) }} is situated in the
+{% if climate.id in ['tropical_rainforest', 'tropical_monsoon'] %}
+lush
+
+{% elif climate.id in ['hot_desert', 'arid', 'semi_arid'] %}
+striking
+
+{% elif climate.id in ['mediterranean', 'continental'] %}
+scenic
+
+{% elif climate.id in ['oceanic', 'subpolar_oceanic'] %}
+stark
+
+{% elif climate.id == 'subarctic' %}
+icy
+{% endif %}
+
+{{ terrain }} region of {{ foreign_word(country) }} known as {{ foreign_word(translate('NN', 'A region')) }}.
+</p>
+
+{% endcall %}
+

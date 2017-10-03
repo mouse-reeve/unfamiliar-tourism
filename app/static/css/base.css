@@ -62,14 +62,6 @@ nav a:last-child::after {
     margin: 0;
 }
 
-a {
-    color: #0000a5;
-    text-decoration: none;
-}
-a:hover {
-    color: #000;
-}
-
 h2 {
     text-align: center;
     font-size: 4em;
@@ -106,6 +98,28 @@ section {
 p .word {
     font-style: italic;
 }
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    color: #000;
+}
+.button {
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    display: block;
+    background-color: #dc4405;
+    border-radius: 3px;
+    padding: 0.6em;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 10em;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
 
 footer {
     padding: 0.5em 2em;

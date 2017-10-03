@@ -33,15 +33,17 @@ class City(object):
         # location, climate, and architecture
         query = '''
         match (p:position)--(c:climate)--(t:city_type)--(m:primary_material)--(m2:secondary_material)--(x:motif),
-        (m)--(s:stories)
+        (m)--(s:stories), (c)--(ter:terrain)--(t)
         where (p)--(t) and (c)--(m) and (t)--(s)
         return * skip %d limit 1
-        ''' % random.randint(0, 10080)
+        ''' % random.randint(0, 38150)
         result = self.graph.run(query)
         data = result.data()
 
         self.add_data(data)
+        climate_name = self.data['climate']
         self.data['climate'] = climates[self.data['climate']]
+        self.data['climate']['id'] = climate_name
 
         # government, religion, and public spaces
         query = '''

@@ -4,6 +4,37 @@
 
 <p>
 {{ foreign_word(city.name) }} is famed for its artisan {{ industry }}.
+
+Visit the {{ foreign_word(translate('NN', 'market')) }} (market) for beautiful, hand-made
+{% if industry == 'weaving' %}
+tapestries, textiles, and garments
+
+{% elif industry == 'metalworking' %}
+kitchenwares, daggers, and jewelry
+
+{% elif industry == 'printing' %}
+leaflets, books, and graphic prints
+
+{% elif industry == 'carving' %}
+bone pendants, wooden boxes, and staves
+
+{% elif industry == 'perfume' %}
+scents
+
+{% elif industry == 'pastry' %}
+sweet and savory delicacies
+
+{% elif industry == 'brewing' %}
+ales and liquors
+
+{% elif industry == 'ceramics' %}
+dishware, tea sets, and figurines
+
+{% elif industry == 'glass' %}
+vases, cups, and lanterns
+{% endif %}
+
+for a unique memento of your visit.
 </p>
 
 {% endcall %}

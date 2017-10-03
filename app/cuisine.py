@@ -12,7 +12,8 @@ class Cuisine(object):
     def teacup(self):
         ''' describe the cup tea is drunk from '''
         dishware = {
-            'wood': '#shape_part# wooden cups, laquered and painted with #motif#',
+            'wood': '#shape_part# wooden cups, ' \
+                    'laquered and painted with #motif#',
             'stone': 'delicate stone, #shape_part# cups with ' \
                     '#motif# caved along the rim',
             'cloth': 'ceramic, #shape_part# cups glazed with #motif#',

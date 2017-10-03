@@ -7,3 +7,6 @@ hard_materials = [
     'brass', 'gold', 'silver', 'copper', 'metal',
     'glass', 'ceramic', 'clay'
 ]
+
+carvable_materials = ['bone', 'ivory', 'wood']
+

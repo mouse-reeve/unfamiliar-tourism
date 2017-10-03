@@ -1,8 +1,15 @@
 {% call section() %}
 
 <h3>Weather today</h3>
-<p>{{ weather.temp | int }}&deg;C</p>
-<p>{{ weather.humidity}}% humidity</p>
+<p>
+    <span>{{ weather.temp | int }}&deg;C</span> -
+    <span>
+        {% if weather.precipitation %}{{ weather.precipitation | capitalize }}ing
+        {% elif weather.humidity < 70 %} Sunshine
+        {% elif weather.humidity < 80 %} Party cloudy
+        {% else %} Overcast {% endif %}
+    </span>
+</p>
 
 <p>{{ foreign_word(city.name) }} is situated in the
 {% if climate.id in ['tropical_rainforest', 'tropical_monsoon'] %}

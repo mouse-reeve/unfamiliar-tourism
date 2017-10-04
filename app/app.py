@@ -32,25 +32,14 @@ def generate_city(seed=None):
     # ---- Name the city, country, and language
     data = {'seed': seed}
 
-    def get_placename(definition):
-        ''' 25% of the time use a phrase as a place name '''
-        if random.random() > 0.25:
-            return lang.get_word('LOC', definition)
-
-        words = [
-            lang.get_word('JJ', 'swarming'),
-            lang.get_word('NN', 'wasp')
-        ]
-        definition += '; literally, "swarming wasps"'
-        return lang.get_phrase('LOC', words, definition)
-
-    data['country'] = get_placename(
+    data['country'] = lang.get_word(
+        'LOC',
         'That country\'s name; ' + \
         'the lands and people of that nation')
 
     city_definition = 'A city in ' + get_latin(data['country'])
     data['city'] = {
-        'name': get_placename(city_definition)
+        'name': lang.get_word('LOC', city_definition)
     }
 
     data['translate'] = lambda w, pos: lang.get_word(pos, w)

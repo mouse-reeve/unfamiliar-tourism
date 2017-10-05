@@ -140,17 +140,12 @@ def generate_city(seed=None):
                       data['motif'])
 
     data['cuisine'] = {
-        'tea': {
-            'description': cuisine.tea(),
-            'cup_description': cuisine.teacup(),
-            'name': lang.get_word('NN', 'tea')
-        },
-        'fruit': lang.get_word('NNP', cuisine.fruit())
+        'fruit': cuisine.fruit
     }
 
     # fashion
     fashion = Fashion(gender_count, data['climate'], data['motif'])
-    data['body_mod'] = fashion.body_mod()
+    data['body_mod'] = fashion.body_mod
 
 
     data['dictionary'] = lang.dictionary

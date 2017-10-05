@@ -3,7 +3,7 @@
 <h3>Eat</h3>
 
 <p>
-{{ foreign_word(cuisine.fruit, with_ipa=True, capitalize=True) }} is {{ cuisine.fruit.translation }}
+{{ foreign_word(translate('NN', 'an edible fruit native to the region'), with_ipa=True, capitalize=True) }} is {{ cuisine.fruit() }}
 </p>
 
 {% endcall %}

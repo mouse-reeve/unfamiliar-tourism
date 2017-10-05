@@ -85,24 +85,12 @@ def generate_city(seed=None):
     gender_count = random.choice([2, 3, 5])
     if gender_count == 2:
         data['genders'] = [
-            {
-                'name': lang.get_word('NN', 'male'),
-                'pronoun': lang.get_word('PRP',
-                                         'Male pronoun'),
-            }, {
-                'name': lang.get_word('NN', 'female'),
-                'pronoun': lang.get_word('PRP',
-                                         'Female pronoun'),
-            }
+            {'name': lang.get_word('NN', 'Male')},
+            {'name': lang.get_word('NN', 'Female')}
         ]
     else:
         for _ in range(0, gender_count):
-            data['genders'].append({
-                'name': lang.get_word('NN', 'A gender'),
-                'pronoun': lang.get_word(
-                    'PRP',
-                    'A gender pronoun'),
-            })
+            data['genders'].append({'name': lang.get_word('NN', 'A gender')})
 
 
     # ----- RELIGION
@@ -112,7 +100,7 @@ def generate_city(seed=None):
         'the religion of ' + get_latin(data['country'])
     )
 
-    god_definition = 'a local god of the %s religion' % \
+    god_definition = 'a god of the %s religion' % \
                      get_latin(data['religion']['name'])
 
     data['religion']['gods'] = []

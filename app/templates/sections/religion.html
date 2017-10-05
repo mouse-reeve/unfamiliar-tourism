@@ -3,7 +3,10 @@
 <h3>Religion</h3>
 
 <p>
-The {{ foreign_word(religion.name) }} faith has {{ religion.gods | length }} gods.
+The {{ foreign_word(religion.name) }} faith is {{ religion.divine_structure }} and has {{ religion.god_count | number_format }} gods.
 </p>
 
+<p>Gods: {{ religion.diety_forms }}</p>
+
+{{ religion.worship }}
 {% endcall %}

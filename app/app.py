@@ -111,6 +111,8 @@ def generate_city(seed=None):
         god_count += 2
     god_count += abs(int(random.normalvariate(2, 2)))
 
+    data['religion']['god_count'] = god_count
+
     for _ in range(god_count):
         data['religion']['gods'].append(
             lang.get_word('NNP', god_definition))
@@ -118,6 +120,19 @@ def generate_city(seed=None):
     if data['divine_structure'] == 'heirarchical':
         data['religion']['gods'] = \
                 create_pantheon_hierarchy(data['religion']['gods'])
+
+    # note on structure:
+    # "multifaceted" means that various gods are faces of a single divinity
+    # "various" means that gods exist discreetly
+    # "heirarchical" means they exist discreetly and with some more important
+    data['religion']['divine_structure'] = data['divine_structure']
+    data['religion']['worship'] = data['worship']
+    data['religion']['diety_forms'] = [data['diety_form'],
+                                       data['diety_form_secondary']]
+    del data['divine_structure']
+    del data['diety_form']
+    del data['diety_form_secondary']
+    del data['worship']
 
     # ------ FOOD
     cuisine = Cuisine(data['climate'],

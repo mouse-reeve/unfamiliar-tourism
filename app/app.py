@@ -42,7 +42,7 @@ def generate_city(seed=None):
         'name': lang.get_word('LOC', city_definition)
     }
 
-    data['translate'] = lambda w, pos: lang.get_word(pos, w)
+    data['translate'] = lang.get_word
 
     lang_definition = 'The official language of ' + \
                        get_latin(data['country']) + \

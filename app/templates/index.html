@@ -1,6 +1,6 @@
 {% macro section(title, id=None) %}
-<section id="id or title">
-    <h2>{{ title }}</h2>
+<section id="{{ id or title }}">
+    <h2><span>{{ title }}</span></h2>
     <div class="grid-x grid-margin-x grid-margin-y">
         {{ caller() }}
     </div>

@@ -104,6 +104,21 @@ section {
     padding: 2em;
 }
 
+section h2 {
+    text-align: center;
+    border-bottom: 1px solid black;
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    top: -1em;
+}
+section h2 span {
+    background-color: #fff;
+    position: relative;
+    top: 0.4em;
+    padding: 0 1em;
+}
+
 section .card {
     background-color: #3696a4;
     padding: 2em;

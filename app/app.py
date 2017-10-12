@@ -145,12 +145,12 @@ def generate_city(seed=None):
                       data['motif'])
 
     data['cuisine'] = {
-        'fruit': cuisine.fruit
+        'fruit': cuisine.fruit()
     }
 
     # fashion
     fashion = Fashion(gender_count, data['climate'], data['motif'])
-    data['body_mod'] = fashion.body_mod
+    data['body_mod'] = fashion.body_mod()
 
 
     data['color'] = generate_color

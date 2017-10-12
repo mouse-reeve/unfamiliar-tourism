@@ -1,4 +1,3 @@
-{% call section() %}
 <h3>The {{ foreign_word(language.name) }} language</h3>
 <p>The official language of {{ foreign_word(city.name) }} is {{ foreign_word(language.name) }}.</p>
 {% if language.stats.vowels | length < 4 %}
@@ -29,5 +28,3 @@ You are unlikely to find any English speakers in {{ foreign_word(city.name) }}, 
 <p>Goodbye: {{ foreign_word(translate('NN', 'goodbye')) }}</p>
 
 <a class="button">Learn more</a>
-{% endcall %}
-

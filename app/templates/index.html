@@ -1,11 +1,39 @@
-{% macro foreign_word(word, with_ipa=False, capitalize=False) %}
-      <span class="word">{% if word.pos in ['LOC', 'NNP'] or capitalize%}{{ word | latin | capitalize }}{% else %}{{ word | latin }}{% endif %}</span>{%if with_ipa %}<span class="ipa"> ({{ word | ipa }})</span>{% endif %}{% endmacro %}
+{% macro section(title, id=None) %}
+<section id="id or title">
+    <h2>{{ title }}</h2>
+    <div class="grid-x grid-margin-x grid-margin-y">
+        {{ caller() }}
+    </div>
+</section>
+{% endmacro %}
 
-{% macro section() %}
-<div>
-    {{ caller() }}
+
+{% macro card(name, size=6) %}
+<div class="card cell medium-{{ size }}" style="background-color: {{ color() }}">
+    {% include '/sections/' + name + '.html' %}
 </div>
 {% endmacro %}
+
+
+{% macro deal_cards(cards) %}
+{% for item in (cards | sort_cards) %}
+    {% if item['group'] %}
+        <div class="grid-y grid-margin-y cell medium-{{ item['group'][0][1] }}">
+            {% for card_item in item['group'] %}
+                {{ card(card_item[0]) }}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="grid-y grid-margin-y cell medium-{{ item[1] }}">
+            {{ card(item[0], size=12) }}
+        </div>
+    {% endif %}
+{% endfor %}
+{% endmacro %}
+
+
+{% macro foreign_word(word, with_ipa=False, capitalize=False) %}
+      <span class="word">{% if word.pos in ['LOC', 'NNP'] or capitalize%}{{ word | latin | capitalize }}{% else %}{{ word | latin }}{% endif %}</span>{%if with_ipa %}<span class="ipa"> ({{ word | ipa }})</span>{% endif %}{% endmacro %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,59 +57,34 @@
     </nav>
 </header>
 
-<div class="container grid-container">
-<div class="grid-x intro-block">
-    <div class="cell medium-8">
-        <div class="grid-y">
-            <section class="cell medium-7 weather">
-                {% include '/sections/weather.html' %}
-            </section>
+<div class="container">
 
-            <section class="cell medium-5 title">
-                {% call section() %}
-                <h2>
-                    <small>Welcome to</small>
-                    {{ foreign_word(city.name) }}
-                </h2>
-                <p>{{ foreign_word(city.name) }} is a real neat ancient city, build on the
-                bones of children sacrificed to the fanged god.</p>
-                {% endcall %}
-            </section>
-        </div>
-    </div>
+{% call section(id="title") %}
+<div class="card cell medium-12" style="background-color: {{ color() }}">
+    <h1>
+        <small>Welcome to</small>
+        {{ foreign_word(city.name) }}
+    </h1>
+    <p>{{ foreign_word(city.name) }} is a real neat ancient city, build on the
+    bones of children sacrificed to the fanged god.</p>
+</div>
+{% endcall %}
 
-    <section class="cell medium-4 main-info">
-        {% include '/sections/language.html' %}
-    </section>
-</div>
-<div class="grid-x list-block">
-    <section class="cell medium-3">
-        {% include '/sections/fruit.html' %}
-    </section>
-    <section class="cell medium-3">
-        {% include '/sections/industry.html' %}
-    </section>
-    <section class="cell medium-3">
-        {% include '/sections/style.html' %}
-    </section>
-    <section class="cell medium-3">
-        {% include '/sections/religion.html' %}
-    </section>
-</div>
 
-<div class="grid-x grid-margin-x panel-block">
-    <section class="cell medium-4">
-        {% include '/sections/gender.html' %}
-    </section>
-    <section class="cell medium-4">
-        <h3>Language</h3>
-        <p>Here's a phrasebook for you: go home</p>
-    </section>
-    <section class="cell medium-4">
-        <h3>Language</h3>
-        <p>Here's a phrasebook for you: go home</p>
-    </section>
-</div>
+{% call section('learn') %}
+    {{ deal_cards(
+        [['weather', 4], ['gender', 4], ['language', 6]]) }}
+{% endcall %}
+
+{% call section('sights') %}
+    {{ deal_cards(
+        [['fruit', 6], ['industry', 6], ['style', 6], ['religion', 6]]) }}
+{% endcall %}
+
+{% call section('dine') %}
+    {{ deal_cards(
+        [['fruit', 3], ['fruit', 3], ['fruit', 4], ['fruit', 5], ['fruit', 5]]) }}
+{% endcall %}
 
 </div>
 
@@ -90,5 +93,4 @@
 </footer>
 </body>
 </html>
-
 

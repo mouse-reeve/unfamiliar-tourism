@@ -38,12 +38,12 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
 }
 
-h1 {
+header h1 {
     font-size: 3em;
     letter-spacing: 0.1em;
 }
 
-h1, header::after {
+header h1, header::after {
     color: #ccc;
     text-shadow:
         0.02em 0.02em 0 #f00,
@@ -80,7 +80,7 @@ nav a:last-child::after {
     margin: 0;
 }
 
-h2 {
+section h1 {
     text-align: center;
     font-size: 4em;
     line-height: 0.7em;
@@ -88,7 +88,7 @@ h2 {
     margin: 0;
 }
 
-h2 small {
+section h1 small {
     display: block;
     font-size: 0.7rem;
     letter-spacing: 0.3rem;
@@ -100,14 +100,13 @@ h2 small {
     max-width: 85em;
 }
 
-.grid-y {
-    height: 100%;
-}
-
 section {
     padding: 2em;
-    color: white;
+}
+
+section .card {
     background-color: #3696a4;
+    padding: 2em;
 }
 
 .ipa {
@@ -124,10 +123,10 @@ a:hover {
     color: #000;
 }
 .button {
-    color: #fff;
     font-family: 'Lato', sans-serif;
     display: block;
-    background-color: #dc4405;
+    background-color: rgba(255, 255, 255, 0.65);
+    border: 1px solid #fff;
     border-radius: 3px;
     padding: 0.6em;
     margin: 0 auto;
@@ -142,32 +141,4 @@ a:hover {
 footer {
     padding: 0.5em 2em;
     margin-top: 3em;
-}
-
-
-/* ---- MODULES -----*/
-.list-block section {
-    border-right: 1px solid #fff;
-}
-.list-block section:last-child {
-    border: none;
-}
-
-.panel-block {
-    margin: 2em;
-}
-.panel-block section {
-    background-color: #a59d4c;
-}
-
-.weather {
-    background-color: #3a537a;
-}
-
-.title {
-    background-color: #dc4405;
-}
-
-.main-info {
-    background-color: #516272;
 }

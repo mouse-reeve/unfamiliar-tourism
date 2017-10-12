@@ -21,7 +21,13 @@ app.before_request(before_request)
 def load_city():
     ''' send visitors to a particular seed '''
     seed = datetime.now().time().strftime('%H%M%S%f')
+    # TODO:
+    # 1. create a temporary template for the city (for nojs)
+    # 2. render the loading screen at '/' with ajax to receive callback
+    #    from generation script when city is ready
+    # 3. run generation script that creates actual city template
     return redirect('/%s' % seed)
+
 
 @app.route('/<seed>')
 def generate_city(seed=None):
@@ -79,8 +85,7 @@ def generate_city(seed=None):
     data['population'] = random.randint(
         1000 * data['isolation'], int(10000000/(data['isolation'] ** 4)))
 
-
-    # GENDER
+    # ------- GENDER
     data['genders'] = []
     gender_count = random.choice([2, 3, 5])
     if gender_count == 2:
@@ -93,7 +98,7 @@ def generate_city(seed=None):
             data['genders'].append({'name': lang.get_word('NN', 'A gender')})
 
 
-    # ----- RELIGION
+    # ------- RELIGION
     data['religion'] = {}
     data['religion']['name'] = lang.get_word(
         'NNP',
@@ -148,9 +153,14 @@ def generate_city(seed=None):
     data['body_mod'] = fashion.body_mod
 
 
+    data['color'] = generate_color
     data['dictionary'] = lang.dictionary
     return render_template('index.html', **data)
 
+
+def generate_color():
+    ''' a hex color '''
+    return '#' + ''.join(hex(random.randint(10, 13))[2:] for _ in range(0, 3))
 
 def create_pantheon_hierarchy(gods):
     ''' arrange gods into a hierarchical pantheon
@@ -195,5 +205,37 @@ def number_format_filter(n):
         return words[n]
     return '{:,}'.format(n)
 
+
+@app.template_filter('sort_cards')
+def sort_cards(cards):
+    ''' group cards together in x/y grid blocks '''
+    grouped = []
+    i = 0
+    size = 0
+    while i < len(cards):
+        size += cards[i][1]
+        if len(cards) > i + 1 and cards[i][1] <= 6 and \
+                cards[i][1] == cards[i+1][1]:
+            grouped.append({
+                'group': [cards[i], cards[i+1]]
+            })
+            i += 2
+        else:
+            grouped.append(cards[i])
+            i += 1
+
+    remainder = size % 12
+    if remainder > 6:
+        remainder = 12 - remainder
+
+    if remainder:
+        for card in grouped:
+            if not 'group' in card:
+                card[1] += remainder
+                break
+    return grouped
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
+

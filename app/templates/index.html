@@ -1,24 +1,3 @@
-{% macro section(title, id=None) %}
-<section id="{{ id or title }}">
-    {% if title %}<h2><span>{{ title }}</span></h2>{% endif %}
-    <div class="grid-x grid-margin-x grid-margin-y">
-        {{ caller() }}
-    </div>
-</section>
-{% endmacro %}
-
-
-{% macro deal_cards(cards) %}
-{% for item in cards %}
-<div class="cell medium-6">
-    <div class="card cell medium-{{ size }}" style="background-color: {{ color() }}">
-        {% include '/sections/' + item + '.html' %}
-    </div>
-</div>
-{% endfor %}
-{% endmacro %}
-
-
 {% macro foreign_word(word, with_ipa=False, capitalize=False) %}
       <span class="word">{% if word.pos in ['LOC', 'NNP'] or capitalize%}{{ word | latin | capitalize }}{% else %}{{ word | latin }}{% endif %}</span>{%if with_ipa %}<span class="ipa"> ({{ word | ipa }})</span>{% endif %}{% endmacro %}
 
@@ -46,22 +25,32 @@
 
 <div class="container">
 
-{% call section(id="title") %}
-<div class="card cell medium-12" style="background-color: {{ color() }}">
-    <h1>
-        <small>Welcome to</small>
-        {{ foreign_word(city.name) }}
-    </h1>
-    <p>{{ foreign_word(city.name) }} is a real neat ancient city, build on the
-    bones of children sacrificed to the fanged god.</p>
-</div>
-{% endcall %}
-
+<section id="title">
+    <div class="grid-x grid-margin-x grid-margin-y">
+        <div class="card cell medium-12" style="background-color: {{ color() }}">
+            <h1>
+                <small>Welcome to</small>
+                {{ foreign_word(city.name) }}
+            </h1>
+            <p>{{ foreign_word(city.name) }} is a real neat ancient city, build on the
+            bones of children sacrificed to the fanged god.</p>
+        </div>
+    </div>
+</section>
 
 {% for section_item in cards %}
-{% call section(section_item.title) %}
-    {{ deal_cards(section_item.cards) }}
-{% endcall %}
+<section id="section_item.title">
+    <h2><span>{{ section_item.title }}</span></h2>
+    <div class="grid-x grid-margin-x grid-margin-y">
+        {% for item in section_item.cards %}
+        <div class="cell medium-6">
+            <div class="card cell medium-{{ size }}" style="background-color: {{ color() }}">
+                {% include '/sections/' + item + '.html' %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 {% endfor %}
 
 </div>

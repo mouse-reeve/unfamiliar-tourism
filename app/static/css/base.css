@@ -124,6 +124,10 @@ section .card {
     padding: 2em;
 }
 
+.cell {
+    min-height: auto;
+}
+
 .ipa {
     font-family: serif;
 }

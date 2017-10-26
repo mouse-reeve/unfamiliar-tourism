@@ -166,7 +166,8 @@ def generate_city(seed=None):
             'cards': ['fruit', 'fruit', 'fruit']
         }, {
             'title': 'survival guide',
-            'cards': ['transit', 'etiquette']
+            'cards': ['transit', 'etiquette', 'transit', 'transit', 'transit',
+                      'transit', 'transit', 'transit', 'transit', 'transit']
         }, {
             'title': 'seasonal',
             'cards': ['festival', 'holiday', 'event']
@@ -230,6 +231,15 @@ def number_format_filter(n):
     if n < 10:
         return words[n]
     return '{:,}'.format(n)
+
+
+@app.template_filter('group_cards')
+def group_cards_filter(cards, column_count=3):
+    ''' create columns for a card grid '''
+    per_column = int(len(cards) / column_count) or 1
+    return [cards[:per_column],
+            cards[per_column:(per_column * 2)],
+            cards[per_column * 2:]]
 
 
 if __name__ == '__main__':

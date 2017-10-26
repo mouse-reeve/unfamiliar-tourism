@@ -27,7 +27,7 @@
 
 <section id="title">
     <div class="grid-x grid-margin-x grid-margin-y">
-        <div class="card cell medium-12" style="background-color: {{ color() }}">
+        <div class="card cell medium-auto" style="background-color: {{ color() }}">
             <h1>
                 <small>Welcome to</small>
                 {{ foreign_word(city.name) }}
@@ -41,12 +41,14 @@
 {% for section_item in cards %}
 <section id="section_item.title">
     <h2><span>{{ section_item.title }}</span></h2>
-    <div class="grid-x grid-margin-x grid-margin-y">
-        {% for item in section_item.cards %}
-        <div class="cell medium-6">
-            <div class="card cell medium-{{ size }}" style="background-color: {{ color() }}">
+    <div class="grid-x grid-margin-x">
+        {% for cardset in section_item.cards | group_cards %}
+        <div class="cell medium-auto grid-y grid-margin-y">
+            {% for item in cardset %}
+            <div class="card cell medium-auto" style="background-color: {{ color() }}">
                 {% include '/sections/' + item + '.html' %}
             </div>
+            {% endfor %}
         </div>
         {% endfor %}
     </div>

@@ -153,6 +153,32 @@ def generate_city(seed=None):
     data['body_mod'] = fashion.body_mod()
 
 
+    # ------- City-specific cards to display
+    data['cards'] = [
+        {
+            'title': 'learn',
+            'cards': ['weather', 'language', 'religion', 'government']
+        }, {
+            'title': 'sights',
+            'cards': ['fruit']
+        }, {
+            'title': 'dine',
+            'cards': ['fruit', 'fruit', 'fruit']
+        }, {
+            'title': 'survival guide',
+            'cards': ['transit', 'etiquette']
+        }, {
+            'title': 'seasonal',
+            'cards': ['festival', 'holiday', 'event']
+        }
+    ]
+    if len(data['genders']) > 2:
+        data['cards'][0]['cards'].append('gender')
+
+    # realistically, there could be temples/shrines for various gods,
+    # and this should reflect the divine structure
+    data['cards'][1]['cards'] += data['religion']['worship']
+
     data['color'] = generate_color
     data['dictionary'] = lang.dictionary
     return render_template('index.html', **data)
@@ -204,36 +230,6 @@ def number_format_filter(n):
     if n < 10:
         return words[n]
     return '{:,}'.format(n)
-
-
-@app.template_filter('sort_cards')
-def sort_cards(cards):
-    ''' group cards together in x/y grid blocks '''
-    grouped = []
-    i = 0
-    size = 0
-    while i < len(cards):
-        size += cards[i][1]
-        if len(cards) > i + 1 and cards[i][1] <= 6 and \
-                cards[i][1] == cards[i+1][1]:
-            grouped.append({
-                'group': [cards[i], cards[i+1]]
-            })
-            i += 2
-        else:
-            grouped.append(cards[i])
-            i += 1
-
-    remainder = size % 12
-    if remainder > 6:
-        remainder = 12 - remainder
-
-    if remainder:
-        for card in grouped:
-            if not 'group' in card:
-                card[1] += remainder
-                break
-    return grouped
 
 
 if __name__ == '__main__':

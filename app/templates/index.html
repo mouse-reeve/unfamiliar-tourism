@@ -1,6 +1,6 @@
 {% macro section(title, id=None) %}
 <section id="{{ id or title }}">
-    <h2><span>{{ title }}</span></h2>
+    {% if title %}<h2><span>{{ title }}</span></h2>{% endif %}
     <div class="grid-x grid-margin-x grid-margin-y">
         {{ caller() }}
     </div>
@@ -8,26 +8,13 @@
 {% endmacro %}
 
 
-{% macro card(name, size=6) %}
-<div class="card cell medium-{{ size }}" style="background-color: {{ color() }}">
-    {% include '/sections/' + name + '.html' %}
-</div>
-{% endmacro %}
-
-
 {% macro deal_cards(cards) %}
-{% for item in (cards | sort_cards) %}
-    {% if item['group'] %}
-        <div class="grid-y grid-margin-y cell medium-{{ item['group'][0][1] }}">
-            {% for card_item in item['group'] %}
-                {{ card(card_item[0]) }}
-            {% endfor %}
-        </div>
-    {% else %}
-        <div class="grid-y grid-margin-y cell medium-{{ item[1] }}">
-            {{ card(item[0], size=12) }}
-        </div>
-    {% endif %}
+{% for item in cards %}
+<div class="cell medium-6">
+    <div class="card cell medium-{{ size }}" style="background-color: {{ color() }}">
+        {% include '/sections/' + item + '.html' %}
+    </div>
+</div>
 {% endfor %}
 {% endmacro %}
 
@@ -71,20 +58,11 @@
 {% endcall %}
 
 
-{% call section('learn') %}
-    {{ deal_cards(
-        [['weather', 4], ['gender', 4], ['language', 6]]) }}
+{% for section_item in cards %}
+{% call section(section_item.title) %}
+    {{ deal_cards(section_item.cards) }}
 {% endcall %}
-
-{% call section('sights') %}
-    {{ deal_cards(
-        [['fruit', 6], ['industry', 6], ['style', 6], ['religion', 6]]) }}
-{% endcall %}
-
-{% call section('dine') %}
-    {{ deal_cards(
-        [['fruit', 3], ['fruit', 3], ['fruit', 4], ['fruit', 5], ['fruit', 5]]) }}
-{% endcall %}
+{% endfor %}
 
 </div>
 

@@ -72,37 +72,3 @@ class City(object):
 
 
 
-    def weather(self, month, seed, date):
-        ''' determine the weather for a given date '''
-        # re-randomize the weather every day
-        weather_seed = '%s %s %d' % (seed, month, date)
-        rand_state = random.getstate()
-        random.seed(weather_seed)
-        # [temp, rainy days, snowy days, humidity]
-        stats = self.data['climate']['stats'][month]
-
-        temp_deviation = self.data['climate']['temp_range']/2
-        temp = random.normalvariate(stats[0], temp_deviation)
-        deviation = abs(temp - stats[0]) / temp_deviation
-
-        precipitation = False
-        if stats[2] and random.random() > stats[2]/30.0 * 2:
-            deviation = 1 - ((stats[2] / 30.0) * 2)
-            precipitation = 'snow'
-        elif stats[1] and random.random() > stats[1]/30.0:
-            deviation = 1 - ((stats[1] / 30.0) * 2)
-            precipitation = 'rain'
-
-        temps = ['freezing', 'cold', 'warm', 'hot', 'blistering', 'blistering']
-        temp_desc = temps[0] if temp < 0 else temps[int((temp + 5)/10)]
-
-        report = {
-            'temp': temp,
-            'temp_description': temp_desc,
-            'humidity': stats[3],
-            'precipitation': precipitation,
-            'deviation': deviation,
-            'climate': self.data['climate']['name'],
-        }
-        random.setstate(rand_state)
-        return report

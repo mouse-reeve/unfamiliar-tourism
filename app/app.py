@@ -3,11 +3,12 @@ from city import City
 from cuisine import Cuisine
 from datetime import datetime
 from fashion import Fashion
-from foreigntongue import Language, get_latin, get_ipa
+from foreigntongue import Language
 
 from flask import Flask, redirect, render_template
+import json
 import random
-from random import Random
+import re
 
 app = Flask(__name__)
 
@@ -19,7 +20,7 @@ app.before_request(before_request)
 
 
 @app.route('/')
-def load_city():
+def request_new_city():
     ''' send visitors to a particular seed '''
     seed = datetime.now().time().strftime('%H%M%S%f')
     # TODO:
@@ -31,10 +32,29 @@ def load_city():
 
 
 @app.route('/<seed>')
-def generate_city(seed=None):
+def load_city(seed):
+    ''' create the webpage from the datafile '''
+    # attempt to load existing datafile for seed
+    try:
+        data = json.load(open(
+            app.static_folder + '/datafiles/' + seed + '.json', 'r'))
+    except IOError:
+        data = generate_datafile(seed)
+
+    random.seed(seed)
+
+    # the last couple things that are generated on the fly
+    data['color'] = generate_color
+    month = ['January', 'February', 'March', 'April', 'May', 'June',
+             'July', 'August', 'September', 'October', 'November',
+             'December'][datetime.now().month]
+
+    data['weather'] = weather(data['climate'], month, seed, datetime.now().day)
+    return render_template('index.html', **data)
+
+
+def generate_datafile(seed):
     ''' generate a city '''
-    color_random = Random()
-    color_random.seed(seed)
 
     random.seed(seed)
     lang = Language()
@@ -47,7 +67,7 @@ def generate_city(seed=None):
         'That country\'s name; ' + \
         'the lands and people of that nation')
 
-    city_definition = 'A city in ' + get_latin(data['country'])
+    city_definition = 'A city in ' + latin_filter(data['country'])
     data['city'] = {
         'name': lang.get_word('LOC', city_definition)
     }
@@ -55,8 +75,8 @@ def generate_city(seed=None):
     data['translate'] = lang.get_word
 
     lang_definition = 'The official language of ' + \
-                       get_latin(data['country']) + \
-                      ', spoken in ' + get_latin(data['city']['name'])
+                       latin_filter(data['country']) + \
+                      ', spoken in ' + latin_filter(data['city']['name'])
     data['language'] = {
         'name': lang.get_word('NNP', lang_definition),
         'stats': lang.get_stats()
@@ -69,11 +89,6 @@ def generate_city(seed=None):
         return render_template('error.html', error='Database failure')
 
     data.update(city.data)
-    month = ['January', 'February', 'March', 'April', 'May', 'June',
-             'July', 'August', 'September', 'October', 'November',
-             'December'][datetime.now().month]
-    data['weather'] = city.weather(month, seed, datetime.now().day)
-
     # ------ Factoids
     data['year_founded'] = 1987
     data['history'] = [
@@ -106,11 +121,11 @@ def generate_city(seed=None):
     data['religion'] = {}
     data['religion']['name'] = lang.get_word(
         'NNP',
-        'the religion of ' + get_latin(data['country'])
+        'the religion of ' + latin_filter(data['country'])
     )
 
     god_definition = 'a god of the %s religion' % \
-                     get_latin(data['religion']['name'])
+                     latin_filter(data['religion']['name'])
 
     data['religion']['gods'] = []
     god_count = 2
@@ -177,6 +192,7 @@ def generate_city(seed=None):
             'cards': ['festival', 'holiday', 'event']
         }
     ]
+
     if len(data['genders']) > 2:
         data['cards'][0]['cards'].append('gender')
 
@@ -185,8 +201,7 @@ def generate_city(seed=None):
     data['cards'][1]['cards'] += data['religion']['worship']
 
     # lookup words we'll need later. doing this now instead of on the fly
-    # in the partials to keep the state of random predictable, and not
-    # contingent on the order in which the partials are added (or whatever)
+    # so that the lang library isn't a dependency
     lang.get_word('NN', 'market')
     lang.get_word('NN', 'fruit')
     lang.get_word('NN', 'hello')
@@ -199,13 +214,17 @@ def generate_city(seed=None):
 
     data['dictionary'] = lang.dictionary
 
-    data['color'] = lambda: generate_color(color_random)
-    return render_template('index.html', **data)
+    filepath = app.static_folder + '/datafiles/' + seed + '.json'
+
+    # save a copy for future (re)loads
+    with open(filepath, 'w') as fp:
+        json.dump(data, fp, default=lambda x: x.__dict__)
+    return data
 
 
-def generate_color(rand):
+def generate_color():
     ''' a hex color '''
-    return '#' + ''.join(hex(rand.randint(10, 13))[2:] for _ in range(0, 3))
+    return '#' + ''.join(hex(random.randint(10, 13))[2:] for _ in range(0, 3))
 
 def create_pantheon_hierarchy(gods):
     ''' arrange gods into a hierarchical pantheon
@@ -225,17 +244,58 @@ def create_pantheon_hierarchy(gods):
 
     return pantheon
 
+def weather(climate, month, seed, date):
+    ''' determine the weather for a given date '''
+    # re-randomize the weather every day
+    weather_seed = '%s %s %d' % (seed, month, date)
+    rand_state = random.getstate()
+    random.seed(weather_seed)
+    # [temp, rainy days, snowy days, humidity]
+    stats = climate['stats'][month]
+
+    temp_deviation = climate['temp_range']/2
+    temp = random.normalvariate(stats[0], temp_deviation)
+    deviation = abs(temp - stats[0]) / temp_deviation
+
+    precipitation = False
+    if stats[2] and random.random() > stats[2]/30.0 * 2:
+        deviation = 1 - ((stats[2] / 30.0) * 2)
+        precipitation = 'snow'
+    elif stats[1] and random.random() > stats[1]/30.0:
+        deviation = 1 - ((stats[1] / 30.0) * 2)
+        precipitation = 'rain'
+
+    temps = ['freezing', 'cold', 'warm', 'hot', 'blistering', 'blistering']
+    temp_desc = temps[0] if temp < 0 else temps[int((temp + 5)/10)]
+
+    report = {
+        'temp': temp,
+        'temp_description': temp_desc,
+        'humidity': stats[3],
+        'precipitation': precipitation,
+        'deviation': deviation,
+        'climate': climate['name'],
+    }
+    random.setstate(rand_state)
+    return report
+
 
 @app.template_filter('ipa')
 def ipa_filter(word):
     ''' template filter for formatting foreign words '''
-    return get_ipa(word)
+    text = ''
+    for syllable in word['lemma']:
+        text = text + ''.join(l['IPA'] for l in syllable)
+    return re.sub('/', '', text)
 
 
 @app.template_filter('latin')
 def latin_filter(word):
     ''' template filter for formatting foreign words '''
-    return get_latin(word)
+    text = ''
+    for syllable in word['lemma']:
+        text = text + ''.join(l['latin'] for l in syllable)
+    return re.sub('/', '', text)
 
 
 @app.template_filter('number_format')

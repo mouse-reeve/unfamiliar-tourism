@@ -7,6 +7,7 @@ from foreigntongue import Language, get_latin, get_ipa
 
 from flask import Flask, redirect, render_template
 import random
+from random import Random
 
 app = Flask(__name__)
 
@@ -32,6 +33,9 @@ def load_city():
 @app.route('/<seed>')
 def generate_city(seed=None):
     ''' generate a city '''
+    color_random = Random()
+    color_random.seed(seed)
+
     random.seed(seed)
     lang = Language()
 
@@ -180,19 +184,14 @@ def generate_city(seed=None):
     # and this should reflect the divine structure
     data['cards'][1]['cards'] += data['religion']['worship']
 
-    data['color'] = generate_color
+    data['color'] = lambda: generate_color(color_random)
     data['dictionary'] = lang.dictionary
     return render_template('index.html', **data)
 
 
-def generate_color():
+def generate_color(rand):
     ''' a hex color '''
-    # color shouldn't change the seeding of generative random
-    state = random.getstate()
-    random.seed(datetime.now().time().strftime('%H%M%S%f'))
-    color = '#' + ''.join(hex(random.randint(10, 13))[2:] for _ in range(0, 3))
-    random.setstate(state)
-    return color
+    return '#' + ''.join(hex(rand.randint(10, 13))[2:] for _ in range(0, 3))
 
 def create_pantheon_hierarchy(gods):
     ''' arrange gods into a hierarchical pantheon

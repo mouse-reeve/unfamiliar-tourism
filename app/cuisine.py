@@ -170,7 +170,7 @@ class Cuisine(object):
 
             'shape': ['round', 'knobby', 'oblong', 'star-shaped', 'hand-shaped',
                       'spikey', 'teardrop-shaped', 'bulbous',
-                      'spherical', 'oval'],
+                      'round', 'oval'],
             'pit': ['stone fruit with a #size# pit',
                     'fruit with #size#, crunchy seeds',
                     'fruit with a fibrous core containing #size# seeds',

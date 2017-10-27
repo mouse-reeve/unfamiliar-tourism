@@ -187,7 +187,12 @@ def generate_city(seed=None):
 
 def generate_color():
     ''' a hex color '''
-    return '#' + ''.join(hex(random.randint(10, 13))[2:] for _ in range(0, 3))
+    # color shouldn't change the seeding of generative random
+    state = random.getstate()
+    random.seed(datetime.now().time().strftime('%H%M%S%f'))
+    color = '#' + ''.join(hex(random.randint(10, 13))[2:] for _ in range(0, 3))
+    random.setstate(state)
+    return color
 
 def create_pantheon_hierarchy(gods):
     ''' arrange gods into a hierarchical pantheon

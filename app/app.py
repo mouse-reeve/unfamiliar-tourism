@@ -284,6 +284,7 @@ def weather(climate, month, seed, date):
 def ipa_filter(word):
     ''' template filter for formatting foreign words '''
     text = ''
+    word = word.__dict__ if not isinstance(word, dict) else word
     for syllable in word['lemma']:
         text = text + ''.join(l['IPA'] for l in syllable)
     return re.sub('/', '', text)
@@ -293,6 +294,7 @@ def ipa_filter(word):
 def latin_filter(word):
     ''' template filter for formatting foreign words '''
     text = ''
+    word = word.__dict__ if not isinstance(word, dict) else word
     for syllable in word['lemma']:
         text = text + ''.join(l['latin'] for l in syllable)
     return re.sub('/', '', text)

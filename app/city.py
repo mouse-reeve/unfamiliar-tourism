@@ -32,15 +32,38 @@ class City(object):
 
         # location, climate, and architecture
         query = '''
-        match (p:position)--(c:climate)--(t:city_type)--(m:primary_material)--(m2:secondary_material)--(x:motif),
-        (m)--(s:stories), (c)--(ter:terrain)--(t), (i:industry)--(m)
-        where (p)--(t) and (c)--(m) and (t)--(s)
+        match (p:position)--(c:climate)--(t:city_type)--(m:primary_material)--(m2:secondary_material)--(x:motif)
+        where (p)--(t) and (c)--(m) and (m)--(:stories)--(t)
         return * skip %d limit 1
-        ''' % random.randint(0, 335790)
+        ''' % random.randint(0, 4445)
+
+
+        from datetime import datetime
+        print('query one:\n', query)
+        now = datetime.now()
         result = self.graph.run(query)
+
         data = result.data()
 
         self.add_data(data)
+
+        # the number of options for this query can vary, so get the count
+        # then the resul
+        query = '''
+        match (i:industry)--(m:primary_material {name: '%s'})--(s:stories)--(t:city_type {name: '%s'}),
+              (c:climate {name: '%s'})--(ter:terrain)--(t:city_type {name: '%s'})
+        ''' % (self.data['primary_material'], self.data['city_type'],
+               self.data['climate'], self.data['city_type'])
+        result = self.graph.run(query + 'return count(*)')
+        count = result.evaluate()
+
+        now = datetime.now()
+        result = self.graph.run(query + 'return i, s, ter skip %d limit 1' \
+                                % random.randint(0, count))
+        data = result.data()
+        self.add_data(data)
+        print ('\n run in microseconds: ', (datetime.now() - now).microseconds)
+
         climate_name = self.data['climate']
         self.data['climate'] = climates[self.data['climate']]
         self.data['climate']['id'] = climate_name
@@ -52,7 +75,10 @@ class City(object):
               (n:worship), (n2:worship), (n3:worship),
               (g:government)--(e:exchange)
         return * skip %d limit 1 ''' % random.randint(0, 196608)
+        print('query two:\n', query)
+        now = datetime.now()
         result = self.graph.run(query)
+        print ('\n run in: ', (datetime.now() - now).microseconds)
         data = result.data()
         self.add_data(data)
 

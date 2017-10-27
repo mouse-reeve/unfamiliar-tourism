@@ -184,8 +184,22 @@ def generate_city(seed=None):
     # and this should reflect the divine structure
     data['cards'][1]['cards'] += data['religion']['worship']
 
-    data['color'] = lambda: generate_color(color_random)
+    # lookup words we'll need later. doing this now instead of on the fly
+    # in the partials to keep the state of random predictable, and not
+    # contingent on the order in which the partials are added (or whatever)
+    lang.get_word('NN', 'market')
+    lang.get_word('NN', 'fruit')
+    lang.get_word('NN', 'hello')
+    lang.get_word('NN', 'where')
+    lang.get_word('NN', 'name')
+    lang.get_word('NN', 'sorry')
+    lang.get_word('NN', 'thanks')
+    lang.get_word('NN', 'goodbye')
+    lang.get_word('NN', 'region')
+
     data['dictionary'] = lang.dictionary
+
+    data['color'] = lambda: generate_color(color_random)
     return render_template('index.html', **data)
 
 

@@ -96,5 +96,3 @@ class City(object):
             else:
                 self.data[label] = item
 
-
-

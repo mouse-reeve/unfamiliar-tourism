@@ -39,7 +39,7 @@ class City(object):
 
 
         from datetime import datetime
-        print('query one:\n', query)
+        print('queries starting')
         now = datetime.now()
         result = self.graph.run(query)
 
@@ -57,12 +57,11 @@ class City(object):
         result = self.graph.run(query + 'return count(*)')
         count = result.evaluate()
 
-        now = datetime.now()
-        result = self.graph.run(query + 'return i, s, ter skip %d limit 1' \
-                                % random.randint(0, count))
+        query = query + 'return i, s, ter skip %d limit 1' \
+                % random.randint(0, count)
+        result = self.graph.run(query)
         data = result.data()
         self.add_data(data)
-        print ('\n run in microseconds: ', (datetime.now() - now).microseconds)
 
         climate_name = self.data['climate']
         self.data['climate'] = climates[self.data['climate']]
@@ -75,10 +74,8 @@ class City(object):
               (n:worship), (n2:worship), (n3:worship),
               (g:government)--(e:exchange)
         return * skip %d limit 1 ''' % random.randint(0, 196608)
-        print('query two:\n', query)
-        now = datetime.now()
         result = self.graph.run(query)
-        print ('\n run in: ', (datetime.now() - now).microseconds)
+        print ('\n run time (seconds): ', (datetime.now() - now).total_seconds())
         data = result.data()
         self.add_data(data)
 

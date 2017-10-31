@@ -1,4 +1,5 @@
 ''' simple http app using hotline library '''
+from architecture import Architecture
 from city import City
 from cuisine import Cuisine
 from datetime import datetime
@@ -45,6 +46,14 @@ def load_city(seed):
              'December'][datetime.now().month]
 
     data['weather'] = weather(data['climate'], month, seed, datetime.now().day)
+
+
+    # ----- BUILDINGS
+    architecture = Architecture(data['city_type'], data['primary_material'],
+                                data['secondary_material'], data['motif'])
+    data['architecture'] = {
+        'temple': architecture.building()
+    }
     return render_template('index.html', **data)
 
 
@@ -125,7 +134,7 @@ def generate_datafile(seed):
     # you need a lot of gods to pull off a divine hierarchy
     if data['divine_structure'] == 'heirarchical':
         god_count += 2
-    god_count += abs(int(random.normalvariate(2, 2)))
+    god_count += abs(int(random.normalvariate(2, 20)))
 
     data['religion']['god_count'] = god_count
 
@@ -159,7 +168,7 @@ def generate_datafile(seed):
         'fruit': cuisine.fruit()
     }
 
-    # fashion
+    # ------- FASHION
     fashion = Fashion(gender_count, data['climate'], data['motif'])
     data['body_mod'] = fashion.body_mod()
 

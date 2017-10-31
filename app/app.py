@@ -23,11 +23,6 @@ app.before_request(before_request)
 def request_new_city():
     ''' send visitors to a particular seed '''
     seed = datetime.now().time().strftime('%H%M%S%f')
-    # TODO:
-    # 1. create a temporary template for the city (for nojs)
-    # 2. render the loading screen at '/' with ajax to receive callback
-    #    from generation script when city is ready
-    # 3. run generation script that creates actual city template
     return redirect('/%s' % seed)
 
 
@@ -89,12 +84,9 @@ def generate_datafile(seed):
         return render_template('error.html', error='Database failure')
 
     data.update(city.data)
+
     # ------ Factoids
-    data['year_founded'] = 1987
-    data['history'] = [
-        {'description': 'The city is founded', 'year': data['year_founded']},
-        {'description': 'Barbarians sack the palace', 'year': 1995},
-    ]
+    data['city_age'] = random.choice(['new', 'modern', 'ancient'])
 
     # physical isolation
     data['isolation'] = random.choice([1, 2, 2, 3, 3, 3, 4, 4, 5])

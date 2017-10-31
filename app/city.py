@@ -35,7 +35,7 @@ class City(object):
         match (p:position)--(c:climate)--(t:city_type)--(m:primary_material)--(m2:secondary_material)--(x:motif)
         where (p)--(t) and (c)--(m) and (m)--(:stories)--(t)
         return * skip %d limit 1
-        ''' % random.randint(0, 4445)
+        ''' % random.randint(0, 4305)
 
 
         from datetime import datetime
@@ -75,7 +75,7 @@ class City(object):
               (g:government)--(e:exchange)
         return * skip %d limit 1 ''' % random.randint(0, 196608)
         result = self.graph.run(query)
-        print ('\n run time (seconds): ', (datetime.now() - now).total_seconds())
+        print ('\n run time (sec): ', (datetime.now() - now).total_seconds())
         data = result.data()
         self.add_data(data)
 

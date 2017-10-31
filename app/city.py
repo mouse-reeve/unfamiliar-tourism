@@ -32,10 +32,10 @@ class City(object):
 
         # location, climate, and architecture
         query = '''
-        match (p:position)--(c:climate)--(t:city_type)--(m:primary_material)--(m2:secondary_material)--(x:motif)
-        where (p)--(t) and (c)--(m) and (m)--(:stories)--(t)
+        match (terr:terrain)--(c:climate)--(t:city_type)--(m:primary_material)--(m2:secondary_material)--(x:motif)
+        where (terr)--(t) and (c)--(m) and (m)--(:stories)--(t)
         return * skip %d limit 1
-        ''' % random.randint(0, 4305)
+        ''' % random.randint(0, 9520)
 
 
         from datetime import datetime
@@ -50,14 +50,12 @@ class City(object):
         # the number of options for this query can vary, so get the count
         # then the resul
         query = '''
-        match (i:industry)--(m:primary_material {name: '%s'})--(s:stories)--(t:city_type {name: '%s'}),
-              (c:climate {name: '%s'})--(ter:terrain)--(t:city_type {name: '%s'})
-        ''' % (self.data['primary_material'], self.data['city_type'],
-               self.data['climate'], self.data['city_type'])
+        match (b:building)--(i:industry)--(m:primary_material {name: '%s'})--(s:stories)--(t:city_type {name: '%s'})
+        ''' % (self.data['primary_material'], self.data['city_type'])
         result = self.graph.run(query + 'return count(*)')
         count = result.evaluate()
 
-        query = query + 'return i, s, ter skip %d limit 1' \
+        query = query + 'return b, i, s skip %d limit 1' \
                 % random.randint(0, count)
         result = self.graph.run(query)
         data = result.data()
@@ -71,9 +69,9 @@ class City(object):
         query = '''
         match (d:diety_form)--(d2:diety_form_secondary),
               (s:divine_structure),
-              (n:worship), (n2:worship), (n3:worship),
-              (g:government)--(e:exchange)
-        return * skip %d limit 1 ''' % random.randint(0, 196608)
+              (n:worship)--(b:building), (n2:worship)--(b:building), (n3:worship)--(b:building),
+              (b4:building)--(g:government)--(e:exchange)
+        return distinct * skip %d limit 1 ''' % random.randint(0, 82944)
         result = self.graph.run(query)
         print ('\n run time (sec): ', (datetime.now() - now).total_seconds())
         data = result.data()

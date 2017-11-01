@@ -58,6 +58,10 @@ def collect_data(seed):
 
     # the last couple things that are generated on the fly
     data['color'] = generate_color
+    data['get_exchange_rate'] = \
+        lambda: calculate_exchange_rate(
+            data['exchange_rate'],
+            datetime.now().strftime('%Y%m%d'))
     month = ['January', 'February', 'March', 'April', 'May', 'June',
              'July', 'August', 'September', 'October', 'November',
              'December'][datetime.now().month]
@@ -113,6 +117,10 @@ def generate_datafile(seed):
     # isolation means lower max population
     data['population'] = random.randint(
         1000 * data['isolation'], int(10000000/(data['isolation'] ** 4)))
+
+    # economy
+    data['currency'] = lang.get_word('NN', 'currency')
+    data['exchange_rate'] = abs(random.normalvariate(0, 10))
 
     # ------- GENDER
     data['genders'] = []
@@ -257,6 +265,15 @@ def create_pantheon_hierarchy(gods):
         pantheon.append(gods[mid_max:])
 
     return pantheon
+
+
+def calculate_exchange_rate(base_rate, date):
+    ''' fluxuating exchange rate '''
+    rand_state = random.getstate()
+    random.seed(date)
+    rate = abs(random.normalvariate(base_rate, 3))
+    random.setstate(rand_state)
+    return '{0:.2f}'.format(rate)
 
 def weather(climate, month, seed, date):
     ''' determine the weather for a given date '''

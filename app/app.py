@@ -183,11 +183,10 @@ def generate_datafile(seed):
                       ['teahouse', 'bathhouse', 'public_ovens']
         }, {
             'title': 'dine',
-            'cards': ['fruit', 'fruit', 'fruit']
+            'cards': ['fruit', 'bread', 'meal', 'tea']
         }, {
             'title': 'survival guide',
-            'cards': ['transit', 'etiquette', 'transit', 'transit', 'transit',
-                      'transit', 'transit', 'transit', 'transit', 'transit']
+            'cards': ['transit', 'etiquette', 'more_ettiquette']
         }, {
             'title': 'seasonal',
             'cards': ['festival', 'holiday', 'event']

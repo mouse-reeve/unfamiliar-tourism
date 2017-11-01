@@ -35,7 +35,7 @@ class City(object):
         match (terr:terrain)--(c:climate)--(t:city_type)--(m:primary_material)--(m2:secondary_material)--(x:motif)
         where (terr)--(t) and (c)--(m) and (m)--(:stories)--(t)
         return * skip %d limit 1
-        ''' % random.randint(0, 9520)
+        ''' % random.randint(0, 9520 - 1)
 
 
         from datetime import datetime
@@ -57,7 +57,7 @@ class City(object):
         count = result.evaluate()
 
         query = query + 'return b, i, s skip %d limit 1' \
-                % random.randint(0, count)
+                % random.randint(0, count - 1)
         result = self.graph.run(query)
         data = result.data()
         self.add_data(data)
@@ -72,7 +72,7 @@ class City(object):
               (s:divine_structure),
               (n:worship)--(b:building), (n2:worship)--(b1:building), (n3:worship)--(b2:building),
               (b3:building)--(g:government)--(e:exchange)
-        return distinct * skip %d limit 1 ''' % random.randint(0, 82944)
+        return distinct * skip %d limit 1 ''' % random.randint(0, 82944 - 1)
         result = self.graph.run(query)
         print ('\n run time (sec): ', (datetime.now() - now).total_seconds())
         data = result.data()

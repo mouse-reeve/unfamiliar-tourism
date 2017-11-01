@@ -49,8 +49,8 @@
         <div class="cell medium-auto grid-y grid-margin-y">
             {% for item in cardset %}
             <div class="card cell medium-auto" style="background-color: {{ color() }}">
-                <!--% include '/sections/' + item + '.html' %-->
-                <h3>{{ item }}</h3>
+                {% include '/sections/' + item + '.html' ignore missing %}
+                <p>({{ item }})</p>
             </div>
             {% endfor %}
         </div>

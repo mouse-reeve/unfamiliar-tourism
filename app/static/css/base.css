@@ -120,8 +120,22 @@ section h2 span {
 }
 
 section .card {
-    background-color: #3696a4;
     padding: 2em;
+}
+
+#title .card {
+    padding: 4em 2em;
+}
+
+#infopanel {
+    padding: 1.5em 2em 1em;
+}
+#infopanel .card {
+    padding: 0 2em;
+}
+#infopanel h3 {
+    font-size: 0.8em;
+    margin-top: 0;
 }
 
 .cell {

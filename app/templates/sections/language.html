@@ -1,11 +1,7 @@
 <h3>The {{ foreign_word(language.name) }} language</h3>
-<p>The official language of {{ foreign_word(city.name) }} is {{ foreign_word(language.name) }}.</p>
-{% if language.stats.vowels | length < 4 %}
-<div class="fun-fact">
-<p>Did you know, {{ foreign_word(language.name) }} only has {{ language.stats.vowels | length | number_format }} vowels?</p>
-</div>
-{% endif %}
-<p>
+
+<p>The official language of {{ foreign_word(city.name) }} is {{ foreign_word(language.name) }}.
+
 {% if isolation == 1 %}
 English is widely spoken, but it is considered polite to use a little {{ foreign_word(language.name) }}.
 
@@ -20,10 +16,13 @@ You are unlikely to find any English speakers in {{ foreign_word(city.name) }}, 
 {% endif %}
 </p>
 
+{% if language.stats.vowels | length < 4 %}
+<div class="fun-fact">
+<p>Did you know, {{ foreign_word(language.name) }} only has {{ language.stats.vowels | length | number_format }} vowels?</p>
+</div>
+{% endif %}
+
 <p>Hello: {{ foreign_word(dictionary['helloNN']) }}</p>
-<p>Where is _: {{ foreign_word(dictionary['whereNN']) }} _</p>
-<p>My name is _: {{ foreign_word(dictionary['nameNN']) }} _</p>
-<p>Sorry: {{ foreign_word(dictionary['sorryNN']) }}</p>
 <p>Thank you: {{ foreign_word(dictionary['thanksNN']) }}</p>
 <p>Goodbye: {{ foreign_word(dictionary['goodbyeNN']) }}</p>
 

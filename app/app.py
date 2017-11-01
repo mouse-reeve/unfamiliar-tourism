@@ -32,6 +32,8 @@ def load_city(seed):
     ''' create the webpage from the datafile '''
     # attempt to load existing datafile for seed
     try:
+        if app.debug:
+            raise(IOError)
         data = json.load(open(
             app.static_folder + '/datafiles/' + seed + '.json', 'r'))
     except IOError:
@@ -158,7 +160,9 @@ def generate_datafile(seed):
                       data['motif'])
 
     data['cuisine'] = {
-        'fruit': cuisine.fruit()
+        'fruit': cuisine.fruit(),
+        'tea': cuisine.tea(),
+        'teacup': cuisine.teacup()
     }
 
     # ------- FASHION
@@ -176,7 +180,8 @@ def generate_datafile(seed):
     data['cards'] = [
         {
             'title': 'learn',
-            'cards': ['weather', 'language', 'religion', 'government']
+            'cards': ['weather', 'language', 'wildlife', 'religion',
+                      'government']
         }, {
             'title': 'sights',
             'cards':  data['building'] + \
@@ -199,15 +204,14 @@ def generate_datafile(seed):
 
     # lookup words we'll need later. doing this now instead of on the fly
     # so that the lang library isn't a dependency
+    lang.get_word('NN', 'region')
     lang.get_word('NN', 'market')
     lang.get_word('NN', 'fruit')
+    lang.get_word('NN', 'tea')
+
     lang.get_word('NN', 'hello')
-    lang.get_word('NN', 'where')
-    lang.get_word('NN', 'name')
-    lang.get_word('NN', 'sorry')
     lang.get_word('NN', 'thanks')
     lang.get_word('NN', 'goodbye')
-    lang.get_word('NN', 'region')
 
     data['dictionary'] = lang.dictionary
 

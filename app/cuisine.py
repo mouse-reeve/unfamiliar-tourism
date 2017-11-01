@@ -16,11 +16,10 @@ class Cuisine(object):
                     'laquered and painted with #motif#',
             'stone': 'delicate stone, #shape_part# cups with ' \
                     '#motif# caved along the rim',
-            'cloth': 'ceramic, #shape_part# cups glazed with #motif#',
-            'mudbrick': 'ceramic, #shape_part# cups glazed with #motif#',
-            'thatch': 'ceramic, #shape_part# cups glazed with #motif#',
-            'glass': 'glass, #shape_part# cups painted with #motif# ' \
-                    'forming #motif#',
+            'cloth': '#shape_part# ceramic cups glazed with #motif#',
+            'mudbrick': '#shape_part# ceramic cups glazed with #motif#',
+            'thatch': '#shape_part# ceramic cups glazed with #motif#',
+            'glass': '#shape_part# glass cups painted with #motif#',
             'metal': '#shape_part# metal cups embossed with #motif#',
             'tile': '#shape_part# ceramic cups glazed with #motif#',
         }
@@ -33,26 +32,22 @@ class Cuisine(object):
                 'spiraling lines',
             ],
             'patterning': [
-                'a wide band of protruding shapes that split again on their ' \
-                        'edges into smaller shapes, and those again even ' \
-                        'smaller',
-                'finely spun pattern like the lace on a cuff',
-                'geometric lines that formed shapes within shapes',
+                'an intricate lace-like pattern',
+                'intersecting geometric lines',
             ],
             'triangles': [
-                'evenly spaced triangles pointed down like sharp teeth',
-                'a pattern of three evenly spaced chevron lines'
+                'a ring of triangles',
+                'chevron lines'
             ],
             'squares': [
-                'long rectangles container neat squares at the top',
-                'a circle of tidily outlined squares',
+                'squares',
                 'a pattern of diamond shapes',
-                'a grid of lines of varying lengths',
+                'a grid of lines',
             ],
             'representation': [
                 'the outline of plants and vines',
-                'the blossoms of a tree bramble that grows berries in summer',
                 'small, ground-dwelling animals',
+                'a pattern of flowers',
                 'leaves and branches',
                 'a design of beetles rendered with complicated carapaces',
                 'simple depictions of birds in flight',
@@ -78,7 +73,7 @@ class Cuisine(object):
         rules = {
             'start': [
                 'is served #temperature#. ' \
-                'The liquid is #milk_part#, and #tea_flavor#. ' \
+                'It is steeped to #milk_part#, and #tea_flavor#. ' \
                 'People sometimes drink it with #additive#. ' \
                 'It has a mild #drug# effect.' \
             ],
@@ -94,9 +89,8 @@ class Cuisine(object):
                 'is poured between a set of small cups to cool it'
             ],
             'container': [
-                'ladled out of a large pot into the cup',
-                'poured from large kettle into the cup',
-                'decanted through the spout of a large pot',
+                'ladled out of a large pot',
+                'from large kettle',
                 'the leaves brewed in the cup',
                 'brewed from a spoonful of ground powder whisked with water ' \
                         ' in the cup'
@@ -112,13 +106,13 @@ class Cuisine(object):
                           'golden yellow', 'dark green', 'grassy',
                           'orange-red', 'reddish'],
             'milk': ['#dairy#'],
-            'dairy': ['milk', 'milky liquid made from soaked nuts'],
+            'dairy': ['milk', 'nut milk'],
             'additive': ['a sweet fruit syrup', 'a little salt', 'honey',
                          'a sour citrus juice a bit like lime',
-                         'a pinch of dried, ground bark whose flavor reminds ' \
-                                 'me of eucalyptus'
+                         'a pinch of dried, ground bark' \
                         ],
-            'drug': ['stimulant', 'soporific', 'dizzying'],
+            'drug': ['stimulant', 'soporific', 'dizzying', 'hallucinatory',
+                     'disassociative', 'calming', 'pain relieving'],
         }
 
         if 'arctic' in self.climate or 'polar' in self.climate:

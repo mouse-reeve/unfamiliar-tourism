@@ -1,4 +1,4 @@
-''' simple http app using hotline library '''
+''' City generator websever app '''
 from architecture import Architecture
 from city import City
 from cuisine import Cuisine
@@ -127,7 +127,7 @@ def generate_datafile(seed):
     god_count = 2
 
     # you need a lot of gods to pull off a divine hierarchy
-    if data['divine_structure'] == 'heirarchical':
+    if data['divine_structure'] == 'hierarchical':
         god_count += 2
     god_count += abs(int(random.normalvariate(2, 20)))
 
@@ -137,21 +137,21 @@ def generate_datafile(seed):
         data['religion']['gods'].append(
             lang.get_word('NNP', god_definition))
 
-    if data['divine_structure'] == 'heirarchical':
+    if data['divine_structure'] == 'hierarchical':
         data['religion']['gods'] = \
                 create_pantheon_hierarchy(data['religion']['gods'])
 
     # note on structure:
     # "multifaceted" means that various gods are faces of a single divinity
     # "various" means that gods exist discreetly
-    # "heirarchical" means they exist discreetly and with some more important
+    # "hierarchical" means they exist discreetly and with some more important
     data['religion']['divine_structure'] = data['divine_structure']
     data['religion']['worship'] = data['worship']
-    data['religion']['diety_forms'] = [data['diety_form'],
-                                       data['diety_form_secondary']]
+    data['religion']['deity_forms'] = [data['deity_form'],
+                                       data['deity_form_secondary']]
     del data['divine_structure']
-    del data['diety_form']
-    del data['diety_form_secondary']
+    del data['deity_form']
+    del data['deity_form_secondary']
     del data['worship']
 
     # ------ FOOD
@@ -191,7 +191,7 @@ def generate_datafile(seed):
             'cards': ['fruit', 'bread', 'meal', 'tea']
         }, {
             'title': 'survival guide',
-            'cards': ['transit', 'etiquette', 'more_ettiquette']
+            'cards': ['transit', 'etiquette', 'more_etiquette']
         }, {
             'title': 'seasonal',
             'cards': ['festival', 'holiday', 'event']
@@ -318,10 +318,12 @@ def number_format_filter(n):
 def group_cards_filter(cards, column_count=3):
     ''' create columns for a card grid '''
     per_column = int(len(cards) / column_count) or 1
-    return [cards[:per_column],
-            cards[per_column:(per_column * 2)],
-            cards[per_column * 2:]]
-
+    grouped = [cards[:per_column],
+               cards[per_column:(per_column * 2)],
+               cards[per_column * 2:per_column * 3]]
+    # add any remaining cards to a stack at random
+    grouped[random.randint(1, 2)] += cards[per_column * 3:]
+    return grouped
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

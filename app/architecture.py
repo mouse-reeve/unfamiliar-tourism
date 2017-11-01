@@ -1,4 +1,4 @@
-''' buildings and built environemnt '''
+''' buildings and built environment '''
 import tracery
 from utilities import format_text
 

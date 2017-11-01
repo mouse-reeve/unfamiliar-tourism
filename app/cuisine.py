@@ -13,7 +13,7 @@ class Cuisine(object):
         ''' describe the cup tea is drunk from '''
         dishware = {
             'wood': '#shape_part# wooden cups, ' \
-                    'laquered and painted with #motif#',
+                    'lacquered and painted with #motif#',
             'stone': 'delicate stone, #shape_part# cups with ' \
                     '#motif# caved along the rim',
             'cloth': '#shape_part# ceramic cups glazed with #motif#',
@@ -112,7 +112,7 @@ class Cuisine(object):
                          'a pinch of dried, ground bark' \
                         ],
             'drug': ['stimulant', 'soporific', 'dizzying', 'hallucinatory',
-                     'disassociative', 'calming', 'pain relieving'],
+                     'dissociative', 'calming', 'pain-relieving'],
         }
 
         if 'arctic' in self.climate or 'polar' in self.climate:

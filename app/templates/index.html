@@ -1,5 +1,4 @@
-{% macro foreign_word(word, with_ipa=False, capitalize=False) %}
-      <span class="word">{% if word.pos in ['LOC', 'NNP'] or capitalize%}{{ word | latin | capitalize }}{% else %}{{ word | latin }}{% endif %}</span>{%if with_ipa %}<span class="ipa"> ({{ word | ipa }})</span>{% endif %}{% endmacro %}
+{% macro foreign_word(word, with_ipa=False, capitalize=False) %}<span class="word">{% if word.pos in ['LOC', 'NNP'] or capitalize%}{{ word | latin | capitalize }}{% else %}{{ word | latin }}{% endif %}</span>{%if with_ipa %}<span class="ipa"> ({{ word | ipa }})</span>{% endif %}{% endmacro %}
 
 <!DOCTYPE html>
 <html lang="en">

@@ -48,7 +48,7 @@ class City(object):
         self.add_data(data)
 
         # the number of options for this query can vary, so get the count
-        # then the resul
+        # then the result
         query = '''
         match (i:industry)--(m:primary_material {name: '%s'})--(s:stories)--(t:city_type {name: '%s'})
         with i, m, s, t optional match (b:building)--(i)
@@ -68,7 +68,7 @@ class City(object):
 
         # government, religion, and public spaces
         query = '''
-        match (d:diety_form)--(d2:diety_form_secondary),
+        match (d:deity_form)--(d2:deity_form_secondary),
               (s:divine_structure),
               (n:worship)--(b:building), (n2:worship)--(b1:building), (n3:worship)--(b2:building),
               (b3:building)--(g:government)--(e:exchange)

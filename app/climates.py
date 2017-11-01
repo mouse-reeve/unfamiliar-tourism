@@ -1,8 +1,8 @@
 ''' patterns for various climates.
 These are taken from cities listed on Wikipedia as examples
 of that particular climate.
-Classification are based on the Köppen classication system.
-Temperaturess are in celcius. '''
+Classification are based on the Köppen classification system.
+Temperatures are in Celsius. '''
 
 climates = {
     # Apia for temp, Davao for rainfall

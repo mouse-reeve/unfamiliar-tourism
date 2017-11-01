@@ -58,7 +58,7 @@ class Fashion(object):
             'motif': motifs[self.motif],
             'jewelry': [
                 '#material# bangles', 'polished #material# spikes',
-                'jewlery carved from #material#',
+                'jewelry carved from #material#',
                 'finely crafted #material# jewelry'],
             'hair_removal': ['pluck', 'shave'],
             'hair_spot': ['eyebrows', 'temples', 'faces'],

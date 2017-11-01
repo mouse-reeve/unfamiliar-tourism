@@ -50,7 +50,8 @@ class City(object):
         # the number of options for this query can vary, so get the count
         # then the resul
         query = '''
-        match (b:building)--(i:industry)--(m:primary_material {name: '%s'})--(s:stories)--(t:city_type {name: '%s'})
+        match (i:industry)--(m:primary_material {name: '%s'})--(s:stories)--(t:city_type {name: '%s'})
+        with i, m, s, t optional match (b:building)--(i)
         ''' % (self.data['primary_material'], self.data['city_type'])
         result = self.graph.run(query + 'return count(*)')
         count = result.evaluate()
@@ -69,8 +70,8 @@ class City(object):
         query = '''
         match (d:diety_form)--(d2:diety_form_secondary),
               (s:divine_structure),
-              (n:worship)--(b:building), (n2:worship)--(b:building), (n3:worship)--(b:building),
-              (b4:building)--(g:government)--(e:exchange)
+              (n:worship)--(b:building), (n2:worship)--(b1:building), (n3:worship)--(b2:building),
+              (b3:building)--(g:government)--(e:exchange)
         return distinct * skip %d limit 1 ''' % random.randint(0, 82944)
         result = self.graph.run(query)
         print ('\n run time (sec): ', (datetime.now() - now).total_seconds())
@@ -81,6 +82,9 @@ class City(object):
     def add_data(self, data):
         ''' process in neo4j results '''
         for item in data[0].values():
+            if not item:
+                # optional match on building can produce a null
+                continue
             label = list(item.labels())[0]
             item = item.properties['name']
             if label in self.data:

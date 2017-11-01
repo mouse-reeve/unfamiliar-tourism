@@ -47,13 +47,6 @@ def load_city(seed):
 
     data['weather'] = weather(data['climate'], month, seed, datetime.now().day)
 
-
-    # ----- BUILDINGS
-    architecture = Architecture(data['city_type'], data['primary_material'],
-                                data['secondary_material'], data['motif'])
-    data['architecture'] = {
-        'temple': architecture.building()
-    }
     return render_template('index.html', **data)
 
 
@@ -172,6 +165,12 @@ def generate_datafile(seed):
     fashion = Fashion(gender_count, data['climate'], data['motif'])
     data['body_mod'] = fashion.body_mod()
 
+    # ----- BUILDINGS
+    architecture = Architecture(data['city_type'], data['primary_material'],
+                                data['secondary_material'], data['motif'])
+    data['architecture'] = {
+        'temple': architecture.building()
+    }
 
     # ------- City-specific cards to display
     data['cards'] = [
@@ -180,7 +179,8 @@ def generate_datafile(seed):
             'cards': ['weather', 'language', 'religion', 'government']
         }, {
             'title': 'sights',
-            'cards': ['fruit']
+            'cards':  data['building'] + \
+                      ['teahouse', 'bathhouse', 'public_ovens']
         }, {
             'title': 'dine',
             'cards': ['fruit', 'fruit', 'fruit']
@@ -197,9 +197,6 @@ def generate_datafile(seed):
     if len(data['genders']) > 2:
         data['cards'][0]['cards'].append('gender')
 
-    # realistically, there could be temples/shrines for various gods,
-    # and this should reflect the divine structure
-    data['cards'][1]['cards'] += data['religion']['worship']
 
     # lookup words we'll need later. doing this now instead of on the fly
     # so that the lang library isn't a dependency

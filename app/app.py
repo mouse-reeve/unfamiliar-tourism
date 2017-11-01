@@ -6,6 +6,8 @@ from cuisine import Cuisine
 from datetime import datetime
 from fashion import Fashion
 from foreigntongue import Language
+from news import News
+from utilities import get_latin
 
 from flask import Flask, redirect, render_template
 import json
@@ -90,8 +92,6 @@ def generate_datafile(seed):
         'name': lang.get_word('LOC', city_definition)
     }
 
-    data['translate'] = lang.get_word
-
     lang_definition = 'The official language of ' + \
                        latin_filter(data['country']) + \
                       ', spoken in ' + latin_filter(data['city']['name'])
@@ -108,6 +108,7 @@ def generate_datafile(seed):
 
     data.update(city.data)
 
+
     # ------ Factoids
     data['city_age'] = random.choice(['new', 'modern', 'ancient'])
 
@@ -119,9 +120,11 @@ def generate_datafile(seed):
     data['population'] = random.randint(
         1000 * data['isolation'], int(10000000/(data['isolation'] ** 4)))
 
-    # economy
+
+    # ------- ECONOMY
     data['currency'] = lang.get_word('NN', 'currency')
     data['exchange_rate'] = abs(random.normalvariate(0, 10))
+
 
     # ------- GENDER
     data['genders'] = []
@@ -199,6 +202,26 @@ def generate_datafile(seed):
         'temple': architecture.building()
     }
 
+
+    # ------ NEWS
+    # political climate
+    politics = {
+        # more or less a value between 0 and 1, the probability of
+        # political upheaval on any given year
+        'stability': abs(int(random.normalvariate(0, 2))) / 10,
+        # either a term between 2 and 10 years, or life (80 years)
+        'term_length': random.randint(2, 10) \
+                if data['government'] == 'republic' else 80,
+    }
+    news = News(data['government'],
+                gender_count,
+                politics,
+                lang)
+
+    data['news'] = [news.generate_event(y) \
+            for y in range(2010, datetime.now().year+1)]
+    data['rulers'] = news.rulers
+
     # ------- City-specific cards to display
     data['cards'] = [
         {
@@ -245,11 +268,6 @@ def generate_datafile(seed):
     return data
 
 
-def generate_color():
-    ''' a hex color '''
-    return '#' + ''.join(hex(random.randint(10, 13))[2:] for _ in range(0, 3))
-
-
 def create_pantheon_hierarchy(gods):
     ''' arrange gods into a hierarchical pantheon
     There will be at least two tiers '''
@@ -269,6 +287,12 @@ def create_pantheon_hierarchy(gods):
     return pantheon
 
 
+# ---- Calculators for variable data fields
+def generate_color():
+    ''' a hex color '''
+    return '#' + ''.join(hex(random.randint(10, 13))[2:] for _ in range(0, 3))
+
+
 def calculate_exchange_rate(base_rate, date):
     ''' fluxuating exchange rate '''
     rand_state = random.getstate()
@@ -278,6 +302,7 @@ def calculate_exchange_rate(base_rate, date):
     return '{0:.2f}'.format(rate)
 
 
+# ---- Template filters
 @app.template_filter('ipa')
 def ipa_filter(word):
     ''' template filter for formatting foreign words '''
@@ -291,11 +316,7 @@ def ipa_filter(word):
 @app.template_filter('latin')
 def latin_filter(word):
     ''' template filter for formatting foreign words '''
-    text = ''
-    word = word.__dict__ if not isinstance(word, dict) else word
-    for syllable in word['lemma']:
-        text = text + ''.join(l['latin'] for l in syllable)
-    return re.sub('/', '', text)
+    return get_latin(word)
 
 
 @app.template_filter('number_format')

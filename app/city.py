@@ -70,9 +70,11 @@ class City(object):
         query = '''
         match (d:deity_form)--(d2:deity_form_secondary),
               (s:divine_structure),
-              (n:worship)--(b:building), (n2:worship)--(b1:building), (n3:worship)--(b2:building),
-              (b3:building)--(g:government)--(e:exchange)
-        return distinct * skip %d limit 1 ''' % random.randint(0, 82944 - 1)
+              (n:worship)--(b:building),
+              (n2:worship)--(b1:building),
+              (n3:worship)--(b2:building),
+              (b3:building)--(g:government)
+        return distinct * skip %d limit 1 ''' % random.randint(0, 628992 - 1)
         result = self.graph.run(query)
         print ('\n run time (sec): ', (datetime.now() - now).total_seconds())
         data = result.data()

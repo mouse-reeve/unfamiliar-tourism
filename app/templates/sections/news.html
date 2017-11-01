@@ -1,0 +1,12 @@
+<h3>News</h3>
+
+{% for event in news %}
+{% if event.headlines %}
+<p>
+{{ event.year }}:
+{% for headline in event.headlines %}
+    {{ headline }}<br>
+{% endfor %}
+</p>
+{% endif %}
+{% endfor %}

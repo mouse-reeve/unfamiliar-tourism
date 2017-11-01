@@ -1,0 +1,105 @@
+{% macro foreign_word(word, with_ipa=False, capitalize=False) %}<span class="word">{% if word.pos in ['LOC', 'NNP'] or capitalize%}{{ word | latin | capitalize }}{% else %}{{ word | latin }}{% endif %}</span>{%if with_ipa %}<span class="ipa"> ({{ word | ipa }})</span>{% endif %}{% endmacro %}
+
+{% macro learn_more(card) %}
+{% if not this_card %}
+<a class="button" href="/{{ seed }}/{{ card }}">Learn more</a>
+{% endif %}
+{% endmacro %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ city.name | latin | capitalize }} - Unfamiliar City</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="/static/css/foundation.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/base.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico">
+
+</head>
+<body>
+
+<header>
+    <h1>Unfamiliar City</h1>
+    <nav>
+        <a href="/">New city</a>
+        <a href="https://twitter.com/unfamiliar_city" target="_blank">Twitter</a>
+        <a href="/">About</a>
+    </nav>
+</header>
+
+<div class="container">
+
+<section id="title">
+    <div class="grid-x grid-margin-x grid-margin-y">
+        <div class="card cell medium-auto" style="background-color: {{ color() }}">
+            <h1>
+                <small>Welcome to</small>
+                {{ foreign_word(city.name) }}
+            </h1>
+            <p>{{ foreign_word(city.name) }} is
+            {% if city_age == 'new' %}an exciting, fast-paced new
+            {% elif city_age == 'modern' %}a modern metropolis with a rich history
+            {% elif city_age == 'ancient' %}an ancient{% endif %}
+            city, build on the bones of children sacrificed to the fanged god.</p>
+        </div>
+    </div>
+</section>
+
+<section id="infopanel">
+    <div class="grid-x grid-margin-x grid-margin-y">
+        <div class="card cell medium-auto">
+            <h3>Weather today</h3>
+            <p>
+                <span>{{ weather.temp | int }}&deg;C</span> -
+                <span>
+                    {% if weather.precipitation %}{{ weather.precipitation | capitalize }}ing
+                    {% elif weather.humidity < 70 %} Sunshine
+                    {% elif weather.humidity < 80 %} Party cloudy
+                    {% else %} Overcast {% endif %}
+                </span>
+            </p>
+        </div>
+        <div class="card cell medium-auto">
+            <h3>Region</h3>
+            <p>{{ foreign_word(city.name) }} is situated in the
+            {% if climate.id in ['tropical_rainforest', 'tropical_monsoon'] %}
+            lush
+
+            {% elif climate.id in ['hot_desert', 'arid', 'semi_arid'] %}
+            striking
+
+            {% elif climate.id in ['mediterranean', 'continental'] %}
+            scenic
+
+            {% elif climate.id in ['oceanic', 'subpolar_oceanic'] %}
+            stark
+
+            {% elif climate.id == 'subarctic' %}
+            icy
+            {% endif %}
+
+            {{ terrain }} region of {{ foreign_word(country) }} known as {{ foreign_word(dictionary['regionNN']) }}.
+            </p>
+        </div>
+        <div class="card cell medium-auto">
+            <h3>Get In</h3>
+            <p>{{ foreign_word(city.name) }} can be accessed by camel. Book a camel today</p>
+        </div>
+        <div class="card cell medium-auto">
+            <h3>Exchange Rate</h3>
+            <p>$1 USD = GKJHES20d</p>
+        </div>
+    </div>
+</section>
+
+
+{% block body %}{% endblock %}
+</div>
+
+<footer>
+    <p>created by <a href="https://www.mousereeve.com" target="_blank">Mouse Reeve</a></p>
+</footer>
+</body>
+</html>
+

@@ -31,6 +31,21 @@ def request_new_city():
 def load_city(seed):
     ''' create the webpage from the datafile '''
     # attempt to load existing datafile for seed
+    data = collect_data(seed)
+
+    return render_template('index.html', **data)
+
+
+@app.route('/<seed>/<card>')
+def load_card(seed, card):
+    ''' load just a single card for the city '''
+    data = collect_data(seed)
+    data['this_card'] = card
+    return render_template('section.html', **data)
+
+
+def collect_data(seed):
+    ''' grab the data for a city and update it with changeable fields '''
     try:
         if app.debug:
             raise(IOError)
@@ -48,8 +63,7 @@ def load_city(seed):
              'December'][datetime.now().month]
 
     data['weather'] = weather(data['climate'], month, seed, datetime.now().day)
-
-    return render_template('index.html', **data)
+    return data
 
 
 def generate_datafile(seed):
@@ -180,8 +194,7 @@ def generate_datafile(seed):
     data['cards'] = [
         {
             'title': 'learn',
-            'cards': ['weather', 'language', 'wildlife', 'religion',
-                      'government']
+            'cards': ['language', 'wildlife', 'religion', 'government']
         }, {
             'title': 'sights',
             'cards':  data['building'] + \
@@ -234,14 +247,14 @@ def create_pantheon_hierarchy(gods):
     pantheon = []
     top_max = 1 + int(len(gods) * 0.3)
     top = random.randint(1, top_max)
-    pantheon[0] = gods[:top]
+    pantheon.append(gods[:top])
     # only create three tiers if there are enough gods
     if len(gods) - top < 5:
-        pantheon[1] = gods[top:]
+        pantheon.append(gods[top:])
     else:
         mid_max = 1 + int((len(gods) - top_max) * 0.4)
-        pantheon[1] = gods[top:mid_max]
-        pantheon[2] = gods[mid_max:]
+        pantheon.append(gods[top:mid_max])
+        pantheon.append(gods[mid_max:])
 
     return pantheon
 

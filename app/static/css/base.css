@@ -123,6 +123,10 @@ section .card {
     padding: 2em;
 }
 
+h3 {
+    letter-spacing: 0.1em;
+}
+
 #title .card {
     padding: 4em 2em;
 }

@@ -352,7 +352,8 @@ def group_cards_filter(cards, column_count=3):
                cards[per_column:(per_column * 2)],
                cards[per_column * 2:per_column * 3]]
     # add any remaining cards to a stack at random
-    grouped[random.randint(1, 2)] += cards[per_column * 3:]
+    for remaining in cards[per_column * 3:]:
+        grouped[random.randint(1, 2)].append(remaining)
     return grouped
 
 if __name__ == '__main__':

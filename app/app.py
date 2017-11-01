@@ -1,6 +1,7 @@
 ''' City generator websever app '''
 from architecture import Architecture
 from city import City
+from climates import weather
 from cuisine import Cuisine
 from datetime import datetime
 from fashion import Fashion
@@ -202,7 +203,7 @@ def generate_datafile(seed):
     data['cards'] = [
         {
             'title': 'learn',
-            'cards': ['language', 'wildlife', 'religion', 'government']
+            'cards': ['language', 'wildlife', 'news', 'religion', 'government']
         }, {
             'title': 'sights',
             'cards':  data['building'] + \
@@ -248,6 +249,7 @@ def generate_color():
     ''' a hex color '''
     return '#' + ''.join(hex(random.randint(10, 13))[2:] for _ in range(0, 3))
 
+
 def create_pantheon_hierarchy(gods):
     ''' arrange gods into a hierarchical pantheon
     There will be at least two tiers '''
@@ -274,41 +276,6 @@ def calculate_exchange_rate(base_rate, date):
     rate = abs(random.normalvariate(base_rate, 3))
     random.setstate(rand_state)
     return '{0:.2f}'.format(rate)
-
-def weather(climate, month, seed, date):
-    ''' determine the weather for a given date '''
-    # re-randomize the weather every day
-    weather_seed = '%s %s %d' % (seed, month, date)
-    rand_state = random.getstate()
-    random.seed(weather_seed)
-    # [temp, rainy days, snowy days, humidity]
-    stats = climate['stats'][month]
-
-    temp_deviation = climate['temp_range']/2
-    temp = random.normalvariate(stats[0], temp_deviation)
-    deviation = abs(temp - stats[0]) / temp_deviation
-
-    precipitation = False
-    if stats[2] and random.random() > stats[2]/30.0 * 2:
-        deviation = 1 - ((stats[2] / 30.0) * 2)
-        precipitation = 'snow'
-    elif stats[1] and random.random() > stats[1]/30.0:
-        deviation = 1 - ((stats[1] / 30.0) * 2)
-        precipitation = 'rain'
-
-    temps = ['freezing', 'cold', 'warm', 'hot', 'blistering', 'blistering']
-    temp_desc = temps[0] if temp < 0 else temps[int((temp + 5)/10)]
-
-    report = {
-        'temp': temp,
-        'temp_description': temp_desc,
-        'humidity': stats[3],
-        'precipitation': precipitation,
-        'deviation': deviation,
-        'climate': climate['name'],
-    }
-    random.setstate(rand_state)
-    return report
 
 
 @app.template_filter('ipa')
@@ -355,6 +322,7 @@ def group_cards_filter(cards, column_count=3):
     for remaining in cards[per_column * 3:]:
         grouped[random.randint(1, 2)].append(remaining)
     return grouped
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

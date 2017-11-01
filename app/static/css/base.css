@@ -125,6 +125,7 @@ section .card {
 
 h3 {
     letter-spacing: 0.1em;
+    margin-top: 0;
 }
 
 #title .card {
@@ -132,14 +133,15 @@ h3 {
 }
 
 #infopanel {
+    background-color: #eee;
     padding: 1.5em 2em 1em;
+    margin-bottom: 0.5em;
 }
 #infopanel .card {
     padding: 0 2em;
 }
 #infopanel h3 {
     font-size: 0.8em;
-    margin-top: 0;
 }
 
 .cell {

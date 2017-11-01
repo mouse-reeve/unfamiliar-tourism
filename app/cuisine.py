@@ -163,7 +163,7 @@ class Cuisine(object):
             'color': ['red', 'orange', 'yellow', 'green'],
 
             'shape': ['round', 'knobby', 'oblong', 'star-shaped', 'hand-shaped',
-                      'spikey', 'teardrop-shaped', 'bulbous',
+                      'spiky', 'teardrop-shaped', 'bulbous',
                       'round', 'oval'],
             'pit': ['stone fruit with a #size# pit',
                     'fruit with #size#, crunchy seeds',

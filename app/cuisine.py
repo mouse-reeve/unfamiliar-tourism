@@ -14,7 +14,7 @@ class Cuisine(object):
         dishware = {
             'wood': '#shape_part# wooden cups, ' \
                     'lacquered and painted with #motif#',
-            'stone': 'delicate stone, #shape_part# cups with ' \
+            'stone': '#shape_part# stone cups with ' \
                     '#motif# caved along the rim',
             'cloth': '#shape_part# ceramic cups glazed with #motif#',
             'mudbrick': '#shape_part# ceramic cups glazed with #motif#',
@@ -49,9 +49,9 @@ class Cuisine(object):
                 'small, ground-dwelling animals',
                 'a pattern of flowers',
                 'leaves and branches',
-                'a design of beetles rendered with complicated carapaces',
-                'simple depictions of birds in flight',
-                'figures intertwined in either dance or violence',
+                'a design of beetle carapaces',
+                'birds in flight',
+                'dancing figures',
             ]
         }
         rules = {
@@ -84,7 +84,7 @@ class Cuisine(object):
                 'has to be drunk in small, slurping sips that ' \
                         'aerate and cool it down',
                 'is sipped from a shallow spoon to avoid burning oneself',
-                'the fragrant steam is enjoyed as a sort of first course ' \
+                'the fragrant steam is enjoyed as a first course ' \
                         'while the tea cools',
                 'is poured between a set of small cups to cool it'
             ],
@@ -204,7 +204,7 @@ class Cuisine(object):
                 '#eating_method_cooked#'],
             'eating_method_raw': [
                 'raw', 'peeled and sliced', 'with a spoon',
-                'with ones fingers', 'mashed into a paste'],
+                'mashed into a paste'],
             'eating_method_cooked': [
                 'grilled', 'as preserves',
                 'dried', 'as a jam', 'boiled', 'blanched',

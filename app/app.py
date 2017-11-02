@@ -198,8 +198,11 @@ def generate_datafile(seed):
     # ----- BUILDINGS
     architecture = Architecture(data['city_type'], data['primary_material'],
                                 data['secondary_material'], data['motif'])
-    data['architecture'] = {
-        'temple': architecture.building()
+
+    lang.get_word('NN', 'teahouse')
+    data['teahouse'] = {
+        'name': lang.get_word('JJ', 'serene'),
+        'description': architecture.building()
     }
 
 

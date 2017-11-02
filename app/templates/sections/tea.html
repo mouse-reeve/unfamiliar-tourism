@@ -2,4 +2,6 @@
 
 <p>{{ foreign_word(city.name) }}-style tea ({{ foreign_word(dictionary['teaNN']) }}) is {{ cuisine.tea }}</p>
 
+{% call more('tea') %}
 <p>{{ foreign_word(dictionary['teaNN'], capitalize=True) }} is traditionally served in {{ cuisine.teacup }}.</p>
+{% endcall %}

@@ -26,4 +26,8 @@ You are unlikely to find any English speakers in {{ foreign_word(city.name) }}, 
 <p>Thank you: {{ foreign_word(dictionary['thanksNN']) }}</p>
 <p>Goodbye: {{ foreign_word(dictionary['goodbyeNN']) }}</p>
 
-{{ learn_more('language') }}
+{% call more('language') %}
+<p>Sorry: {{ foreign_word(dictionary['sorryNN']) }}</p>
+<p>My name is _: {{ foreign_word(dictionary['iPRP']) }} {{ foreign_word(dictionary['nameNN']) }} _</p>
+<p>Where is _: {{ foreign_word(dictionary['whereNN']) }} _</p>
+{% endcall %}

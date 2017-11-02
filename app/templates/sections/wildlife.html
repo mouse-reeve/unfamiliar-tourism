@@ -2,12 +2,10 @@
 
 <p>{{ wildlife[0] }}</p>
 
-{% call more() %}
+{% call more('wildlife') %}
 
 {% for animal in wildlife[1:] %}
 <p>{{ animal }}</p>
 {% endfor %}
 
 {% endcall %}
-
-{{ learn_more('wildlife') }}

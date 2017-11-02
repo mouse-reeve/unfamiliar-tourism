@@ -13,12 +13,11 @@ class Wildlife(object):
         rules = {
             'start': 'a #type# that #behavior#',
             'type': [
-                '#bird#', '#rodent#', '#raccoon#', '#coyote#', '#bear#'
+                '#bird#', '#rodent#', '#raccoon#', '#coyote#'
             ],
             'rodent': '#size# rodent',
             'raccoon': '#size#, raccoon-like animal',
             'coyote': '#size# species of wild dog',
-            'bear': 'large scary bear',
             'fish': 'slimy fish',
             'bird': ['#size#, #color# #bird_type# with #bird_accent#'],
             'bird_type': ['raptor', 'songbird', 'bird'],

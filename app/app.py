@@ -237,7 +237,7 @@ def generate_datafile(seed):
     data['cards'] = [
         {
             'title': 'learn',
-            'cards': ['language', 'wildlife', 'news', 'religion', 'government']
+            'cards': ['language', 'news', 'wildlife', 'religion', 'government']
         }, {
             'title': 'sights',
             'cards':  data['building'] + \
@@ -268,6 +268,11 @@ def generate_datafile(seed):
     lang.get_word('NN', 'hello')
     lang.get_word('NN', 'thanks')
     lang.get_word('NN', 'goodbye')
+    lang.get_word('NN', 'sorry')
+    lang.get_word('NN', 'where')
+    lang.get_word('NN', 'name')
+    lang.get_word('PRP', 'i')
+
 
     data['dictionary'] = lang.dictionary
 

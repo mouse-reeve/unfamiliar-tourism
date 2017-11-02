@@ -196,8 +196,9 @@ def generate_datafile(seed):
     # ------- WILDLIFE
     wildlife = Wildlife(data['climate'],
                         data['terrain'])
-    data['wildlife'] = [
-        wildlife.animal() for _ in range(0, 3)]
+    data['wildlife'] = [{
+        'name': lang.get_word('NNP', 'critter-%d' % i),
+        'description': wildlife.animal()} for i in range(0, 3)]
 
     # ------- FASHION
     fashion = Fashion(gender_count, data['climate'], data['motif'])

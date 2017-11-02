@@ -1,11 +1,11 @@
 <h3>Wildlife</h3>
 
-<p>{{ wildlife[0] }}</p>
+<p>{{ foreign_word(wildlife[0].name, capitalize=True) }} are {{ wildlife[0].description }}</p>
 
 {% call more('wildlife') %}
 
 {% for animal in wildlife[1:] %}
-<p>{{ animal }}</p>
+<p>{{ foreign_word(animal.name, capitalize=True) }} are {{ animal.description }}</p>
 {% endfor %}
 
 {% endcall %}

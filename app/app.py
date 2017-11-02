@@ -8,6 +8,7 @@ from fashion import Fashion
 from foreigntongue import Language
 from news import News
 from utilities import get_latin
+from wildlife import Wildlife
 
 from flask import Flask, redirect, render_template
 import json
@@ -190,6 +191,13 @@ def generate_datafile(seed):
         'tea': cuisine.tea(),
         'teacup': cuisine.teacup()
     }
+
+
+    # ------- WILDLIFE
+    wildlife = Wildlife(data['climate'],
+                        data['terrain'])
+    data['wildlife'] = [
+        wildlife.animal() for _ in range(0, 3)]
 
     # ------- FASHION
     fashion = Fashion(gender_count, data['climate'], data['motif'])

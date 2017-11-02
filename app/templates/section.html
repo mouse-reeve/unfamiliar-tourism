@@ -4,7 +4,9 @@
 <section>
 <div class="grid-x grid-margin-x">
     <div class="cell medium-auto grid-y grid-margin-y">
-        {% include '/sections/' + this_card + '.html' ignore missing %}
+        <div class="card cell medium-auto" style="background-color: {{ color() }}" id="content">
+            {% include '/sections/' + this_card + '.html' ignore missing %}
+        </div>
     </div>
 </div>
 </section>

@@ -1,9 +1,15 @@
 {% macro foreign_word(word, with_ipa=False, capitalize=False) %}<span class="word">{% if word.pos in ['LOC', 'NNP'] or capitalize%}{{ word | latin | capitalize }}{% else %}{{ word | latin }}{% endif %}</span>{%if with_ipa %}<span class="ipa"> ({{ word | ipa }})</span>{% endif %}{% endmacro %}
 
 {% macro learn_more(card) %}
-{% if not this_card %}
-<a class="button" href="/{{ seed }}/{{ card }}">Learn more</a>
-{% endif %}
+    {% if not this_card %}
+    <a class="button" href="/{{ seed }}/{{ card }}#content">Learn more</a>
+    {% endif %}
+{% endmacro %}
+
+{% macro more() %}
+    {% if this_card %}
+    {{ caller() }}
+    {% endif %}
 {% endmacro %}
 
 <!DOCTYPE html>

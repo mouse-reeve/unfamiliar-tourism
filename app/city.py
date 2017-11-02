@@ -68,13 +68,31 @@ class City(object):
 
         # government, religion, and public spaces
         query = '''
-        match (d:deity_form)--(d2:deity_form_secondary),
-              (s:divine_structure),
-              (n:worship)--(b:building),
-              (n2:worship)--(b1:building),
-              (n3:worship)--(b2:building),
-              (b3:building)--(g:government)
-        return distinct * skip %d limit 1 ''' % random.randint(0, 628992 - 1)
+        match (d:deity_form)--(d2:deity_form_secondary)
+        return * skip %d limit 1 ''' % random.randint(0, 17 - 1)
+        result = self.graph.run(query)
+        data = result.data()
+        self.add_data(data)
+
+        query = '''
+        match (s:divine_structure)
+        return * skip %d limit 1 ''' % random.randint(0, 3 - 1)
+        result = self.graph.run(query)
+        data = result.data()
+        self.add_data(data)
+
+        query = '''
+        match (n:worship)--(b:building),
+              (n1:worship)--(b1:building),
+              (n2:worship)--(b2:building)
+        return distinct * skip %d limit 1 ''' % random.randint(0, 2184 - 1)
+        result = self.graph.run(query)
+        data = result.data()
+        self.add_data(data)
+
+        query = '''
+        match (b:building)--(g:government)
+        return * skip %d limit 1 ''' % random.randint(0, 6 - 1)
         result = self.graph.run(query)
         print ('\n run time (sec): ', (datetime.now() - now).total_seconds())
         data = result.data()

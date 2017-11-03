@@ -1,6 +1,6 @@
 ''' all the information about a city in one json blob '''
 from architecture import Architecture
-from cuisine import Cuisine
+import cuisine
 from fashion import Fashion
 from graph import load_graph_data
 from news import News
@@ -98,14 +98,11 @@ def generate_datafile(seed):
     del data['worship']
 
     # ----- FOOD
-    cuisine = Cuisine(data['climate'],
-                      data['secondary_material'],
-                      data['motif'])
 
     data['cuisine'] = {
-        'fruit': cuisine.fruit(),
-        'tea': cuisine.tea(),
-        'teacup': cuisine.teacup()
+        'fruit': cuisine.fruit(data['climate']['name']),
+        'tea': cuisine.tea(data['climate']['name']),
+        'teacup': cuisine.teacup(data['primary_material'], data['motif'])
     }
 
 

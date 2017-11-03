@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ city.name | latin | capitalize }} - Unfamiliar City</title>
+    <title>{{ city_name | latin | capitalize }} - Unfamiliar City</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="/static/css/foundation.min.css">
     <link type="text/css" rel="stylesheet" href="/static/css/base.css">
@@ -37,9 +37,9 @@
         <div class="card cell medium-auto" style="background-color: {{ color() }}">
             <h1>
                 <small>Welcome to</small>
-                {{ foreign_word(city.name) }}
+                {{ foreign_word(city_name) }}
             </h1>
-            <p>{{ foreign_word(city.name) }} is
+            <p>{{ foreign_word(city_name) }} is
             {% if city_age == 'new' %}an exciting, fast-paced new
             {% elif city_age == 'modern' %}a modern metropolis with a rich history
             {% elif city_age == 'ancient' %}an ancient{% endif %}
@@ -64,7 +64,7 @@
         </div>
         <div class="card cell medium-auto">
             <h3>Region</h3>
-            <p>{{ foreign_word(city.name) }} is situated in the
+            <p>{{ foreign_word(city_name) }} is situated in the
             {% if climate.id in ['tropical_rainforest', 'tropical_monsoon'] %}
             lush
 
@@ -86,7 +86,7 @@
         </div>
         <div class="card cell medium-auto">
             <h3>Get In</h3>
-            <p>{{ foreign_word(city.name) }} can be accessed by camel. Book a camel today</p>
+            <p>{{ foreign_word(city_name) }} can be accessed by camel. Book a camel today</p>
         </div>
         <div class="card cell medium-auto">
             <h3>Exchange Rate</h3>

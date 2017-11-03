@@ -56,7 +56,7 @@ class Wildlife(object):
                 '#cry_verb# the background hubbub of a cocktail party',
 
                 'run as fast as 30 miles per hour',
-                'live without food or water for ten days',
+                'can eat plastic',
                 'drink boiling water',
                 'sever a person\'s head from their body in one stroke',
                 'befriend spiders',

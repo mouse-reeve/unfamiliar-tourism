@@ -1,10 +1,11 @@
 ''' all the information about a city in one json blob '''
-from architecture import Architecture
+import architecture
 import cuisine
-from fashion import Fashion
+import fashion
 from graph import load_graph_data
 from news import News
-from wildlife import Wildlife
+import religion
+import wildlife
 
 from foreigntongue import Language
 
@@ -63,42 +64,13 @@ def generate_datafile(seed):
 
 
     # ----- RELIGION
-    data['religion'] = {}
-    data['religion']['name'] = lang.get_word('NNP', 'religion')
-
-    data['religion']['gods'] = []
-    god_count = 2
-
-    # you need a lot of gods to pull off a divine hierarchy
-    if data['divine_structure'] == 'hierarchical':
-        god_count += 2
-    god_count += abs(int(random.normalvariate(2, 20)))
-
-    data['religion']['god_count'] = god_count
-
-    for i in range(god_count):
-        data['religion']['gods'].append(
-            lang.get_word('NNP', 'god-%d' % i))
-
-    if data['divine_structure'] == 'hierarchical':
-        data['religion']['gods'] = \
-                create_pantheon_hierarchy(data['religion']['gods'])
-
-    # note on structure:
-    # "multifaceted" means that various gods are faces of a single divinity
-    # "various" means that gods exist discreetly
-    # "hierarchical" means they exist discreetly and with some more important
-    data['religion']['divine_structure'] = data['divine_structure']
-    data['religion']['worship'] = data['worship']
-    data['religion']['deity_forms'] = [data['deity_form'],
-                                       data['deity_form_secondary']]
+    data['religion'] = religion.get_religion(data, lang)
     del data['divine_structure']
     del data['deity_form']
     del data['deity_form_secondary']
     del data['worship']
 
     # ----- FOOD
-
     data['cuisine'] = {
         'fruit': cuisine.fruit(data['climate']['name']),
         'tea': cuisine.tea(data['climate']['name']),
@@ -107,24 +79,21 @@ def generate_datafile(seed):
 
 
     # ------- WILDLIFE
-    wildlife = Wildlife(data['climate'],
-                        data['terrain'])
     data['wildlife'] = [{
         'name': lang.get_word('NNP', 'critter-%d' % i),
-        'description': wildlife.animal()} for i in range(0, 3)]
+        'description': wildlife.animal(data['climate']['name'],
+                                       data['terrain'])} \
+            for i in range(0, 3)]
 
     # ------- FASHION
-    fashion = Fashion(gender_count, data['climate'], data['motif'])
-    data['body_mod'] = fashion.body_mod()
+    data['body_mod'] = fashion.body_mod(gender_count, data['motif'])
 
     # ----- BUILDINGS
-    architecture = Architecture(data['city_type'], data['primary_material'],
-                                data['secondary_material'], data['motif'])
-
     lang.get_word('NN', 'teahouse')
     data['teahouse'] = {
         'name': lang.get_word('JJ', 'serene'),
-        'description': architecture.building()
+        'description': architecture.building(data['primary_material'],
+                                             data['secondary_material'])
     }
 
 
@@ -196,21 +165,3 @@ def generate_datafile(seed):
 
     return data
 
-
-def create_pantheon_hierarchy(gods):
-    ''' arrange gods into a hierarchical pantheon
-    There will be at least two tiers '''
-    # min number of gods is 4
-    pantheon = []
-    top_max = 1 + int(len(gods) * 0.3)
-    top = random.randint(1, top_max)
-    pantheon.append(gods[:top])
-    # only create three tiers if there are enough gods
-    if len(gods) - top < 5:
-        pantheon.append(gods[top:])
-    else:
-        mid_max = 1 + int((len(gods) - top_max) * 0.4)
-        pantheon.append(gods[top:mid_max])
-        pantheon.append(gods[mid_max:])
-
-    return pantheon

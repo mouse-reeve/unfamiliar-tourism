@@ -8,6 +8,14 @@
     {% endif %}
 {% endmacro %}
 
+{% macro generated_card(item) %}
+
+<h3>{{ item.title }}</h3>
+
+<p>{{ item.description }}</p>
+
+{% endmacro %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

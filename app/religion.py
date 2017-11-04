@@ -23,6 +23,8 @@ def get_religion(data, lang):
     if data['divine_structure'] == 'hierarchical':
         religion['gods'] = create_hierarchy(religion['gods'])
 
+    religion['religiosity'] = random.choice(['high', 'medium', 'low'])
+
     # note on structure:
     # "multifaceted" means that various gods are faces of a single divinity
     # "various" means that gods exist discreetly

@@ -4,7 +4,7 @@ from utilities import get_latin
 from data import generate_datafile
 
 from flask import Flask, redirect, render_template
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 import random
 import re
@@ -46,6 +46,8 @@ def load_card(seed, card):
 
 def collect_data(seed):
     ''' grab the data for a city and update it with changeable fields '''
+
+    # ----- load the data from saved files or generate it
     try:
         if app.debug:
             raise(IOError)
@@ -56,7 +58,6 @@ def collect_data(seed):
         if not data:
             return render_template('error.html', error='Database failure')
 
-
         # save a copy for future (re)loads
         filepath = app.static_folder + '/datafiles/' + seed + '.json'
         with open(filepath, 'w') as fp:
@@ -64,17 +65,28 @@ def collect_data(seed):
 
     random.seed(seed)
 
-    # the last couple things that are generated on the fly
+    # template utility functions
     data['color'] = generate_color
+
+    # fields that change day-to-day
     data['get_exchange_rate'] = \
         lambda: calculate_exchange_rate(
             data['exchange_rate'],
             datetime.now().strftime('%Y%m%d'))
+
     month = ['January', 'February', 'March', 'April', 'May', 'June',
              'July', 'August', 'September', 'October', 'November',
              'December'][datetime.now().month]
-
     data['weather'] = weather(data['climate'], month, seed, datetime.now().day)
+
+    date = datetime.now() + timedelta(days=1)
+    calendar_end = datetime.now() + timedelta(days=8)
+    data['cards'][0]['cards'] = []
+    while date < calendar_end:
+        if date.strftime('%m%d') in data['calendar']['special']:
+            data['cards'][0]['cards'] += data['calendar']['special'][date.strftime('%m%d')]
+        date += timedelta(days=1)
+
     return data
 
 

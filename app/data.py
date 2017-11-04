@@ -1,5 +1,6 @@
 ''' all the information about a city in one json blob '''
 import architecture
+import events
 import cuisine
 import fashion
 from graph import load_graph_data
@@ -43,24 +44,40 @@ def generate_datafile(seed):
     data['currency'] = lang.get_word('NN', 'currency')
     data['exchange_rate'] = abs(random.normalvariate(0, 10))
 
-
     # ----- GENDER
     data['genders'] = []
     gender_count = random.choice([2, 3, 5])
     if gender_count == 2:
         data['genders'] = [
-            {'name': lang.get_word('NN', 'Male')},
-            {'name': lang.get_word('NN', 'Female')}
+            {'name': lang.get_word('NN', 'male')},
+            {'name': lang.get_word('NN', 'female')}
         ]
     else:
-        for _ in range(0, gender_count):
-            data['genders'].append({'name': lang.get_word('NN', 'A gender')})
+        for i in range(0, gender_count):
+            data['genders'].append(
+                {'name': lang.get_word('NN', 'gender-%d' % i)})
 
 
     # ------------------------ GRAPH DATA ------------------------- #
     ''' everything that's stored in neo4j gets loaded now. the following
     fields depend on what is set at this point. '''
     data.update(load_graph_data())
+
+    # paris for art, san francisco for tech, tenochtitlan for death
+    notabilities = [
+        'visual_art',
+        'performance',
+        'death',
+        'magic',
+        'technology',
+        'writing',
+        'food',
+        'education',
+    ]
+    if data['industry'] == 'weaving':
+        notabilities += ['textiles'] * 5
+
+    data['notability'] = random.choice(notabilities)
 
 
     # ----- RELIGION
@@ -70,6 +87,7 @@ def generate_datafile(seed):
     del data['deity_form_secondary']
     del data['worship']
 
+    # ------------------------ DESCRIPTIONS ------------------------- #
     # ----- FOOD
     data['cuisine'] = {
         'fruit': cuisine.fruit(data['climate']['name']),
@@ -97,7 +115,7 @@ def generate_datafile(seed):
     }
 
 
-    # ------ NEWS
+    # ------------------------ TIME-RELATED  ------------------------- #
     # political climate
     politics = {
         # more or less a value between 0 and 1, the probability of
@@ -117,13 +135,17 @@ def generate_datafile(seed):
     data['rulers'] = news.rulers
 
 
+    # ----- Calendar
+    data['calendar'] = events.get_calendar(data['notability'])
+
+
     # ------------------------ DISPLAY ITEMS ------------------------- #
     # these are the cards that get displayed about the city
 
     data['cards'] = [
         {
             'title': 'events',
-            'cards': ['festival', 'holiday', 'event']
+            'cards': [] # these will be populated on load in app.py
         },
         {
             'title': 'survival guide',

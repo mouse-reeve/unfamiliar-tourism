@@ -56,14 +56,14 @@ def load_graph_data():
     # government, religion, and public spaces
     query = '''
     match (d:deity_form)--(d2:deity_form_secondary)
-    return * skip %d limit 1 ''' % random.randint(0, 17 - 1)
+    return * skip %d limit 1 ''' % random.randint(0, 15)
     result = graph.run(query)
     new_data = result.data()
     data = add_data(data, new_data)
 
     query = '''
     match (s:divine_structure)
-    return * skip %d limit 1 ''' % random.randint(0, 3 - 1)
+    return * skip %d limit 1 ''' % random.randint(0, 2)
     result = graph.run(query)
     new_data = result.data()
     data = add_data(data, new_data)
@@ -72,14 +72,14 @@ def load_graph_data():
     match (n:worship)--(b:building),
           (n1:worship)--(b1:building),
           (n2:worship)--(b2:building)
-    return distinct * skip %d limit 1 ''' % random.randint(0, 2184 - 1)
+    return distinct * skip %d limit 1 ''' % random.randint(0, 2183)
     result = graph.run(query)
     new_data = result.data()
     data = add_data(data, new_data)
 
     query = '''
     match (b:building)--(g:government)
-    return * skip %d limit 1 ''' % random.randint(0, 6 - 1)
+    return * skip %d limit 1 ''' % random.randint(0, 5)
     result = graph.run(query)
     new_data = result.data()
 

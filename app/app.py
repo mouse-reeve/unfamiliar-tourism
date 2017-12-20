@@ -76,7 +76,7 @@ def collect_data(seed):
 
     month = ['January', 'February', 'March', 'April', 'May', 'June',
              'July', 'August', 'September', 'October', 'November',
-             'December'][datetime.now().month]
+             'December'][datetime.now().month - 1]
     data['weather'] = weather(data['climate'], month, seed, datetime.now().day)
 
     date = datetime.now() + timedelta(days=1)

@@ -144,6 +144,23 @@ h3 {
     font-size: 0.8em;
 }
 
+#infopanel .icon {
+    font-size: 3em;
+    float: right;
+    display: block;
+}
+.weather-now {
+    margin-top: 1rem;
+    font-size: 2em;
+    float: left;
+    display: block;
+}
+.weather-detail {
+    clear: both;
+    color: #333;
+    display: block;
+}
+
 .cell {
     min-height: auto;
 }

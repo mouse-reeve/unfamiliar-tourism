@@ -42,6 +42,7 @@ def weather(climate, month, seed, date):
 
     report = {
         'time': now.strftime('%-I:%M %p'),
+        'is_day': 6 < now.hour < 19,
         'high': high,
         'low': low,
         'temp': temp,

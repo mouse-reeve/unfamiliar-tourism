@@ -23,6 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="/static/css/foundation.min.css">
     <link type="text/css" rel="stylesheet" href="/static/css/base.css">
+    <link type="text/css" rel="stylesheet" href="/static/css/icons.css">
 
     <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico">
 
@@ -61,12 +62,27 @@
         <div class="card cell medium-auto">
             <h3>{{ weather.time }}</h3>
             <p>
-                <span>{{ weather.temp | int }}&deg;C</span> -
-                <span>
-                    {% if weather.precipitation %}{{ weather.precipitation | capitalize }}ing
-                    {% elif weather.humidity < 70 %} Sunshine
-                    {% elif weather.humidity < 80 %} Party cloudy
-                    {% else %} Overcast {% endif %}
+                <span class="weather-now">{{ weather.temp | int }}&deg;C</span>
+
+                {% if weather.precipitation == 'rain' %}
+                <span class="icon icon-cloud-rain"></span>
+                {% elif weather.precipitation == 'snow' %}
+                <span class="icon icon-cloud-snow"></span>
+                {% elif weather.humidity < 70 and weather.is_day %}
+                <span class="icon icon-sun"></span>
+                {% elif weather.humidity < 70 %}
+                <span class="icon icon-moon-stars"></span>
+                {% elif weather.humidity < 80 and weather.is_day %}
+                <span class="icon icon-cloud-sun"></span>
+                {% elif weather.humidity < 80 %}
+                <span class="icon icon-cloud-moon"></span>
+                {% else %}
+                <span class="icon icon-clouds"></span>
+                {% endif %}
+
+                <span class="weather-detail">
+                    <span class="high">{{ weather.high | int }}&deg;C</span> /
+                    <span class="low">{{ weather.low | int }}&deg;C</span>
                 </span>
             </p>
         </div>

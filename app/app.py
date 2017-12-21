@@ -66,7 +66,7 @@ def collect_data(seed):
     random.seed(seed)
 
     # template utility functions
-    data['color'] = generate_color
+    data['color'] = lambda: generate_color(data['climate']['id'])
 
     # fields that change day-to-day
     data['get_exchange_rate'] = \
@@ -92,9 +92,17 @@ def collect_data(seed):
 
 
 # ---- Calculators for data fields that aren't fixed
-def generate_color():
+def generate_color(climate):
     ''' a hex color '''
-    return '#' + ''.join(hex(random.randint(10, 13))[2:] for _ in range(0, 3))
+    color_range = [[10, 13], [10, 13], [10, 13]]
+    if climate in ['hot_desert', 'arid', 'semi_arid']:
+        color_range = [[8, 15], [5, 8], [5, 8]]
+    elif climate in ['oceanic', 'subpolar_oceanic', 'subarctic']:
+        color_range = [[4, 7], [5, 8], [8, 15]]
+    elif climate in ['tropical_rainforest', 'tropical_monsoon']:
+        color_range = [[8, 15], [5, 8], [5, 8]]
+
+    return '#' + ''.join(hex(random.randint(*c))[2:] for c in color_range)
 
 
 def calculate_exchange_rate(base_rate, date):

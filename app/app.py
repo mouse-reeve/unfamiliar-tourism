@@ -84,7 +84,8 @@ def collect_data(seed):
     data['cards'][0]['cards'] = []
     while date < calendar_end:
         if date.strftime('%m%d') in data['calendar']['special']:
-            data['cards'][0]['cards'] += data['calendar']['special'][date.strftime('%m%d')]
+            data['cards'][0]['cards'] += \
+                    data['calendar']['special'][date.strftime('%m%d')]
         date += timedelta(days=1)
 
     return data

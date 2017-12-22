@@ -7,22 +7,22 @@ from datetime import datetime
 from math import sin, pi
 import random
 
-def weather(climate, month, seed, date):
+def weather(climate, seed, now):
     ''' determine the weather for a given date '''
     # re-randomize the weather every day
-    weather_seed = '%s %s %d' % (seed, month, date)
+    month = ['January', 'February', 'March', 'April', 'May', 'June',
+             'July', 'August', 'September', 'October', 'November',
+             'December'][now.month - 1]
+    weather_seed = '%s%s%d' % (seed, month, now.day)
     rand_state = random.getstate()
     random.seed(weather_seed)
-    # [temp, rainy days, snowy days, humidity]
     stats = climate['stats'][month]
 
-    now = datetime.utcnow()
-
     temp_deviation = climate['temp_range']/8
-    variation_function = lambda t, v: random.normalvariate(t, v)
 
-    high = variation_function(stats[0], temp_deviation)
-    low = variation_function(stats[1], temp_deviation)
+    high = random.normalvariate(stats[0], temp_deviation)
+    low = random.normalvariate(stats[1], temp_deviation)
+    print(low, high)
     ''' a sinosoidal function to caluclate air temp given:
     i (hour),
     l (expected low temp), and
@@ -37,16 +37,13 @@ def weather(climate, month, seed, date):
     elif stats[2] and random.random() > stats[2]/30.0:
         precipitation = 'rain'
 
-    temps = ['freezing', 'cold', 'warm', 'hot', 'blistering', 'blistering']
-    temp_desc = temps[0] if temp < 0 else temps[int((temp + 5)/10)]
-
     report = {
+        'date': now.strftime('%a. %-m/%d'),
         'time': now.strftime('%-I:%M %p'),
-        'is_day': 6 < now.hour < 19,
+        'is_day': datetime.utcnow().day != now.day or 6 < now.hour < 19,
         'high': high,
         'low': low,
         'temp': temp,
-        'temp_description': temp_desc,
         'humidity': stats[4],
         'precipitation': precipitation,
         'climate': climate['name'],

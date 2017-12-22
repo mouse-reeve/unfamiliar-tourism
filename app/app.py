@@ -74,10 +74,16 @@ def collect_data(seed):
             data['exchange_rate'],
             datetime.now().strftime('%Y%m%d'))
 
-    month = ['January', 'February', 'March', 'April', 'May', 'June',
-             'July', 'August', 'September', 'October', 'November',
-             'December'][datetime.now().month - 1]
-    data['weather'] = weather(data['climate'], month, seed, datetime.now().day)
+    data['weather'] = weather(data['climate'], seed, datetime.utcnow())
+    data['weather']['forecast'] = []
+
+    forecast_date = datetime.utcnow()
+    for _ in range(0, 7):
+        data['weather']['forecast'].append(
+            weather(data['climate'],
+                    seed,
+                    forecast_date))
+        forecast_date += timedelta(days=1)
 
     date = datetime.now() + timedelta(days=1)
     calendar_end = datetime.now() + timedelta(days=8)

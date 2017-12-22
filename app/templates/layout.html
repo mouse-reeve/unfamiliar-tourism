@@ -16,6 +16,25 @@
 
 {% endmacro %}
 
+
+{% macro weather_icon(weather) %}
+{% if weather.precipitation == 'rain' %}
+<span class="icon icon-cloud-rain"></span>
+{% elif weather.precipitation == 'snow' %}
+<span class="icon icon-cloud-snow"></span>
+{% elif weather.humidity < 70 and weather.is_day %}
+<span class="icon icon-sun"></span>
+{% elif weather.humidity < 70 %}
+<span class="icon icon-moon-stars"></span>
+{% elif weather.humidity < 80 and weather.is_day %}
+<span class="icon icon-cloud-sun"></span>
+{% elif weather.humidity < 80 %}
+<span class="icon icon-cloud-moon"></span>
+{% else %}
+<span class="icon icon-clouds"></span>
+{% endif %}
+{% endmacro %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,27 +82,15 @@
             <h3>{{ weather.time }}</h3>
             <p>
                 <span class="weather-now">{{ weather.temp | int }}&deg;C</span>
-
-                {% if weather.precipitation == 'rain' %}
-                <span class="icon icon-cloud-rain"></span>
-                {% elif weather.precipitation == 'snow' %}
-                <span class="icon icon-cloud-snow"></span>
-                {% elif weather.humidity < 70 and weather.is_day %}
-                <span class="icon icon-sun"></span>
-                {% elif weather.humidity < 70 %}
-                <span class="icon icon-moon-stars"></span>
-                {% elif weather.humidity < 80 and weather.is_day %}
-                <span class="icon icon-cloud-sun"></span>
-                {% elif weather.humidity < 80 %}
-                <span class="icon icon-cloud-moon"></span>
-                {% else %}
-                <span class="icon icon-clouds"></span>
-                {% endif %}
+                {{ weather_icon(weather) }}
 
                 <span class="weather-detail">
                     <span class="high">{{ weather.high | int }}&deg;C</span> /
                     <span class="low">{{ weather.low | int }}&deg;C</span>
                 </span>
+            </p>
+            <p>
+                <a href="{{ seed }}/weather#content">7 Day Forecast</a>
             </p>
         </div>
         <div class="card cell medium-auto">

@@ -1,0 +1,15 @@
+<h3>7 day Forecast</h3>
+
+<div class="forecast grid-x grid-padding-x grid-padding-y">
+    {% for day in weather.forecast %}
+    <div class="cell medium-auto">
+        <h5>{{ day.date }}</h5>
+        {{ weather_icon(day) }}
+
+        <span class="weather-detail">
+            <span class="high">{{ day.high | int }}&deg;C</span> /
+            <span class="low">{{ day.low | int }}&deg;C</span>
+        </span>
+    </div>
+    {% endfor %}
+</div>

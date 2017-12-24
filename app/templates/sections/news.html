@@ -1,12 +1,7 @@
 <h3>News</h3>
 
-{% for event in news %}
-{% if event.headlines %}
+{% for event in history | sort %}
 <p>
-{{ event.year }}:
-{% for headline in event.headlines %}
-    {{ headline }}<br>
-{% endfor %}
+{{ event }}: {{ history[event] }}
 </p>
-{% endif %}
 {% endfor %}

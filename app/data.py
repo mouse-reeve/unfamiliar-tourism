@@ -4,13 +4,12 @@ import events
 import cuisine
 import fashion
 from graph import load_graph_data
-from news import News
+from history import History
 import religion
 import wildlife
 
 from foreigntongue import Language
 
-from datetime import datetime
 import random
 
 def generate_datafile(seed):
@@ -28,17 +27,6 @@ def generate_datafile(seed):
         'name': lang.get_word('NNP', 'language'),
         'stats': lang.get_stats()
     }
-
-    data['city_age'] = random.choice(
-        ['new'] + ['modern'] * 5 + ['ancient'] * 10)
-
-    # physical isolation / remoteness
-    data['isolation'] = random.choice([1, 2, 2, 3, 3, 3, 4, 4, 5])
-    # how culturally conservative it is
-    data['insularity'] = random.randint(data['isolation'], 5)
-    # isolation means lower max population
-    data['population'] = random.randint(
-        1000 * data['isolation'], int(10000000/(data['isolation'] ** 4)))
 
     # economy
     data['currency'] = lang.get_word('NN', 'currency')
@@ -87,6 +75,10 @@ def generate_datafile(seed):
     del data['deity_form_secondary']
     del data['worship']
 
+    # ----- HISTORY
+    history = History(data, lang)
+    data.update(history.generate_history())
+
     # ------------------------ DESCRIPTIONS ------------------------- #
     # ----- FOOD
     data['cuisine'] = {
@@ -113,27 +105,6 @@ def generate_datafile(seed):
         'description': architecture.building(data['primary_material'],
                                              data['secondary_material'])
     }
-
-
-    # ------------------------ TIME-RELATED  ------------------------- #
-    # political climate
-    politics = {
-        # more or less a value between 0 and 1, the probability of
-        # political upheaval on any given year
-        'stability': abs(int(random.normalvariate(0, 2))) / 10,
-        # either a term between 2 and 10 years, or life (80 years)
-        'term_length': random.randint(2, 10) \
-                if data['government'] == 'republic' else 80,
-    }
-    news = News(data['government'],
-                gender_count,
-                politics,
-                lang)
-
-    data['news'] = [news.generate_event(y) \
-            for y in range(2010, datetime.now().year+1)]
-    data['rulers'] = news.rulers
-
 
     # ----- Calendar
     data['calendar'] = events.get_calendar(data['notability'])

@@ -16,23 +16,22 @@ class History(object):
         self.data['city_age'] = random.choice([50] + [500] * 5 + [1000] * 10)
 
         # physical isolation / remoteness
-        self.data['isolation'] = random.choice([1, 2, 2, 3, 3, 3, 4, 4, 5])
-        # how culturally conservative it is
-        self.data['insularity'] = random.randint(self.data['isolation'], 5)
-        # isolation means lower max population
-        self.data['population'] = random.randint(
-            1000 * self.data['isolation'],
-            int(10000000/(self.data['isolation'] ** 4))
-        )
-        self.data['minorities'] = 0
+        isolation = random.randint(4, 10) / 10.0
 
-        self.date = datetime.strptime(
-            str(datetime.now().year - self.data['city_age']), '%Y')
-
-        self.stability = random.randint(90, 100) / 100.0
-        self.economy = random.randint(5, 10) / 10.0
-        self.term = 0
-        self.ruler = None
+        self.status = {
+            'date': datetime.strptime(
+                str(datetime.now().year - self.data['city_age']), '%Y'),
+            'stability': random.randint(90, 100) / 100.0,
+            'isolation': isolation,
+            'insularity': random.randint(int(isolation * 10), 10) / 10.0,
+            'population': random.randint(
+                1000 * isolation, int(10000000/(isolation ** 4))),
+            'minorities': 0,
+            'economy': random.randint(5, 10) / 10.0,
+            'term': 0,
+            'ruler': None
+        }
+        print(self.status)
 
         self.history = defaultdict(lambda: [])
 
@@ -97,39 +96,44 @@ class History(object):
         self.history[self.pretty_date()] = ['The city was founded']
 
         self.powershift(violent=False)
-        while self.date < datetime.now():
+        while self.status['date'] < datetime.now():
             action = None
             # construct something new maybe
-            if random.random() > self.economy:
+            if random.random() > self.status['economy']:
                 building = random.choice(self.data['building'])
                 buildings[building].append(
                     self.get_building(building))
 
             # results of an unstable situation
-            if self.ruler['duration'] > 7 and \
-                    random.random() > self.stability:
+            if self.status['ruler']['duration'] > 7 and \
+                    random.random() > self.status['stability']:
                 action = random.choice(events['instability']['result'])
 
-            elif self.ruler['duration'] >= self.term:
+            elif self.status['ruler']['duration'] >= self.status['term']:
                 # peaceful, expected transition of power
                 self.powershift(violent=False)
-                self.stability += self.stability * 0.15
+                self.status['stability'] += self.status['stability'] * 0.15
 
-            if self.date.month == 1 and self.date.day == 1:
-                # events that can occur once per year
-                if random.random() > (self.data['insularity'] * 2) / 10.0:
+            # events that can occur once per year
+            if self.status['date'].month == 1 and self.status['date'].day == 1:
+                if self.status['date'].year + 50 > datetime.now().year and \
+                        self.status['date'].year % 10 == 0 and \
+                        random.random() > self.status['insularity'] * 2:
                     action = 'immigration'
 
             if action and events[action]['generator']:
                 events[action]['generator']()
 
-            self.date += timedelta(days=1)
-            self.stability += self.stability * 0.5
-            self.ruler['duration'] += 1
+            self.status['date'] += timedelta(days=1)
+            self.status['stability'] += self.status['stability'] * 0.5
+            self.status['ruler']['duration'] += 1
 
         self.data['history'] = self.history
         self.data['holidays'] = holidays
         self.data['buildings'] = buildings
+
+        self.status['date'] = self.status['date'].isoformat()
+        self.data['status'] = self.status
         return self.data
 
 
@@ -137,44 +141,42 @@ class History(object):
         ''' the king is dead long live the king '''
         is_republic = self.data['government'] == 'republic'
 
-        if self.ruler:
+        if self.status['ruler']:
             if violent:
-                end_text = 'Overthrow of %s' % self.ruler['name']
+                end_text = 'Overthrow of %s' % self.status['ruler']['name']
             elif is_republic:
-                end_text = 'End of term for %s' % self.ruler['name']
+                end_text = 'End of term for %s' % self.status['ruler']['name']
             else:
-                end_text = 'Death of %s' % self.ruler['name']
+                end_text = 'Death of %s' % self.status['ruler']['name']
 
             self.history[self.pretty_date()].append(end_text)
 
-        self.ruler = self.get_person(
+        self.status['ruler'] = self.get_person(
             'ruler' + self.pretty_date(),
             'Emperor'
         )
 
-        corronation_date = self.date + timedelta(
-            days=random.normalvariate(5, 2))
+        corronation_date = self.status['date'] + timedelta(
+            days=int(random.normalvariate(5, 2)))
         coronation = 'Election' if is_republic else 'Coronation'
         self.history[self.pretty_date(corronation_date)].append(
-            '%s of %s' % (coronation, self.ruler['name'])
+            '%s of %s' % (coronation, self.status['ruler']['name'])
         )
 
-        self.term = (random.randint(2, 10) \
-            if is_republic else random.normalvariate(60, 10)) * 365
+        self.status['term'] = (random.randint(2, 10) \
+            if is_republic else int(random.normalvariate(50, 10))) * 365
 
 
     def instability(self):
         ''' undermine the government '''
-        self.stability = random.randint(0, 70) / 100.0
+        self.status['stability'] = random.randint(0, 70) / 100.0
 
 
     def immigration(self):
         ''' a flood of newcomers trying to find a better life '''
-        self.stability -= self.stability * 0.05
-        self.data['population'] += random.normalvariate(
-            (self.data['population']/10), 200)
+        self.status['stability'] -= self.status['stability'] * 0.05
 
-        self.data['minorities'] += 1
+        self.status['minorities'] += 1
         self.history[self.pretty_date()].append('A flood of immigrants')
 
 
@@ -214,5 +216,5 @@ class History(object):
         formatter = '%Y-%m-%d'
         if date:
             return date.strftime(formatter)
-        return self.date.strftime(formatter)
+        return self.status['date'].strftime(formatter)
 

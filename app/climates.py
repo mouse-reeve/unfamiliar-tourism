@@ -22,7 +22,6 @@ def weather(climate, seed, now):
 
     high = random.normalvariate(stats[0], temp_deviation)
     low = random.normalvariate(stats[1], temp_deviation)
-    print(low, high)
     ''' a sinosoidal function to caluclate air temp given:
     i (hour),
     l (expected low temp), and

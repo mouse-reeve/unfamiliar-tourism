@@ -106,7 +106,7 @@ def generate_color(climate):
     elif climate in ['oceanic', 'subpolar_oceanic', 'subarctic']:
         color_range = [[4, 7], [5, 8], [8, 15]]
     elif climate in ['tropical_rainforest', 'tropical_monsoon']:
-        color_range = [[8, 15], [5, 8], [5, 8]]
+        color_range = [[5, 8], [5, 10], [5, 8]]
 
     return '#' + ''.join(hex(random.randint(*c))[2:] for c in color_range)
 

@@ -161,6 +161,9 @@ def group_cards_filter(cards, column_count=3):
     # add any remaining cards to a stack at random
     for remaining in cards[per_column * 3:]:
         grouped[random.randint(1, 2)].append(remaining)
+
+    # trim any unusued columns so that cards use available space
+    grouped = [g for g in grouped if g]
     return grouped
 
 

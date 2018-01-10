@@ -45,6 +45,25 @@ def load_city(seed):
     return render_template('index.html', **data)
 
 
+@app.route('/<seed>/datafile')
+def load_city_data(seed):
+    ''' create the webpage from the datafile '''
+    # attempt to load existing datafile for seed
+    data = collect_data(seed)
+
+    # remove cards with no template; oh that I had more thorough coverage
+    # this is kind of janky?
+    cleaned = []
+    for cardset in data['cards']:
+        cardset['cards'] = [c for c in cardset['cards'] if \
+                os.path.isfile(os.getcwd() + \
+                '/app/templates/sections/%s.html' % c)]
+        cleaned.append(cardset)
+    data['cards'] = cleaned
+
+    return json.dumps(data, default=lambda x: x.__dict__)
+
+
 @app.route('/<seed>/<card>')
 def load_card(seed, card):
     ''' load just a single card for the city '''

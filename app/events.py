@@ -14,11 +14,17 @@ def get_calendar(notability):
         'frequent': [], # daily, monthly, moon-cyclically, etc
         'special': {} # seasonal, annual, political changeover, etc
     }
+
+    # pick a handful of public festivals/holidays
+    # pick a new years
     while date.year == 2008:
         timestamp = date.strftime('%m%d')
-        calendar['special'][timestamp] = [get_event(notability)]
 
-        date += timedelta(days=3)
+        # add an anual/one-time event for this day 30% of the time
+        if random.random() > 0.7:
+            calendar['special'][timestamp] = [get_event(notability)]
+
+        date += timedelta(days=1)
 
     return calendar
 

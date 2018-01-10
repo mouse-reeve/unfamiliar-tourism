@@ -1,0 +1,1204 @@
+[
+  {
+    "name": "Acarajé",
+    "region": "Brazil",
+    "adjective": "Brazilian",
+    "description": "Peeled beans formed into a ball and then deep-fried in dendê (palm oil)"
+  },
+  {
+    "name": "Aloo chaat",
+    "region": "Pakistan",
+    "adjective": "Pakistani",
+    "description": "Prepared by frying potatoes in oil and adding spices and chutney"
+  },
+  {
+    "name": "Aloo tikki",
+    "region": "Northern India",
+    "adjective": "Indian",
+    "description": "A snack made out of boiled potatoes, onions and various spices"
+  },
+  {
+    "name": "Anticucho",
+    "region": "South America",
+    "adjective": "South American",
+    "description": "Small pieces of meat (traditionally beef heart) that are marinated in vinegar and spices, grilled, and served on a stick. Anticucho originated in Peru and is now common throughout South America. It is sold in food stalls named anticucheras."
+  },
+  {
+    "name": "Arancini",
+    "region": "Sicily",
+    "adjective": "Italian",
+    "description": "Stuffed rice balls coated with bread crumbs and then deep fried; they are usually filled with ragù (meat and tomato sauce), mozzarella, and peas"
+  },
+  {
+    "name": "Arepa",
+    "region": "Colombia",
+    "adjective": "Colombian",
+    "description": "A flat, round, unleavened patty of soaked, ground kernels of maize (or maize meal or flour) that can be grilled, baked, fried, boiled or steamed"
+  },
+  {
+    "name": "Asinan",
+    "region": "Indonesia",
+    "adjective": "Indonesian",
+    "description": "A vegetable or fruit dish that is pickled with brine or vinegar"
+  },
+  {
+    "name": "Bagel",
+    "region": "Poland",
+    "adjective": "Polish",
+    "description": "A ring-shaped bread roll made with dough that is boiled in water for a short time and then baked; the result is a dense, chewy interior with a browned and sometimes crisp exterior"
+  },
+  {
+    "name": "Bakso",
+    "region": "Indonesia",
+    "adjective": "Indonesian",
+    "description": "A soup with meatballs, noodles, and other ingredients; the meatballs are commonly made from finely ground beef with a small quantity of tapioca flour and salt, however bakso can also be made from other ingredients, such as chicken, pork, fish or shrimp"
+  },
+  {
+    "name": "Banana cue",
+    "region": "Philippines",
+    "adjective": "Filipino",
+    "description": "Deep-fried bananas coated in caramelized brown sugar; after cooking they are served on skewers"
+  },
+  {
+    "name": "Bánh canh",
+    "region": "Vietnam",
+    "adjective": "Vietnamian",
+    "description": "A thick noodle that can be made from tapioca flour or a mixture of rice and tapioca flour, it is used in several dishes."
+  },
+  {
+    "name": "Bánh hỏi",
+    "region": "Vietnam",
+    "adjective": "Vietnamian",
+    "description": "A dish consisting of rice vermicelli woven into intricate bundles and often topped with chopped scallions or garlic chives sauteed in oil, served with a complementary meat dish."
+  },
+  {
+    "name": "Bánh mì",
+    "region": "Vietnam",
+    "adjective": "Vietnamian",
+    "description": "A type of meat-filled sandwich on bánh mì bread; the bread is similar to a baguette but airier and with a thinner crust; various fillings are used, most commonly some kind of pork or chicken"
+  },
+  {
+    "name": "Bánh xèo",
+    "region": "Vietnam",
+    "adjective": "Vietnamian",
+    "description": "A savory fried pancake made of rice flour, water, and turmeric powder, stuffed with slivers of fatty pork, shrimp, diced green onion, and bean sprouts"
+  },
+  {
+    "name": "Batagor",
+    "region": "Indonesia",
+    "adjective": "Indonesian",
+    "description": "Fried fish dumplings, usually served with peanut sauce. 'Batagor' is an abbreviation of bakso tahu goreng (which literally means fried tofu and meatballs); it's a variant of siomay in which the dumpling is deep-fried instead of steamed."
+  },
+  {
+    "name": "Batata vada",
+    "region": "Maharashtra",
+    "adjective": "Indian",
+    "description": "A mashed potato patty coated with chickpea flour, then deep-fried and served hot with chutney; a thick sphere, around two or three inches in diameter"
+  },
+  {
+    "name": "Belgian waffle",
+    "region": "Belgium",
+    "adjective": "Belgian",
+    "description": "In North America, the Belgian waffle is a variety of waffle with a lighter batter, larger squares, and deeper pockets than ordinary American waffles. In Belgium itself, there are several kinds of waffle, including the Brussels waffle and the Liège waffle, none of them called 'Belgian'."
+  },
+  {
+    "name": "Beondegi",
+    "region": "South Korea",
+    "adjective": "South Korean",
+    "description": "Steamed or boiled silkworm pupae which are seasoned and eaten as a snack"
+  },
+  {
+    "name": "Bhelpuri",
+    "region": "India",
+    "adjective": "Indian",
+    "description": "A savoury snack, bhelpuri is a type of chaat made from puffed rice, vegetables and a tangy tamarind sauce."
+  },
+  {
+    "name": "Boureka",
+    "region": "Israel, by way of the Balkans",
+    "adjective": "Israel, by way of the Balkansian",
+    "description": "Baked puff pastry dough or filo dough with any of various fillings such as cheese, spinach, or potatoes"
+  },
+  {
+    "name": "Bramborák",
+    "region": "Czech Republic",
+    "adjective": "Czech Republician",
+    "description": "Czech potato pancake is called bramborák (from brambor, potato) and it is made of grated potatoes with egg, breadcrumbs or flour and seasoning (salt, pepper, most importantly garlic and marjoram; sometimes ground, cracked or whole caraway seeds) and is served as it is."
+  },
+  {
+    "name": "Bratwurst",
+    "region": "Germany",
+    "adjective": "Germanyian",
+    "description": "A sausage typically made with pork and veal, and usually seasoned with ginger, nutmeg, coriander, or caraway; recipes for the sausage vary by region"
+  },
+  {
+    "name": "Bread pakora",
+    "region": "India",
+    "adjective": "Indian",
+    "description": "A fried snack made with bread slices, gram flour, and spices; sometimes it is stuffed with mashed potatoes"
+  },
+  {
+    "name": "Breakfast burrito",
+    "region": "United States (Southwestern)",
+    "adjective": "United States (Southwestern)ian",
+    "description": "Breakfast items such as scrambled eggs, fried potatoes, and cheese, wrapped inside a flour tortilla; invented in Santa Fe, New Mexico"
+  },
+  {
+    "name": "Brochette",
+    "region": "France",
+    "adjective": "Franceian",
+    "description": "Various meats and vegetables cooked, and sometimes served, on brochettes, or skewers"
+  },
+  {
+    "name": "Bublik or baranka",
+    "region": "Ukraine, Russia, Belarus",
+    "adjective": "Ukraine, Russia, Belarusian",
+    "description": "A ring-shaped bread roll similar to a bagel, but somewhat larger, denser, and sweeter."
+  },
+  {
+    "name": "Bubur ayam",
+    "region": "Indonesia",
+    "adjective": "Indonesian",
+    "description": "A porridge of rice and shredded chicken, served with soy sauce, spices, fried shallots, cakwee (fried dough), krupuk (a type of cracker), and sambal (a hot sauce); often eaten for breakfast"
+  },
+  {
+    "name": "Bun cha",
+    "region": "Vietnam",
+    "adjective": "Vietnamian",
+    "description": "Grilled fatty pork (chả) over a plate of white rice noodles (bún) and herbs with a side dish of dipping sauce"
+  },
+  {
+    "name": "Bun kebab",
+    "region": "Karachi",
+    "adjective": "Karachiian",
+    "description": "A fried patty of ground lentils, chicken or beef, egg batter, and spices, served on a bun with chutney on the side"
+  },
+  {
+    "name": "Bunny chow",
+    "region": "South Africa",
+    "adjective": "South African",
+    "description": "A hollowed-out loaf of bread filled with curry"
+  },
+  {
+    "name": "Burrito",
+    "region": "Mexico, United States",
+    "adjective": "Mexico, American",
+    "description": "Consists of a wheat flour tortilla wrapped or folded into a cylindrical shape to completely enclose various fillings that are used"
+  },
+  {
+    "name": "Calzone",
+    "region": "Italy, United States",
+    "adjective": "Italy, American",
+    "description": "A turnover of pizza dough stuffed with pizza ingredients such as mozzarella and ricotta cheeses, tomato sauce, and sausage"
+  },
+  {
+    "name": "Camote cue",
+    "region": "Philippines",
+    "adjective": "Filipino",
+    "description": "Slices of sweet potato deep fried with a coating of caramelized brown sugar; sometimes served on a bamboo skewer"
+  },
+  {
+    "name": "Carrozza",
+    "region": "Campania",
+    "adjective": "Campanian",
+    "description": "A type of fried cheese sandwich that is prepared by frying mozzarella cheese between slices of bread"
+  },
+  {
+    "name": "Ceviche",
+    "region": "Latin America",
+    "adjective": "Latin Americaian",
+    "description": "Ceviche is a street food in Peru, where it is considered to be a national dish."
+  },
+  {
+    "name": "Chaat",
+    "region": "India (Northern), Pakistan, in South Asia",
+    "adjective": "India (Northern), Pakistan, in South Asian",
+    "description": "A type of savory snack; a mixture of ingredients, it often includes fried dough, potatoes, chickpeas, chutney, and tangy spices"
+  },
+  {
+    "name": "Chiburekki",
+    "region": "Caucasus, Central Asia, Russia, Ukraine, Turkey",
+    "adjective": "Caucasus, Central Asia, Russia, Ukraine, Turkeyian",
+    "description": "A deep-fried turnover with a filling of ground or minced beef or mutton with onions and spices"
+  },
+  {
+    "name": "Chicharrón",
+    "region": "Latin America",
+    "adjective": "Latin Americaian",
+    "description": "Fried pork rinds"
+  },
+  {
+    "name": "Chiko Roll",
+    "region": "Australia",
+    "adjective": "Australian",
+    "description": "Brand name for a deep-fried food similar to an egg roll, with a thick, chewy dough wrapper stuffed with mutton, barley, cabbage, carrots, celery, rice, and seasonings."
+  },
+  {
+    "name": "Chimi de pierna",
+    "region": "Dominican Republic",
+    "adjective": "Dominican Republician",
+    "description": "A sandwich of pulled pork leg, sliced cabbage and other ingredients usually chopped on a griddle with custom seasoning. A cheaper variation using processed meat is also common and usually called 'chimi burger' or just 'chimi'."
+  },
+  {
+    "name": "Chimichanga",
+    "region": "United States (Southwestern)",
+    "adjective": "United States (Southwestern)ian",
+    "description": "A deep-fried burrito"
+  },
+  {
+    "name": "Chinese bhel",
+    "region": "Mumbai",
+    "adjective": "Mumbaiian",
+    "description": "A dish of Indian Chinese cuisine, made with fried noodles, sautéed vegetables, onions, and spices."
+  },
+  {
+    "name": "Chivito",
+    "region": "Uruguay",
+    "adjective": "Uruguayian",
+    "description": "A large sandwich of churrasco (grilled, thinly-sliced filet mignon) on a roll, with mozzarella, lettuce, tomatoes, mayonnaise, and other ingredients such as bacon, ham, and eggs"
+  },
+  {
+    "name": "Choripán",
+    "region": "Argentina",
+    "adjective": "Argentinaian",
+    "description": "A sausage of beef or pork, grilled, split lengthwise, and served on a roll with various condiments; the name is a combination of the words chorizo (sausage) and pan (bread)"
+  },
+  {
+    "name": "Chuan",
+    "region": "China",
+    "adjective": "Chinese",
+    "description": "Small pieces of meat on skewers roasted over charcoal or deep frying in oil. Chuan was traditionally made from lamb but chicken, pork, beef, and various types of seafood can also be used."
+  },
+  {
+    "name": "Grilled corn",
+    "region": "Southeast Asia",
+    "adjective": "Southeast Asian",
+    "description": "Corn on the cob, grilled with coconut milk, sugar, and pandan leaf"
+  },
+  {
+    "name": "Corn dog",
+    "region": "United States",
+    "adjective": "American",
+    "description": "A hot dog on a stick, coated with cornmeal batter and deep fried."
+  },
+  {
+    "name": "Covrigi",
+    "region": "Romania",
+    "adjective": "Romanian",
+    "description": "A covrig is a baked, twisted piece of dough similar to a pretzel; it is usually topped with sesame seeds, poppy seeds, and/or salt"
+  },
+  {
+    "name": "Coxinha",
+    "region": "Brazil",
+    "adjective": "Brazilian",
+    "description": "Chopped or shredded chicken meat covered in dough, molded into a shape resembling a chicken leg, battered, and fried"
+  },
+  {
+    "name": "Crêpe",
+    "region": "France",
+    "adjective": "Franceian",
+    "description": "A type of very thin pancake. Crêpes are a very common street food in Paris, France."
+  },
+  {
+    "name": "Currywurst",
+    "region": "Germany",
+    "adjective": "Germanyian",
+    "description": "A fried pork sausage topped with curry ketchup and curry powder, served either whole or cut up, sometimes with French fries on the side"
+  },
+  {
+    "name": "Dahi puri",
+    "region": "Maharashtra",
+    "adjective": "Indian",
+    "description": "A type of chaat made with puri (an unleavened deep-fried bread), chickpeas or potatoes, chili powder, and chutney"
+  },
+  {
+    "name": "Dak-kkochi",
+    "region": "South Korea",
+    "adjective": "South Korean",
+    "description": "Grilled chicken skewers. The meat is first cooked and cut into narrow slices, then it is coated with barbecue-flavor spices. Mayonnaise and mustard may also be used as toppings."
+  },
+  {
+    "name": "Danger dog",
+    "region": "Mexico",
+    "adjective": "Mexican",
+    "description": "A hot dog wrapped in bacon, either deep-fried or grilled, often sold by unlicensed vendors."
+  },
+  {
+    "name": "Dim sum",
+    "region": "China",
+    "adjective": "Chinese",
+    "description": "Small bite-sized portions of food served in small steamer baskets or on small plates"
+  },
+  {
+    "name": "Doner kebab",
+    "region": "Turkey, Germany,",
+    "adjective": "Turkey, Germany,ian",
+    "description": "Meat (often veal mixed with lamb) cooked on a vertical rotisserie; usually served wrapped in a flatbread with salad and condiments"
+  },
+  {
+    "name": "Doubles",
+    "region": "Trinidad",
+    "adjective": "Trinidadian",
+    "description": "It is a sandwich made with two baras (flat fried bread) filled with curry channa (curried chick peas). Topped with either mango (aam), shadon beni (bandaniya), cucumber (kheera), coconut (naariyal), tomato (damadol), or tamarind (imalee) chutney, or extra pepper sauce. This delicacy is the most popular fast food in Trinidad and Tobago. Doubles are eaten for breakfast, sometimes for lunch, often at night but can be a late night snack, too."
+  },
+  {
+    "name": "Doughnut",
+    "region": "United States",
+    "adjective": "American",
+    "description": "A ring-shaped pastry made with deep-fried flour dough, with frosting, glazing, or a sweet filling"
+  },
+  {
+    "name": "Douhua",
+    "region": "China",
+    "adjective": "Chinese",
+    "description": "A soft pudding made from tofu; depending on what is added to it, douhua can be either savory or sweet"
+  },
+  {
+    "name": "Dürüm",
+    "region": "Turkey, Europe",
+    "adjective": "Turkey, Europeian",
+    "description": "A wrap that is usually filled with typical döner kebab ingredients or other types of Turkish kebab."
+  },
+  {
+    "name": "Egg waffle",
+    "region": "Hong Kong",
+    "adjective": "Hong Kongian",
+    "description": "A fluffy waffle made with eggy leavened batter cooked between two plates of semi-spherical cells; usually served plain"
+  },
+  {
+    "name": "Elote",
+    "region": "Mexico",
+    "adjective": "Mexican",
+    "description": "Corn on the cob, grilled and then coated with condiments such as butter or mayonnaise, salt, chili powder, añejo cheese, and lime juice; sometimes served on a stick"
+  },
+  {
+    "name": "Empanada",
+    "region": "South America",
+    "adjective": "South Americaian",
+    "description": "A turnover made with pastry dough and any of various savory fillings, usually including some kind of ground or chopped meat; most often it is baked but sometimes it is fried"
+  },
+  {
+    "name": "Enchilada",
+    "region": "Mexico",
+    "adjective": "Mexican",
+    "description": "A corn tortilla rolled around a filling and covered with a chili pepper sauce. Enchiladas can be filled with a variety of ingredients."
+  },
+  {
+    "name": "Espetinhos",
+    "region": "Brazil",
+    "adjective": "Brazilian",
+    "description": "Small pieces of beef, chicken, or other meat, grilled on skewers; usually served with hot sauce on the side"
+  },
+  {
+    "name": "Esquites",
+    "region": "Mexico",
+    "adjective": "Mexican",
+    "description": "Fresh grains of corn are first boiled in salted water, then sautéed in butter with onions, chile peppers, and spices; the result is served hot in small cups and topped with lime juice, chile powder or hot sauce, salt, and mayonnaise"
+  },
+  {
+    "name": "Falafel",
+    "region": "Turkey",
+    "adjective": "Turkeyian",
+    "description": "Deep-fried balls of ground chickpeas (or sometimes fava beans), often served with salad and tahini sauce in pita or a wrap"
+  },
+  {
+    "name": "Farinata",
+    "region": "Italy, France",
+    "adjective": "Italy, Franceian",
+    "description": "A thin, unleavened pancake or crêpe of chickpea flour originating in Genoa and later a typical food of the Ligurian Sea coast, from Nice to Elba island."
+  },
+  {
+    "name": "Fish and chips",
+    "region": "England",
+    "adjective": "Englandian",
+    "description": "Large fillets of batter-fried whitefish served with square-cut or chunky chips (i.e. French fries)"
+  },
+  {
+    "name": "Fish balls",
+    "region": "Southern China",
+    "adjective": "Southern Chinese",
+    "description": "Small, round dumplings made from fish paste (fish that has been made into a paste, either by fermentation or by physical pounding)"
+  },
+  {
+    "name": "Fish taco",
+    "region": "Mexico (Baja California)",
+    "adjective": "Mexico (Baja California)ian",
+    "description": "A taco filled with batter-fried whitefish and other ingredients such as guacamole and salsa"
+  },
+  {
+    "name": "Focaccia",
+    "region": "Italy",
+    "adjective": "Italian",
+    "description": "A flatbread similar in style, composition, and texture to pizza dough, topped with cheese, herbs, and other ingredients"
+  },
+  {
+    "name": "French fries",
+    "region": "United States",
+    "adjective": "American",
+    "description": "Sliced potatoes that are typically deep fried. The dish can also be baked."
+  },
+  {
+    "name": "Fried chicken",
+    "region": "Thailand",
+    "adjective": "Thai",
+    "description": "Chicken pieces that are deep-fried with coriander, garlic, fish sauce, pepper, and other spices"
+  },
+  {
+    "name": "Frybread",
+    "region": "United States (Southwestern)",
+    "adjective": "United States (Southwestern)ian",
+    "description": "A flat dough fried or deep-fried in oil, shortening, or lard and generally leavened with baking powder"
+  },
+  {
+    "name": "Funnel cake",
+    "region": "United States",
+    "adjective": "American",
+    "description": "A sweet snack made by pouring batter through a funnel into hot cooking oil in a circular pattern and letting it deep-fry, then sprinkling it with powdered sugar"
+  },
+  {
+    "name": "Galette-saucisse",
+    "region": "Brittany",
+    "adjective": "Brittanyian",
+    "description": "A pork sausage wrapped in a buckwheat pancake"
+  },
+  {
+    "name": "Ginanggang",
+    "region": "Philippines",
+    "adjective": "Filipino",
+    "description": "Pieces of saba banana on a stick, brushed with margarine, sprinkled with sugar, and grilled over charcoal"
+  },
+  {
+    "name": "Gỏi cuốn",
+    "region": "Vietnam",
+    "adjective": "Vietnamian",
+    "description": "Pork, prawns, vegetables, bún (thin rice noodles), and other ingredients wrapped in bánh tráng (a thin wrapper made from rice flour); similar to spring rolls, gỏi cuốn are sometimes called 'summer rolls'"
+  },
+  {
+    "name": "Gorengan",
+    "region": "Indonesia",
+    "adjective": "Indonesian",
+    "description": "A gorengan is a type of fritter. Many varieties are sold on traveling carts by street vendors. Various kinds of ingredients are battered and deep fried, such as pisang goreng (banana fritter), tempeh, tahu goreng (fried tofu), oncom, sweet potato, cassava chunk, cassava flour, and breadfruit, and these are often eaten accompanied by fresh bird's eye chili."
+  },
+  {
+    "name": "Grilled cheese sandwich",
+    "region": "United States",
+    "adjective": "American",
+    "description": "A sandwich of melted cheese on toasted bread; many variations exist, but originally it was made by heating buttered bread and slices of American cheese in a skillet"
+  },
+  {
+    "name": "Gukhwappang",
+    "region": "South Korea",
+    "adjective": "South Korean",
+    "description": "Small pastries that are shaped like chrysanthemum flowers and filled with red bean paste"
+  },
+  {
+    "name": "Gyeranppang",
+    "region": "South Korea",
+    "adjective": "South Korean",
+    "description": "A fluffy bread roll with an egg in it"
+  },
+  {
+    "name": "Gyro",
+    "region": "Greece",
+    "adjective": "Greek",
+    "description": "Meat (generally lamb, pork, and/or beef) cooked on a vertical rotisserie; usually served wrapped in a flatbread such as pita, with cucumber, tomato, onion, and tzatziki sauce."
+  },
+  {
+    "name": "Haleem",
+    "region": "Middle East, Central Asia, Pakistan, India",
+    "adjective": "Middle East, Central Asia, Pakistan, Indian",
+    "description": "A stew made with wheat, barley, lentils, and lamb or other meat"
+  },
+  {
+    "name": "Halo-halo",
+    "region": "Philippines",
+    "adjective": "Filipino",
+    "description": "A cold dessert that is a mixture of shaved ice, evaporated milk, and various other ingredients — for example, caramelized plantains, jackfruit, tapioca, sugar palm fruit, coconut, sweet potato, boiled kidney beans, and flan"
+  },
+  {
+    "name": "Hamburger",
+    "region": "United States",
+    "adjective": "American",
+    "description": "A cooked patty of ground beef, served on a bun or roll, often with toppings such as lettuce, tomatoes, onions, and ketchup; a hamburger with cheese is known as a cheeseburger"
+  },
+  {
+    "name": "Hokkien mee",
+    "region": "Singapore, Malaysia (Penang)",
+    "adjective": "Singapore, Malaysia (Penang)ian",
+    "description": "Rice noodles and egg noodles, with prawns, pork or chicken, egg, bean sprouts, and other ingredients; served with soy sauce and sambal chili pepper sauce."
+  },
+  {
+    "name": "Hot dog",
+    "region": "United States",
+    "adjective": "American",
+    "description": "A sausage, usually made with beef and/or pork, grilled or steamed and served in a sliced bun with mustard and other condiments"
+  },
+  {
+    "name": "Ice cream",
+    "region": "Europe, North America,",
+    "adjective": "Europe, North America,ian",
+    "description": "Frozen, sweetened milk and/or cream, often combined with fruits or other ingredients and flavors"
+  },
+  {
+    "name": "Ice cream cone",
+    "region": "United States",
+    "adjective": "American",
+    "description": "Ice cream served on an edible cone-shaped pastry that is somewhat similar to a thin, crispy waffle; this allows the ice cream to be eaten without a dish or utensils"
+  },
+  {
+    "name": "Imqaret",
+    "region": "Malta",
+    "adjective": "Maltaian",
+    "description": "A sweet made with pastry and a filling of dates, usually infused with the flavours of aniseed and bay leaf, that is then deep fried"
+  },
+  {
+    "name": "Isaw",
+    "region": "Philippines",
+    "adjective": "Filipino",
+    "description": "Chicken intestines that are cleaned, boiled, put on a skewer, and grilled over charcoal; they are served with a dipping sauce of either spiced vinegar or barbecue sauce"
+  },
+  {
+    "name": "Jerk chicken",
+    "region": "Jamaica",
+    "adjective": "Jamaicaian",
+    "description": "Chicken is first soaked in a spicy marinade that commonly includes allspice berries, Scotch bonnet peppers, thyme, scallions, and fresh ginger; then it is smoked over charcoal at a high temperature, resting on top of green logs of allspice wood, and under a metal cover"
+  },
+  {
+    "name": "Jerusalem mixed grill",
+    "region": "Jerusalem",
+    "adjective": "Jerusalemian",
+    "description": "Chicken livers, gizzards, and hearts that are braised with various spices and then grilled; served either on a plate or as a sandwich in pita bread"
+  },
+  {
+    "name": "Jiaozi",
+    "region": "China",
+    "adjective": "Chinese",
+    "description": "Dumplings with a ground meat and/or vegetable filling wrapped in a thin piece of dough; they are often steamed but they can also be fried or boiled"
+  },
+  {
+    "name": "Kaassoufflé",
+    "region": "Netherlands",
+    "adjective": "Netherlandsian",
+    "description": "Melted cheese inside a thin dough-based wrap which has been breaded and then deep-fried"
+  },
+  {
+    "name": "Kai yang",
+    "region": "Laos",
+    "adjective": "Laosian",
+    "description": "A chicken that is marinated and then grilled over charcoal; the marinade typically includes fish sauce, garlic, turmeric, coriander root, and white pepper."
+  },
+  {
+    "name": "Kapsalon",
+    "region": "Netherlands, Russia",
+    "adjective": "Netherlands, Russian",
+    "description": "French fries topped with döner or shawarma meat, grilled with a layer of Gouda cheese until melted, and then covered with a layer of dressed salad greens; often served with garlic sauce and sambal hot sauce"
+  },
+  {
+    "name": "Kati roll",
+    "region": "Kolkata",
+    "adjective": "Kolkataian",
+    "description": "A skewer-roasted kebab or other meat, wrapped in a paratha or other bread"
+  },
+  {
+    "name": "Kebab",
+    "region": "Middle East",
+    "adjective": "Middle Eastian",
+    "description": "Small pieces of meat that have been grilled, often on a skewer over charcoal"
+  },
+  {
+    "name": "Kerak telor",
+    "region": "Betawi",
+    "adjective": "Betawiian",
+    "adjective": "Indonesian",
+    "description": "Spicy coconut omelette, made from glutinous rice cooked with egg and served with serundeng (fried shredded coconut), fried shallots and dried shrimp as topping. Popular street food in Jakarta, Indonesia."
+  },
+  {
+    "name": "Ketoprak",
+    "region": "Betawi",
+    "adjective": "Betawiian",
+    "adjective": "Indonesian",
+    "description": "A vegetarian dish from Jakarta, Indonesia, consists of tofu, vegetables and rice cake, rice vermicelli served in peanut sauce."
+  },
+  {
+    "name": "Khachapuri",
+    "region": "Georgia",
+    "adjective": "Georgian",
+    "description": "Bread stuffed with flavorful cheese and an egg"
+  },
+  {
+    "name": "Khanom Tokyo",
+    "region": "Thailand",
+    "adjective": "Thai",
+    "description": "A thin, flat pancake filled with sweet custard cream, or sometimes with a savory filling like pork or sausage, and then rolled into a cylinder."
+  },
+  {
+    "name": "Knish",
+    "region": "Poland",
+    "adjective": "Jewish",
+    "description": "A baked turnover of dough with any of various fillings, such as potatoes or ground beef"
+  },
+  {
+    "name": "Korean taco",
+    "region": "Canada, United States",
+    "adjective": "Canada, American",
+    "description": "A Korean-Mexican fusion dish consisting of Korean-style fillings, such as bulgogi and kimchi, placed on top of small traditional Mexican corn tortillas."
+  },
+  {
+    "name": "Kofta",
+    "region": "Middle East, North Africa,",
+    "adjective": "Middle East, North Africa,ian",
+    "description": "Balls or small patties of minced or ground meat—usually beef, chicken, lamb, or pork—mixed with spices and onions"
+  },
+  {
+    "name": "Kottu",
+    "region": "Sri Lanka",
+    "adjective": "Sri Lankaian",
+    "description": "Godamba roti (a type of flatbread) is chopped up and mixed with chicken or beef, eggs, and spices; the mixture is grilled, and garnished with onion, chili peppers, and other spices"
+  },
+  {
+    "name": "Kyinkyinga",
+    "region": "Ghana in West Africa",
+    "adjective": "Ghana in West African",
+    "description": "A beef kebab prepared with steak meat or liver and crusted with peanut flour. It is common in West Africa."
+  },
+  {
+    "name": "Laksa",
+    "region": "Southeast Asia, Peranakan cuisine",
+    "adjective": "Southeast Asia, Peranakan cuisineian",
+    "description": "A spicy soup with rice noodles and usually either fish, prawns, or chicken; many different variations exist, with most based either on rich and spicy curry coconut milk or on slightly sour tamarind"
+  },
+  {
+    "name": "Lángos",
+    "region": "Hungary",
+    "adjective": "Hungaryian",
+    "description": "A deep-fried flatbread, served with various toppings such as sour cream and grated cheese"
+  },
+  {
+    "name": "Lok-lok",
+    "region": "Malaysia",
+    "adjective": "Malaysian",
+    "description": "A wide variety of different food items are served on skewers. The customer selects the skewers they want, which are then cooked in boiling oil or water. A variety of dipping sauces are also provided. At the end the customer pays based on the number of color-coded skewers."
+  },
+  {
+    "name": "Malakoff",
+    "region": "Switzerland",
+    "adjective": "Switzerlandian",
+    "description": "Fried cheese balls or sticks."
+  },
+  {
+    "name": "Malatang",
+    "region": "China",
+    "adjective": "Chinese",
+    "description": "Various foods cooked in a hot pot of spicy soup; the ingredients are on skewers that are selected by the customer"
+  },
+  {
+    "name": "Maruya",
+    "region": "Philippines",
+    "adjective": "Filipino",
+    "description": "Saba bananas cut into thin slices, coated with batter, deep-fried, and then sprinkled with sugar"
+  },
+  {
+    "name": "Masala puri",
+    "region": "India",
+    "adjective": "Indian",
+    "description": "A type of chaat made with crushed puri (a type of fried bread) mixed with peas and masala (various spices)"
+  },
+  {
+    "name": "Meat patty",
+    "region": "Jamaica",
+    "adjective": "Jamaicaian",
+    "description": "A pastry that contains various fillings and spices baked inside a flaky shell"
+  },
+  {
+    "name": "Meat pie",
+    "region": "Australia",
+    "adjective": "Australian",
+    "description": "A hand-sized meat pie containing largely diced or minced meat and gravy, sometimes with onion, mushrooms, or cheese and often consumed as a takeaway food snack."
+  },
+  {
+    "name": "Medu vada",
+    "region": "Sri Lanka",
+    "adjective": "Sri Lankaian",
+    "description": "A fritter made from deep fried urad dal (black lentil) batter; it is usually made in a doughnut shape, with a crispy exterior and soft interior"
+  },
+  {
+    "name": "Mie ayam",
+    "region": "Indonesia (Chinese Indonesian)",
+    "adjective": "Indonesia (Chinese Indonesian)ian",
+    "description": "Chicken noodles of seasoned yellow wheat noodles topped with seasoned diced chicken meat (ayam). It is a popular street food in Indonesia, sold by travelling food cart."
+  },
+  {
+    "name": "Mohinga",
+    "region": "Myanmar",
+    "adjective": "Myanmarian",
+    "description": "A hot and sour soup made with catfish and rice noodles; often eaten for breakfast It is considered to be a national dish of Myanmar."
+  },
+  {
+    "name": "Murtabak",
+    "region": "Middle East, Southern to Southeastern Asia",
+    "adjective": "Middle East, Southern to Southeastern Asian",
+    "description": "A stuffed pancake or pan-fried bread made from minced meat (beef or chicken, sometimes mutton) along with garlic, egg and onion, and is eaten with curry or gravy."
+  },
+  {
+    "name": "Obwarzanek krakowski",
+    "region": "Poland",
+    "adjective": "Polish",
+    "description": "A braided ring-shaped bread that is boiled and sprinkled with salt, poppy seeds, sesame seeds, etc., before being baked"
+  },
+  {
+    "name": "Pad Thai",
+    "region": "Thailand",
+    "adjective": "Thai",
+    "description": "Rice noodles which are stir-fried with eggs and chopped tofu, and flavored with tamarind pulp, fish sauce (nampla น้ำปลา), dried shrimp, garlic or shallots, red chili pepper and palm sugar, and served with lime wedges and often chopped roast peanuts."
+  },
+  {
+    "name": "Panelle",
+    "region": "Sicily",
+    "adjective": "Italian",
+    "description": "A panelle is a chickpea fritter; a patty made with gram flour is deep-fried; usually served as a sandwich, sometimes with a side of crocchè (mashed potatoes and egg, covered in bread crumbs and fried)"
+  },
+  {
+    "name": "Pani ca meusa",
+    "region": "Sicily",
+    "adjective": "Italian",
+    "description": "Chopped veal spleen and lungs, boiled and then fried in lard, served on a soft bread called vastedda"
+  },
+  {
+    "name": "Panini",
+    "region": "Italy",
+    "adjective": "Italian",
+    "description": "A sandwich of various ingredients on a bread roll, heated on a press or contact grill"
+  },
+  {
+    "name": "Panipuri",
+    "region": "India",
+    "adjective": "Indian",
+    "description": "A round, hollow puri (a type of bread), fried crisp and filled with a mixture of flavored water (pani), tamarind chutney, chili, chaat masala, potato, onion and chickpeas."
+  },
+  {
+    "name": "Panucho",
+    "region": "Yucatán",
+    "adjective": "Mexican",
+    "description": "A corn tortilla that is filled with black bean paste and refried, then topped with turkey or chicken, lettuce, avocado, and pickles"
+  },
+  {
+    "name": "Panzerotti",
+    "region": "Italy",
+    "adjective": "Italian",
+    "description": "An fried turnover filled with mozzarella cheese, tomato sauce, and other pizza ingredients"
+  },
+  {
+    "name": "Papri chaat",
+    "region": "Bangladesh",
+    "adjective": "Bangladeshi",
+    "description": "Traditionally prepared using crisp fried dough wafers known as papri, along with boiled chick peas, boiled potatoes, yogurt and tamarind chutney and topped with chaat masala and sev."
+  },
+  {
+    "name": "Pasty",
+    "region": "United Kingdom",
+    "adjective": "British",
+    "description": "Meat and vegetables baked inside shortcrust pastry dough; pasties are particularly associated with Cornwall in England"
+  },
+  {
+    "name": "Pav Bhaji",
+    "region": "Maharashtra",
+    "adjective": "Indian",
+    "description": "A thick vegetable curry (bhaji) served with a soft bread roll (pav)"
+  },
+  {
+    "name": "Pecel Lele",
+    "region": "Java",
+    "adjective": "Javanese",
+    "description": "Deep-fried catfish served with traditional sambal chili paste, often served with fried tempeh and steamed rice. Usually sold in street-side humble tent warung."
+  },
+  {
+    "name": "Pempek",
+    "region": "Palembang",
+    "adjective": "Indonesian",
+    "description": "A savoury fishcake delicacy from Palembang, Indonesia, made of the mixture of fish and tapioca dough. Pempek is served with yellow noodles and a dark, rich sweet and sour sauce called kuah cuka (lit. vinegar sauce)."
+  },
+  {
+    "name": "Pepito",
+    "region": "Venezuela",
+    "adjective": "Venezuelan",
+    "description": "A sandwich similar to a torta, with beef or sometimes chicken on a bun or baguette, and condiments and sauces of the buyer's choice"
+  },
+  {
+    "name": "Peremech",
+    "region": "Russia",
+    "adjective": "Russian",
+    "description": "A deep-fried pastry with meat filling; known in Russia as a belyash"
+  },
+  {
+    "name": "Pho",
+    "region": "Vietnam",
+    "adjective": "Vietnamese",
+    "description": "A noodle soup of broth, rice noodles, herbs, and meat"
+  },
+  {
+    "name": "Picarones",
+    "region": "Peru",
+    "adjective": "Peruvian",
+    "description": "Its principal ingredients are squash and sweet potato, and it is served in a doughnut form and covered with syrup, made from chancaca (solidified molasses). It is traditional to serve picarones when people prepare anticuchos, another traditional Peruvian dish."
+  },
+  {
+    "name": "Pirozhki",
+    "region": "Ukraine",
+    "adjective": "Ukrainian",
+    "description": "Individual-sized baked or fried buns stuffed with a variety of fillings."
+  },
+  {
+    "name": "Pizza",
+    "region": "Italy",
+    "adjective": "Italian",
+    "description": "A thinly rolled bread dough crust, topped with tomato sauce, cheese, and other ingredients such as small pieces of meat and vegetables, and baked in an oven"
+  },
+  {
+    "name": "Pizza al taglio",
+    "region": "Italy",
+    "adjective": "Italian",
+    "description": "Pizza baked in large rectangular trays and cut into rectangular slices which are sold by weight"
+  },
+  {
+    "name": "Pizzetta",
+    "region": "Italy",
+    "adjective": "Italian",
+    "description": "A small pizza that can range in size as a finger food at around three inches in diameter to that of a small personal-sized pizza."
+  },
+  {
+    "name": "Plăcintă",
+    "region": "Romania",
+    "adjective": "Romanian",
+    "description": "A traditional pastry resembling a thin, small round or square-shaped cake, usually filled with a soft cheese such as Urdă or apples."
+  },
+  {
+    "name": "Poisson cru",
+    "region": "French Polynesia",
+    "adjective": "French Polynesian",
+    "description": "Raw tuna or other fish, marinated in lime or lemon juice, mixed with vegetables such as cucumber, tomato, and scallion, with coconut milk poured over it; poisson cru means 'raw fish'; the dish is also known as ʻota ʻika."
+  },
+  {
+    "name": "Poutine",
+    "region": "Quebec",
+    "adjective": "Canadian",
+    "description": "French fries and cheese curds topped with a light brown gravy"
+  },
+  {
+    "name": "Pretzel",
+    "region": "Europe",
+    "adjective": "European",
+    "description": "A type of baked bread product made from dough most commonly shaped into a twisted knot."
+  },
+  {
+    "name": "Proben",
+    "region": "Philippines",
+    "adjective": "Filipino",
+    "description": "The proventriculus (part of the digestive system) of a chicken, breaded with corn starch and deep fried; served either in a small bagful of vinegar, or skewered on bamboo sticks to be dipped in the vinegar just before it is eaten; sometimes served with puso rice dumplings"
+  },
+  {
+    "name": "Punugulu",
+    "region": "Andhra",
+    "adjective": "Indian",
+    "description": "A deep fried snack made with rice, urad dal and other spices"
+  },
+  {
+    "name": "Pupusa",
+    "region": "El Salvador",
+    "adjective": "El Salvadoran",
+    "description": "Thick corn tortillas that are stuffed with various fillings, such as pork, chicken, refried beans, and/or cheese; often served with curtido, a lightly fermented cabbage relish"
+  },
+  {
+    "name": "Quesadilla",
+    "region": "Mexico",
+    "adjective": "Mexican",
+    "description": "A tortilla that is filled with cheese (and sometimes other ingredients) and grilled"
+  },
+  {
+    "name": "Ražnjići",
+    "region": "Serbia",
+    "adjective": "Serbian",
+    "description": "Pieces of marinated pork or other meat, grilled on skewers"
+  },
+  {
+    "name": "Rellenitos de Plátano",
+    "region": "Guatemala",
+    "adjective": "Guatemalan",
+    "description": "Egg-shaped balls of cooked, mashed plantains stuffed with a mixture of refried black beans, chocolate, and cinnamon, deep-fried and served with powdered sugar or honey on top."
+  },
+  {
+    "name": "Roasted cockles",
+    "region": "Cambodia",
+    "adjective": "Cambodian",
+    "description": "Cockles that are roasted and then served with olive oil and seasonings"
+  },
+  {
+    "name": "Rojak",
+    "region": "Malaysia",
+    "adjective": "Malaysian",
+    "description": "A salad made with a mixture of fruits, vegetables, and savory spices"
+  },
+  {
+    "name": "Roti",
+    "region": "South Asia",
+    "adjective": "South Asian",
+    "description": "An unleavened flatbread made with atta (a finely-ground whole wheat flour); when making roti (sometimes known as chapati) the dough is heated on a flat griddle"
+  },
+  {
+    "name": "Roujiamo",
+    "region": "China",
+    "adjective": "Chinese",
+    "description": "A sandwich of chopped meat, traditionally braised pork, that has been stewed in a soup containing many spices, and served on a bun; sometimes written as rou jia mo, it originated in Shaanxi Province"
+  },
+  {
+    "name": "Rustico",
+    "region": "Italy",
+    "adjective": "Italian",
+    "description": "Mozzarella cheese, chopped tomatoes, and béchamel sauce, placed between two round pieces of puff pastry and baked; rustico originated in the Salento region of Italy"
+  },
+  {
+    "name": "Sabich",
+    "region": "Israel",
+    "adjective": "Israeli",
+    "description": "Pita stuffed with fried eggplant and hard-boiled eggs, with salad and sauces such as tahini, hummus, and mango chutney"
+  },
+  {
+    "name": "Sabudana vada",
+    "region": "Maharashtra",
+    "adjective": "Indian",
+    "description": "A deep-fried fritter made from sabudana (small balls of tapioca) and potatoes, and flavored with peanuts, coriander, and chili powder"
+  },
+  {
+    "name": "Samosa",
+    "region": "India",
+    "adjective": "Indian",
+    "description": "A deep-fried triangular turnover filled with vegetables (especially potatoes) or meat"
+  },
+  {
+    "name": "Sardenara",
+    "region": "Liguria",
+    "adjective": "Ligurian",
+    "description": "Dough covered with tomato sauce and topped with anchovies, black olives, onions, and garlic, baked in an oven; sardenara is similar to focaccia or pizza"
+  },
+  {
+    "name": "Satay",
+    "region": "Indonesia, Thailand",
+    "adjective": "Indonesia, Thai",
+    "description": "A dish of seasoned, skewered and grilled meat, usually served in peanut sauce. A popular street food throughout Southeast Asia; from Indonesia, Malaysia, Singapore and Thailand. Pork satay is popular in Thailand."
+  },
+  {
+    "name": "Sausage roll",
+    "region": "United Kingdom",
+    "adjective": "British",
+    "description": "Pork sausage meat wrapped in glazed puff pastry and baked"
+  },
+  {
+    "name": "Scaccia",
+    "region": "Sicily",
+    "adjective": "Italian",
+    "description": "A type of tomato and cheese pie; very thin pizza dough is covered with tomato sauce and grated cheese, folded over a number of times, and baked"
+  },
+  {
+    "name": "Scallion pancake",
+    "region": "China",
+    "adjective": "Chinese",
+    "description": "Pancakes made with soft dough and scallions (green onions); they are cooked by being fried in oil"
+  },
+  {
+    "name": "Seblak",
+    "region": "Sundanese",
+    "adjective": "Indonesian",
+    "description": "A savoury and spicy dish made of wet krupuk (traditional Indonesian crackers) cooked with protein sources (egg, chicken, seafood or beef) in spicy sauce."
+  },
+  {
+    "name": "Sev puri",
+    "region": "India",
+    "adjective": "Indian",
+    "description": "A type of chaat (a savory snack) made with puri (an unleavened, deep-fried bread), potatoes, onions, several types of chutney, and sev (small pieces of crunchy noodles made from chickpea flour)"
+  },
+  {
+    "name": "Sfenj",
+    "region": "Morocco in the Maghreb",
+    "adjective": "Moroccan",
+    "description": "A sfenj is a deep-fried food similar to a doughnut. It is made with sticky, unsweetened dough, and usually sprinkled with powdered sugar. Traditionally it is eaten for breakfast or at tea time."
+  },
+  {
+    "name": "Sfincione",
+    "region": "Sicily",
+    "adjective": "Italian",
+    "description": "A type of pizza with a thick, soft crust topped with tomato sauce, onions, caciocavallo cheese, and anchovies"
+  },
+  {
+    "name": "Shaokao",
+    "region": "China",
+    "adjective": "Chinese",
+    "description": "Heavily spiced, barbecued foods on skewers"
+  },
+  {
+    "name": "Shawarma",
+    "region": "Middle East",
+    "adjective": "Middle Eastern",
+    "description": "Meat (usually lamb and/or veal, or chicken) cooked on a vertical rotisserie; served in pita or a similar bread wrap, or on a plate, often with tahini sauce and other condiments"
+  },
+  {
+    "name": "Siomay",
+    "region": "Indonesia (Chinese Indonesian)",
+    "adjective": "Indonesia (Chinese Indonesian)ian",
+    "description": "A steamed fish dumpling with vegetables served in peanut sauce. It is derived from Chinese Shumai, and considered a light meal that is similar to the Chinese dim sum. A popular street food, sold by cart or bicycle food vendors."
+  },
+  {
+    "name": "Smažený sýr",
+    "region": "Czech Republic",
+    "adjective": "Czech Republician",
+    "description": "A slice of cheese (which is usually Edam, but may also be Hermelín) about 1.5 cm thick is first breaded with flour, egg, and bread crumbs and then fried either in a pan or deep-fat fryer. It is often served accompanied by a side salad, potatoes (fries or boiled potatoes), and, typically, tartar sauce. The dish may also be prepared with a thin slice of ham inserted between two slices of cheese, and in Czech fast food outlets it is often served in the form of a sandwich – in something similar to a hamburger bun."
+  },
+  {
+    "name": "Soto",
+    "region": "Indonesia",
+    "adjective": "Indonesian",
+    "description": "A spicy soup of meat and vegetables; many variations exist"
+  },
+  {
+    "name": "Souvlaki",
+    "region": "Greece",
+    "adjective": "Greek",
+    "description": "Small pieces of meat, usually pork, grilled on a skewer; served either in a pita wrap or on a plate"
+  },
+  {
+    "name": "Stigghiola",
+    "region": "Sicily",
+    "adjective": "Italian",
+    "description": "The intestines of a sheep or goat, placed on a skewer, flavored with parsley and onions, and cooked on an open grill It is one of the most common street foods in Palermo, Sicily."
+  },
+  {
+    "name": "Supplì",
+    "region": "Italy",
+    "adjective": "Italian",
+    "description": "Italian snacks consisting of a ball of rice (generally risotto) with tomato sauce and raw egg, typical of Roman cuisine."
+  },
+  {
+    "name": "Taco",
+    "region": "Mexico",
+    "adjective": "Mexican",
+    "description": "A corn or flour tortilla, with any of various fillings"
+  },
+  {
+    "name": "Tacos al pastor",
+    "region": "Mexico City",
+    "adjective": "Mexican",
+    "description": "Al pastor is a dish developed in Central Mexico, likely as a result of the adoption of the shawarma spit-grilled meat brought by the Lebanese immigrants to Mexico. Being derived from shawarma, it is also similar to the Turkish döner kebab and the Greek gyros."
+  },
+  {
+    "name": "Tahri",
+    "region": "India",
+    "adjective": "Indian",
+    "description": "Basmati rice and potatoes, flavored with turmeric and other spices; a type of vegetarian biryani"
+  },
+  {
+    "name": "Tahu gejrot",
+    "region": "Indonesia",
+    "adjective": "Indonesian",
+    "description": "A spicy tofu dish food from Cirebon, a port town in West Java, Indonesia. Tahu gejrot consists of tahu pong, a type of hollow tahu goreng (fried tofu) cut into small pieces. It is served with a thin and watery dressing that is made by blending palm sugar, vinegar and sweet soy sauce."
+  },
+  {
+    "name": "Tahu sumedang",
+    "region": "Indonesia",
+    "adjective": "Indonesian",
+    "description": "A deep-fried tofu from Sumedang, West Java."
+  },
+  {
+    "name": "Tajine",
+    "region": "North Africa",
+    "adjective": "North African",
+    "description": "A slow-cooked, savory stew made with meat, poultry, or fish together with vegetables, fruit, and/or nuts; it is cooked in a large clay pot"
+  },
+  {
+    "name": "Takoyaki",
+    "region": "Japan",
+    "adjective": "Japanese",
+    "description": "A ball-shaped snack made of a wheat flour-based batter and cooked in a special moulded pan. It is typically filled with minced or diced octopus (tako), tempura scraps (tenkasu), pickled ginger, and green onion."
+  },
+  {
+    "name": "Tamale",
+    "region": "Mesoamerica",
+    "adjective": "Mesoamerican",
+    "description": "Masa (a corn-based dough made from hominy), combined with various savory ingredients and spices, steamed in a corn husk; the wrapping is discarded before eating"
+  },
+  {
+    "name": "Tangbao",
+    "region": "China",
+    "adjective": "Chinese",
+    "description": "A large dumpling filled with chicken broth and pork"
+  },
+  {
+    "name": "Taquito",
+    "region": "Mexico",
+    "adjective": "Mexican",
+    "description": "A corn tortilla wrapped around various fillings and then fried; taquito means 'little taco'"
+  },
+  {
+    "name": "Tauge goreng",
+    "region": "Indonesia",
+    "adjective": "Indonesian",
+    "description": "A savoury vegetarian dish made of stir fried tauge (bean sprouts) with slices of tofu, ketupat or lontong rice cake and yellow noodle, served in spicy oncom-based sauce."
+  },
+  {
+    "name": "Tlayuda",
+    "region": "Oaxaca",
+    "adjective": "Oaxacan",
+    "description": "A very large, dense corn tortilla, with refried beans, asiento (rendered lard), and Oaxaca cheese, some kind of meat such as pork or chicken, and various toppings often including salsa and guacamole; served either flat of folded in half"
+  },
+  {
+    "name": "Tokneneng",
+    "region": "Philippines",
+    "adjective": "Filipino",
+    "description": "Hard-boiled chicken eggs covered with an orange-colored batter and deep-fried"
+  },
+  {
+    "name": "Torta",
+    "region": "Mexico",
+    "adjective": "Mexican",
+    "description": "A large sandwich with any of various meat fillings and other flavorful ingredients, served on a telera or similar bread; often eaten at lunch time It is a common street food in Mexico City, Mexico."
+  },
+  {
+    "name": "Trdelník",
+    "region": "Slovakia",
+    "adjective": "Slovakian",
+    "description": "A pastry made by wrapping dough around a stick and roasting it over an open flame, then sprinkling it with sugar and cinnamon; sometimes it is served with additional toppings"
+  },
+  {
+    "name": "Ttongppang",
+    "region": "South Korea",
+    "adjective": "South Korean",
+    "description": "A pastry that is formed in the shape of human feces; it is filled with red bean paste with walnut kernel"
+  },
+  {
+    "name": "Turon",
+    "region": "Philippines",
+    "adjective": "Filipino",
+    "description": "A type of banana fritter; sliced saba bananas, and sometimes other fruit slices, are put into in a spring roll wrapper, rolled in sugar, and deep-fried"
+  },
+  {
+    "name": "Vada pav",
+    "region": "India",
+    "adjective": "Indian",
+    "description": "A vegetarian sandwich of a deep-fried potato patty on a bun, garnished with coriander and other spices"
+  },
+  {
+    "name": "Yakisoba",
+    "region": "Japan",
+    "adjective": "Japanese",
+    "description": "Wheat noodles, grilled with various ingredients such as vegetables and chicken or pork, and coated with a slightly sweet, savory sauce. It is often served on a plate or in a bowl. Alternatively it is sometimes called yakisoba-pan and served in a bun similar to a hot dog bun."
+  },
+  {
+    "name": "Yakitori",
+    "region": "Japan",
+    "adjective": "Japanese",
+    "description": "Skewers of charcoal grilled chicken seasoned with tare sauce"
+  },
+  {
+    "name": "Zapiekanka",
+    "region": "Poland",
+    "adjective": "Polish",
+    "description": "An open-face sandwich made of half a baguette or other long roll, topped with sautéed white mushrooms, cheese, and sometimes other ingredients, toasted until the cheese melts, and served with ketchup"
+  }
+]

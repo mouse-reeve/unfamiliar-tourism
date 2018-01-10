@@ -43,6 +43,7 @@ def generate_datafile(seed):
     # ----- GENERAL FACTS
     data['country'] = lang.get_word('LOC', 'country')
     data['city_name'] = lang.get_word('LOC', 'city')
+    data['neighboring_city'] = lang.get_word('LOC', 'city2')
 
     data['language'] = {
         'name': lang.get_word('NNP', 'language'),

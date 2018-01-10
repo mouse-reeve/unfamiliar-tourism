@@ -2,6 +2,8 @@
 {% block body %}
 
 {% for section_item in cards %}
+
+{% if section_item.cards %}
 <section id="section_item.title">
     <h2><span>{{ section_item.title }}</span></h2>
     <div class="grid-x grid-margin-x">
@@ -21,6 +23,8 @@
         {% endfor %}
     </div>
 </section>
+{% endif %}
+
 {% endfor %}
 
 {% endblock %}

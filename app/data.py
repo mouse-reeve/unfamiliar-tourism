@@ -4,6 +4,7 @@ from calendar import Calendar
 import cuisine
 import fashion
 import religion
+from slogan import slogan
 import wildlife
 
 from graph import load_graph_data
@@ -98,7 +99,7 @@ def generate_datafile(seed):
 
 
     # misc facts
-    data['city_age'] = random.choice([50] + [500] * 5 + [1000] * 10)
+    data['city_age'] = random.choice([50] + [500] * 5 + [1000] * 5)
 
     isolation = random.randint(4, 10) / 10.0
     data['stats'] = {
@@ -145,6 +146,10 @@ def generate_datafile(seed):
     # lets have some religious buildings
 
     # ------------------------ DESCRIPTIONS ------------------------- #
+    # ----- SLOGAN
+    data['slogan'] = slogan(data['city_age'], data['industry'],
+                            data['stats']['population'])
+
     # ----- FOOD
     data['cuisine'] = {
         'fruit': cuisine.fruit(data['climate']['name']),

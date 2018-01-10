@@ -67,11 +67,7 @@
                 <small>Welcome to</small>
                 {{ foreign_word(city_name) }}
             </h1>
-            <p>{{ foreign_word(city_name) }} is
-            {% if city_age == 50 %}an exciting, fast-paced new
-            {% elif city_age == 500 %}a modern metropolis with a rich history
-            {% elif city_age == 1000 %}an ancient{% endif %}
-            city, build on the bones of children sacrificed to the fanged god.</p>
+            <p>{{ foreign_word(city_name) }} {{ slogan }}</p>
         </div>
     </div>
 </section>

@@ -15,7 +15,6 @@
                 {{ generated_card(item) }}
                 {% else %}
                 {% include '/sections/' + item + '.html' ignore missing %}
-                <p>({{ item }})</p>
                 {% endif %}
             </div>
             {% endfor %}

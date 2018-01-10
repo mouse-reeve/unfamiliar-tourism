@@ -6,6 +6,7 @@ from data import generate_datafile
 from flask import Flask, redirect, render_template
 from datetime import datetime, timedelta
 import json
+import os.path
 import random
 import re
 
@@ -30,6 +31,16 @@ def load_city(seed):
     ''' create the webpage from the datafile '''
     # attempt to load existing datafile for seed
     data = collect_data(seed)
+
+    # remove cards with no template; oh that I had more thorough coverage
+    # this is kind of janky?
+    cleaned = []
+    for cardset in data['cards']:
+        cardset['cards'] = [c for c in cardset['cards'] if \
+                os.path.isfile(os.getcwd() + \
+                '/app/templates/sections/%s.html' % c)]
+        cleaned.append(cardset)
+    data['cards'] = cleaned
 
     return render_template('index.html', **data)
 
@@ -66,7 +77,8 @@ def collect_data(seed):
     random.seed(seed)
 
     # template utility functions
-    data['color'] = lambda: generate_color(data['climate']['id'])
+    data['color'] = lambda bg=True: generate_color(data['climate']['id'],
+                                                   background=bg)
 
     # fields that change day-to-day
     data['get_exchange_rate'] = \
@@ -99,17 +111,25 @@ def collect_data(seed):
 
 
 # ---- Calculators for data fields that aren't fixed
-def generate_color(climate):
+def generate_color(climate, background=True):
     ''' a hex color '''
-    color_range = [[10, 13], [10, 13], [10, 13]]
-    if climate in ['hot_desert', 'arid', 'semi_arid']:
-        color_range = [[8, 15], [5, 8], [5, 8]]
-    elif climate in ['oceanic', 'subpolar_oceanic', 'subarctic']:
-        color_range = [[4, 7], [5, 8], [8, 15]]
-    elif climate in ['tropical_rainforest', 'tropical_monsoon']:
-        color_range = [[5, 8], [5, 10], [5, 8]]
+    hue = list(range(0, 360))
 
-    return '#' + ''.join(hex(random.randint(*c))[2:] for c in color_range)
+    if climate in ['hot_desert', 'arid', 'semi_arid']:
+        hue += (30 * list(range(345, 360))) + \
+               (30 * list(range(0, 60)))
+    elif climate in ['oceanic', 'subpolar_oceanic', 'subarctic']:
+        hue += (30 * list(range(180, 260)))
+    elif climate in ['tropical_rainforest', 'tropical_monsoon']:
+        hue += (30 * list(range(85, 160)))
+
+
+    hue = random.choice(hue)
+
+    saturation = '30%' if background else '45%'
+    brightness = '70%' if background else '30%'
+    color = 'hsl(%d, %s, %s)' % (hue, saturation, brightness)
+    return color
 
 
 def calculate_exchange_rate(base_rate, date):

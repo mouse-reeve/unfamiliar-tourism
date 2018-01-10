@@ -2,7 +2,7 @@
 import tracery
 from utilities import format_text
 
-def slogan(city_age, industry, population):
+def slogan(city_age, industry, population, city_name):
     ''' describe the cup tea is drunk from '''
 
     industry_part = {
@@ -15,10 +15,9 @@ def slogan(city_age, industry, population):
                          'majestic forges and smiths'],
         'printing': ['supplying the nation with fine books',
                      'its printers and bookbinding'],
-        'carving': ['its unqiue style of sculpture', 'delicate carved goods'],
+        'carving': ['sculpture and statuary', 'delicate carved goods'],
         'perfume': ['complexly scented perfumes', 'rare, aromatic tinctures'],
-        'pastry': ['the distictive style of local pastry',
-                   'its hearty local breads'],
+        'pastry': ['speciality pastry', 'its hearty breads'],
         'brewing': ['the distinctive liquor it produces',
                     'its unique local liquor'],
         'ceramics': ['handcrafted ceramics', 'artisan ceramics'],
@@ -48,7 +47,7 @@ def slogan(city_age, industry, population):
              'scrapy #city#', 'hyper-modern #city#', 'exciting new #city#']
     }
 
-    city_words = ['gem of a city', 'jewel of a city', 'urban gem', 'urban jewel'] + ['city'] * 5
+    city_words = ['urban gem', 'urban jewel'] + ['city'] * 5
     if population < 5000:
         city_words += ['town', 'village', 'township', 'retreat']
     if population > 1000000:
@@ -57,10 +56,12 @@ def slogan(city_age, industry, population):
     rules = {
         'start': 'is a #age_part#, #fame_part#',
         'age_part': age_part[city_age],
-        'fame_part': ['#fame# for #industry_part#, a unqiue local specialty'],
+        'fame_part': '#fame# for #industry_part#, ' \
+                     'a #unique# <em>%s</em>-ian phenomenon' % city_name,
         'fame': ['famed', 'a distination', 'famous', 'widely known'],
         'city': city_words,
         'industry_part': industry_part[industry],
+        'unique': ['uniquely', 'distinctively', 'quintessentially'],
     }
     grammar = tracery.Grammar(rules)
     sentence = grammar.flatten('#start#')

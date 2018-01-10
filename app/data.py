@@ -148,7 +148,8 @@ def generate_datafile(seed):
     # ------------------------ DESCRIPTIONS ------------------------- #
     # ----- SLOGAN
     data['slogan'] = slogan(data['city_age'], data['industry'],
-                            data['stats']['population'])
+                            data['stats']['population'],
+                            get_latin(data['city_name'], capitalize=True))
 
     # ----- FOOD
     data['cuisine'] = {

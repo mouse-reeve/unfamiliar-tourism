@@ -28,7 +28,7 @@ def load_graph_data():
     match (terr:terrain)--(c:climate)--(t:city_type)--(m:primary_material)--(m2:secondary_material)--(x:motif)
     where (terr)--(t) and (c)--(m) and (m)--(:stories)--(t)
     return * skip %d limit 1
-    ''' % random.randint(0, 9520 - 1)
+    ''' % random.randint(0, 9710 - 1)
 
     result = graph.run(query)
     new_data = result.data()

@@ -56,6 +56,8 @@ def generate_datafile(seed):
     # economy -- this goes in the top bar, so no card
     data['currency'] = lang.get_word('NN', 'currency')
     data['exchange_rate'] = abs(random.normalvariate(0, 10))
+    data['bills'] = [5, 10, 15, 20, 50, 100]
+    data['coins'] = [1, 5, 10, 100]
 
     # the graph got us a handful of places to visit
     data['cards']['visit'] += data['building']

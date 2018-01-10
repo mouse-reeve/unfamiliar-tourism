@@ -191,6 +191,16 @@ p .word {
     font-style: italic;
 }
 
+.comma-separated span::after {
+    content: ',';
+}
+.comma-separated span:nth-last-child(2)::after {
+    content: ', and';
+}
+.comma-separated span:last-child::after {
+    content: '';
+}
+
 a {
     text-decoration: none;
     color: #000;

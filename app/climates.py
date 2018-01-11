@@ -18,7 +18,7 @@ def weather(climate, seed, now):
     random.seed(weather_seed)
     stats = climate['stats'][month]
 
-    temp_deviation = climate['temp_range']/8
+    temp_deviation = climate['temp_range']/2
 
     high = random.normalvariate(stats[0], temp_deviation)
     low = random.normalvariate(stats[1], temp_deviation)

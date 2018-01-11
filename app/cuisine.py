@@ -187,7 +187,7 @@ def fruit(climate):
         'inside_part': '#color_part# and #flavor_part#, with #juice_part#',
         'inside': ['segmented', 'goopy', 'stringy', 'soft'],
 
-        'eating_part': ['It is eaten #eating#. '],
+        'eating_part': ['It is eaten #eating#. ', '', '', '', ''],
         'eating': [
             '#eating_method_raw# or #eating_method_cooked#',
             '#eating_method_raw#',

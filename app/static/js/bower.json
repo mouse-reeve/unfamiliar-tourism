@@ -1,0 +1,21 @@
+{
+  "name": "unfamiliar-city",
+  "homepage": "https://github.com/mouse-reeve/unfamiliar-tourism",
+  "authors": [
+    "Mouse Reeve <mousereeve@riseup.net>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "coin-generator": "git://github.com/mouse-reeve/coins.git"
+  }
+}

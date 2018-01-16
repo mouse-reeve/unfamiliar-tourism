@@ -3,3 +3,4 @@
 venv/
 app/settings.py
 __pycache__/
+bower_components/

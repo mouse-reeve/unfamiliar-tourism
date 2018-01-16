@@ -201,6 +201,10 @@ p .word {
     content: '';
 }
 
+#coin {
+    float: right;
+}
+
 a {
     text-decoration: none;
     color: #000;

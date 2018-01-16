@@ -145,7 +145,7 @@ def generate_color(climate, background=True):
 
     hue = random.choice(hue)
 
-    saturation = '30%' if background else '45%'
+    saturation = '40%' if background else '45%'
     brightness = '70%' if background else '30%'
     color = 'hsl(%d, %s, %s)' % (hue, saturation, brightness)
     return color
@@ -175,6 +175,12 @@ def ipa_filter(word):
 def latin_filter(word):
     ''' template filter for formatting foreign words '''
     return get_latin(word)
+
+
+@app.template_filter('allcaps')
+def caps_filter(word):
+    ''' template filter for formatting foreign words '''
+    return word.upper()
 
 
 @app.template_filter('number_format')

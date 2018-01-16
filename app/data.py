@@ -115,13 +115,19 @@ def generate_datafile(seed):
         'authoritarianism': random.random(),
     }
 
-    if data['stats']['authoritarianism'] < 0.2:
-        # closer to  anarchy -- not sure what to say about this but
-        # I'm keeping this here for later maybe
-        pass
-    elif data['stats']['authoritarianism'] > 0.8:
+
+    if data['stats']['authoritarianism'] > 0.8:
+        data['cards']['survive'].append('authoritarianism')
+    if data['stats']['authoritarianism'] > 0.95:
+        data['advisory'] = random.sample(
+            ['crime', 'civil unrest', 'terrorism', 'armed conflict',
+             'strikes and protests', 'political tension',
+             'risk of kidnapping'], 2)
+    elif data['stats']['authoritarianism'] > 0.97:
         # watch yourself
-        data['cards']['survive'].append('authoritarian')
+        data['advisory'] = random.choice(
+            ['risk of arrest and long-term detention',
+             'repressive poltiical climate'])
 
     # on the topic of government, maybe we should have related events
     if data['government'] == 'republic':

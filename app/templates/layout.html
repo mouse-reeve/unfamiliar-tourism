@@ -94,6 +94,16 @@
     </div>
 </section>
 
+{% if advisory %}
+<section class="travel-advisory">
+    <div>
+        <p>The Safety Commission advises against <em>any</em> travel to {{ foreign_word(city_name)}} due to
+        <span class="comma-separated">{% for badthing in advisory %}<span>{{ badthing }}</span>{% endfor %}</span>.
+        </p>
+    </div>
+</section>
+{% endif %}
+
 <section id="infopanel">
     <div class="grid-x grid-margin-x grid-margin-y">
         <div class="card cell medium-auto">

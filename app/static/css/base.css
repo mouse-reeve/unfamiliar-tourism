@@ -192,10 +192,10 @@ p .word {
 }
 
 .comma-separated span::after {
-    content: ',';
+    content: ', ';
 }
 .comma-separated span:nth-last-child(2)::after {
-    content: ', and';
+    content: ', and ';
 }
 .comma-separated span:last-child::after {
     content: '';
@@ -203,6 +203,14 @@ p .word {
 
 #coin {
     float: right;
+}
+
+.travel-advisory {
+    background-color: #FD0;
+    padding: 1em 2em;
+    text-align: center;
+    font-family: lato;
+    margin-bottom: 2em;
 }
 
 a {

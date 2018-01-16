@@ -214,6 +214,7 @@ def generate_datafile(seed):
     lang.get_word('NN', 'where')
     lang.get_word('NN', 'name')
     lang.get_word('PRP', 'i')
+    lang.get_word('NN', 'coin')
 
     data['dictionary'] = lang.dictionary
 

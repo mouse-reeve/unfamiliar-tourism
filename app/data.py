@@ -118,7 +118,7 @@ def generate_datafile(seed):
 
     if data['stats']['authoritarianism'] > 0.8:
         data['cards']['survive'].append('authoritarianism')
-    if data['stats']['authoritarianism'] > 0.95:
+    if data['stats']['authoritarianism'] > 0.97:
         data['advisory'] = random.sample(
             ['crime', 'civil unrest', 'terrorism', 'armed conflict',
              'strikes and protests', 'political tension',

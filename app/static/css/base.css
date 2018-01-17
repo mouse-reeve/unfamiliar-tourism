@@ -137,6 +137,9 @@ h3 {
     padding: 4em 2em;
     text-align: center;
 }
+#title p {
+    font-style: italic;
+}
 
 #infopanel {
     background-color: #eee;

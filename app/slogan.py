@@ -16,13 +16,12 @@ def slogan(city_age, industry, population, city_name):
         'printing': ['supplying the nation with fine books',
                      'its printers and bookbinding'],
         'carving': ['sculpture and statuary', 'delicate carved goods'],
-        'perfume': ['complexly scented perfumes', 'rare, aromatic tinctures'],
         'pastry': ['speciality pastry', 'its hearty breads'],
         'brewing': ['the distinctive liquor it produces',
                     'its unique local liquor'],
         'ceramics': ['handcrafted ceramics', 'artisan ceramics'],
         'glass': ['hand blown glass'],
-        'art': ['culture of fine arts'],
+        'art': ['culture and fine arts', 'the arts'],
         'literature': ['its lively literary community'],
         'death': ['fascination with death', 'macabre fixations',
                   'morbid fascinations'
@@ -54,10 +53,11 @@ def slogan(city_age, industry, population, city_name):
         city_words += ['metropolis', 'capitol', 'powerhouse', 'megapolis']
 
     rules = {
-        'start': 'is a #age_part#, #fame_part#',
+        'start': 'a #age_part# &mdash; #fame_part#',
         'age_part': age_part[city_age],
-        'fame_part': '#fame# for the #industry_part#',
-        'fame': ['famed', 'a distination', 'famous', 'widely known'],
+        'fame_part': 'a #fame# #industry_part#',
+        'fame': ['beacon of', 'center of', 'hotbed of',
+                 'destination for', 'must-see for',],
         'city': city_words,
         'industry_part': industry_part[industry],
         'unique': ['uniquely', 'distinctively', 'quintessentially'],

@@ -29,6 +29,14 @@ def request_new_city():
 @app.route('/<seed>')
 def load_city(seed):
     ''' create the webpage from the datafile '''
+    clean_seed = re.sub(r'(?![a-zA-Z0-9]).', '', seed)
+    if not clean_seed:
+        clean_seed = datetime.now().time().strftime('%H%M%S%f')
+
+    if seed != clean_seed:
+        return redirect('/%s' % clean_seed)
+
+    seed = clean_seed
     # attempt to load existing datafile for seed
     data = collect_data(seed)
 

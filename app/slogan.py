@@ -56,8 +56,7 @@ def slogan(city_age, industry, population, city_name):
     rules = {
         'start': 'is a #age_part#, #fame_part#',
         'age_part': age_part[city_age],
-        'fame_part': '#fame# for #industry_part#, ' \
-                     'a #unique# <em>%s</em>-ian phenomenon' % city_name,
+        'fame_part': '#fame# for the #industry_part#',
         'fame': ['famed', 'a distination', 'famous', 'widely known'],
         'city': city_words,
         'industry_part': industry_part[industry],

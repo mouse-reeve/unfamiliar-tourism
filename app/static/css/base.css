@@ -145,6 +145,7 @@ h3 {
     background-repeat: no-repeat;
     background-size: cover;
     color: #FFF;
+    margin: 2em;
 }
 #title .card {
     padding: 4em 2em;

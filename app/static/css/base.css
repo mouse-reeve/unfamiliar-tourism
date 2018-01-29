@@ -99,10 +99,16 @@ section h1 small {
     letter-spacing: 0.3rem;
 }
 
-.container {
+.container, header {
     line-height: 1.45em;
     padding: 0;
-    max-width: 85em;
+    max-width: 1165px;
+    margin: 0 auto;
+}
+
+header {
+    margin-top: 5em;
+    margin-bottom: 5em;
 }
 
 section {
@@ -133,9 +139,17 @@ h3 {
     margin-top: 0;
 }
 
+#title {
+    height: 600px;
+    background-image: URL('/static/images/skyline.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #FFF;
+}
 #title .card {
     padding: 4em 2em;
     text-align: center;
+    margin-top: 150px;
 }
 #title p {
     font-style: italic;

@@ -46,6 +46,9 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico">
 
+    <script src="/static/js/bower_components/p5.js/lib/p5.min.js"></script>
+    <script src="/static/js/bower_components/skyline/skyline.min.js"></script>
+
     <style>
         a {
             color: {{ color(bg=False) }};
@@ -83,8 +86,9 @@
 <div class="container">
 
 <section id="title">
+    <div id="skyline" data-seed="{{ seed }}" data-climate="{{ climate.gross_classification }}"></div>
     <div class="grid-x grid-margin-x grid-margin-y">
-        <div class="card cell medium-auto">
+        <div class="card cell medium-auto {{ climate.gross_classification }}">
             <h1>
                 <small>Welcome to</small>
                 {{ foreign_word(city_name) }}

@@ -55,6 +55,7 @@ climates = {
     # Apia for temp, Davao for rainfall
     'tropical_rainforest': {
         'name': 'tropical rainforest',
+        'gross_classification': 'tropical',
         'temp_range': 7,
         'stats': {
             # month: [ave. high, ave. low, rainy days, snow days, humidity %]
@@ -76,6 +77,7 @@ climates = {
     # Abidjan (or is it "wet and dry"? wikipedia disagrees internally)
     'tropical_monsoon': {
         'name': 'tropical monsoon',
+        'gross_classification': 'tropical',
         'temp_range': 5,
         'stats': {
             # month: [ave. high, ave. low, rainy days, snow days, humidity %]
@@ -97,6 +99,7 @@ climates = {
     # Aden
     'hot_desert': {
         'name': 'hot desert',
+        'gross_classification': 'arid',
         'temp_range': 7,
         'stats': {
             # month: [ave. high, ave. low, rainy days, snow days, humidity %]
@@ -118,6 +121,7 @@ climates = {
     # Baghdad
     'arid': {
         'name': 'arid',
+        'gross_classification': 'arid',
         'temp_range': 12,
         'stats': {
             # month: [ave. high, ave. low, rainy days, snow days, humidity %]
@@ -139,6 +143,7 @@ climates = {
     # Alicante
     'semi_arid': {
         'name': 'steppe', # doesn't that sound nicer than semi-arid?
+        'gross_classification': 'arid',
         'temp_range': 10,
         'stats': {
             # month: [ave. high, ave. low, rainy days, snow days, humidity %]
@@ -160,6 +165,7 @@ climates = {
     # Beirut
     'mediterranean': {
         'name': 'mediterranean',
+        'gross_classification': 'temperate',
         'temp_range': 6,
         'stats': {
             # month: [ave. high, ave. low, rainy days, snow days, humidity %]
@@ -182,6 +188,7 @@ climates = {
     # Bordeaux
     'oceanic': {
         'name': 'oceanic',
+        'gross_classification': 'temperate',
         'temp_range': 8,
         'stats': {
             # month: [ave. high, ave. low, rainy days, snow days, humidity %]
@@ -203,6 +210,7 @@ climates = {
     # Faroe islands
     'subpolar_oceanic': {
         'name': 'subpolar oceanic',
+        'gross_classification': 'arctic',
         'temp_range': 4,
         'stats': {
             # month: [ave. high, ave. low, rainy days, snow days, humidity %]
@@ -224,6 +232,7 @@ climates = {
     # Kiev
     'continental': {
         'name': 'continental',
+        'gross_classification': 'arctic',
         'temp_range': 5,
         'stats': {
             # month: [ave. high, ave. low, rainy days, snow days, humidity %]
@@ -245,6 +254,7 @@ climates = {
     # Murmansk
     'subarctic': {
         'name': 'subarctic',
+        'gross_classification': 'arctic',
         'temp_range': 6,
         'stats': {
             # month: [ave. high, ave. low, rainy days, snow days, humidity %]

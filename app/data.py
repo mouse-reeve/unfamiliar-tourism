@@ -172,7 +172,7 @@ def generate_datafile(seed):
         'teacup': cuisine.teacup(data['primary_material'], data['motif'])
     }
 
-    data['cards']['cuisine'].append('fruit')
+    data['cards']['learn'].append('fruit')
 
 
     # ------- WILDLIFE

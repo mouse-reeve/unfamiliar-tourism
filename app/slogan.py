@@ -1,69 +1,79 @@
 ''' a one-line description of the city'''
-import tracery
-from utilities import format_text
+import random
+from utilities import format_text, get_latin
 
-def slogan(city_age, industry, population, city_name):
+def slogan(data):
     ''' describe the cup tea is drunk from '''
+    options = [
+        flowers,
+        beacon_of,
+        regional_gem,
+    ]
+    return random.choice(options)(data)
 
-    industry_part = {
-        'weaving': [
-            'innovative looms and weaving', 'tapestries',
-            'fabrics and textiles', 'textiles and fabrics'],
-        'fishing': ['scenic fishing boats', 'seaside charm',
-                    'delicious daily catch'],
-        'metalworking': ['intricate metalworking',
-                         'majestic forges and smiths'],
-        'printing': ['supplying the nation with fine books',
-                     'its printers and bookbinding'],
-        'carving': ['sculpture and statuary', 'delicate carved goods'],
-        'pastry': ['speciality pastry', 'its hearty breads'],
-        'brewing': ['the distinctive liquor it produces',
-                    'its unique local liquor'],
-        'ceramics': ['handcrafted ceramics', 'artisan ceramics'],
-        'glass': ['hand blown glass'],
-        'art': ['culture and fine arts', 'the arts'],
-        'literature': ['its lively literary community'],
-        'death': ['fascination with death', 'macabre fixations',
-                  'morbid fascinations'
-                  'elaborate funerary practices'],
-        'technology': ['technological innovation'],
-        'education': ['learning and philosophy', 'fostering deep thinkers'],
-        'crop': ['a rare flowering plant said to have spiritual properties'],
+
+def flowers(data):
+    ''' stroll through the cherry blossoms '''
+    walk = random.choice(['Stroll', 'Amble'])
+    fruit = get_latin(data['dictionary']['fruitNN'], capitalize=True)
+
+    return format_text('%s through %s Blossoms' % (walk, fruit))
+
+
+def beacon_of(data):
+    ''' a beacon of innovation '''
+    country = get_latin(data['country'])
+    beacon = random.choice(['Heart', 'Beacon', 'Bosom', 'Capital', 'Soul'])
+    industries = {
+        'art': ['the Arts', 'Creativity', 'Artistry'],
+        'literature': ['Stories', 'Literature', 'the Written Word'],
+        'death': ['the Macabre', 'the Afterlife', 'Death'],
+        'technology': ['Innovation', 'Technology'],
+        'education': ['Thought', 'Intellect', 'Education', 'Wisdom'],
+        'crop': ['Taste', 'Culinary Finesse', 'Cuisine'],
+        'weaving': ['Textile Arts', 'Fiber Arts'],
+        'fishing': ['the Seaside', 'Beachside Bliss'],
+        'metalworking': ['Industry and Craft'],
+        'printing': ['Literature', 'Learning', 'Publishing'],
+        'carving': ['Industry and Craft', 'Craftsmanship', 'Regional Craft'],
+        'pastry': ['Taste', 'Cuisine', 'Fine Dining', 'Cuisine'],
+        'brewing': ['Adventure', 'Festivity'],
+        'ceramics': ['Industry and Craft', 'Craftsmanship', 'Regional Craft'],
+        'glass': ['Artistry', 'Craftsmanship']
     }
+    industry = random.choice(industries[data['industry']])
+    return format_text('%s\'s %s of %s' % (country, beacon, industry))
 
-    age_part = 'ancient city'
-    if city_age == 50:
-        age_part = 'exciting, fast-paced young city'
-    elif city_age == 500:
-        age_part = 'modern metropolis'
 
-    age_part = {
-        1000: ['ancient #city#', 'historical #city#', '#city# of antiquity',
-               'old world #city#'],
-        500: ['modern #city#', 'gleaming #city#', 'progressive #city#',
-              'modern #city# with a rich history'],
-        50: ['young #city#', 'fast-paced young #city#', 'boomtown #city#',
-             'scrapy #city#', 'hyper-modern #city#', 'exciting new #city#']
+def regional_gem(data):
+    ''' Gem of the Ashzvire Desert '''
+    climate = data['climate']['name']
+
+    gem = lambda: random.choice(['Gem', 'Jewel', 'Crown'])
+    region = data['terrain']
+    region_name = get_latin(data['geography'][region], capitalize=True)
+
+    interior_name = {
+        'tropical_rainforest': 'rainforest',
+        'tropical_monsoon': 'tropics',
+        'hot_desert': 'desert',
+        'arid': 'desert',
+        'steppe': 'steppe',
+        'subarctic': 'tundra',
     }
+    if region == 'interior':
+        if climate in interior_name:
+            region = interior_name[climate]
+        else:
+            nation_types = {
+                'monarchy': 'Thrown',
+                'oligarchy': 'Empire',
+                'republic': 'Republic',
+                'theocracy': 'Nation',
+            }
+            region = nation_types[data['government']]
+            region_name = get_latin(data['country'], capitalize=True)
 
-    city_words = ['urban gem', 'urban jewel'] + ['city'] * 5
-    if population < 5000:
-        city_words += ['town', 'village', 'township', 'retreat']
-    if population > 1000000:
-        city_words += ['metropolis', 'capitol', 'powerhouse', 'megapolis']
+    region = region[0].upper() + region[1:]
 
-    rules = {
-        'start': 'a #age_part# &mdash; #fame_part#',
-        'age_part': age_part[city_age],
-        'fame_part': 'a #fame# #industry_part#',
-        'fame': ['beacon of', 'center of', 'hotbed of',
-                 'destination for', 'must-see for',],
-        'city': city_words,
-        'industry_part': industry_part[industry],
-        'unique': ['uniquely', 'distinctively', 'quintessentially'],
-    }
-    grammar = tracery.Grammar(rules)
-    sentence = grammar.flatten('#start#')
-
-    return format_text(sentence)
-
+    return format_text('%s of the %s %s' % (gem(), region_name, region))

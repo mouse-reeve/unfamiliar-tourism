@@ -50,6 +50,15 @@ def generate_datafile(seed):
         'stats': lang.get_stats()
     }
 
+    # ----- GEOGRAPHY
+    data['geography'] = {
+        'region': lang.get_word('LOC', 'region'),
+        'river': lang.get_word('LOC', 'river'),
+    }
+
+    data['geography'][data['terrain']] = lang.get_word('LOC', data['terrain'])
+
+
     # great -- now we can have a card about language
     data['cards']['survive'].append('language')
 
@@ -155,10 +164,6 @@ def generate_datafile(seed):
     # lets have some religious buildings
 
     # ------------------------ DESCRIPTIONS ------------------------- #
-    # ----- SLOGAN
-    data['slogan'] = slogan(data['city_age'], data['industry'],
-                            data['stats']['population'],
-                            get_latin(data['city_name'], capitalize=True))
 
     # ----- FOOD
     data['cuisine'] = {
@@ -202,7 +207,6 @@ def generate_datafile(seed):
 
     # lookup words we'll need later. doing this now instead of on the fly
     # so that the lang library isn't a dependency
-    lang.get_word('NN', 'region')
     lang.get_word('NN', 'market')
     lang.get_word('NN', 'fruit')
     lang.get_word('NN', 'tea')
@@ -217,5 +221,8 @@ def generate_datafile(seed):
     lang.get_word('NN', 'coin')
 
     data['dictionary'] = lang.dictionary
+
+    # ----- SLOGAN
+    data['slogan'] = slogan(data)
 
     return data

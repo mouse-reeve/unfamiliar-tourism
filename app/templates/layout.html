@@ -89,7 +89,7 @@
                 <small>Welcome to</small>
                 {{ foreign_word(city_name) }}
             </h1>
-            <p>{{ slogan|safe }}</p>
+            <p>{{ slogan | capitalize }}</p>
         </div>
     </div>
 </section>
@@ -141,7 +141,7 @@
             icy
             {% endif %}
 
-            {{ terrain }} region of {{ foreign_word(country) }} known as {{ foreign_word(dictionary['regionNN']) }}.
+            {{ terrain }} region of {{ foreign_word(country) }} known as {{ foreign_word(geography.region) }}.
             </p>
         </div>
         <div class="card cell medium-auto">

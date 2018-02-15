@@ -185,9 +185,15 @@ def latin_filter(word):
     return get_latin(word)
 
 
+@app.template_filter('capitalize')
+def capitalize_filter(word):
+    ''' template filter for capitalizing a sentence'''
+    return word[0].upper() + word[1:]
+
+
 @app.template_filter('allcaps')
 def caps_filter(word):
-    ''' template filter for formatting foreign words '''
+    ''' template filter for ALL CAPS '''
     return word.upper()
 
 

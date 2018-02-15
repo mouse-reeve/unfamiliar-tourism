@@ -209,6 +209,8 @@ def generate_datafile(seed):
     # so that the lang library isn't a dependency
     lang.get_word('NN', 'market')
     lang.get_word('NN', 'fruit')
+    lang.get_word('NN', 'pastry')
+    lang.get_word('NN', 'alcohol')
     lang.get_word('NN', 'tea')
 
     lang.get_word('NN', 'hello')

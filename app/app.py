@@ -12,12 +12,6 @@ import re
 
 app = Flask(__name__)
 
-def before_request():
-    ''' temp code for testing because this version of flask
-    isn't picking up template changes '''
-    app.jinja_env.cache = {}
-app.before_request(before_request)
-
 
 @app.route('/')
 def request_new_city():
@@ -87,8 +81,6 @@ def collect_data(seed):
 
     # ----- load the data from saved files or generate it
     try:
-        if app.debug:
-            raise(IOError)
         data = json.load(open(
             app.static_folder + '/datafiles/' + seed + '.json', 'r'))
     except IOError:

@@ -198,8 +198,13 @@ def generate_datafile(seed):
     # ------------------------ DISPLAY ITEMS ------------------------- #
     # reformat the cards object to work with the ui
 
+    # ----- Whitelist cards that are ready
+    ready = ['language', 'fruit', 'wildlife']
+    for group in data['cards']:
+        data['cards'][group] = [c for c in data['cards'][group] if c in ready]
     data['cards'] = [{'title': 'events', 'cards': []}] + \
-        [{'title': c, 'cards': data['cards'][c]} for c in data['cards']]
+        [{'title': c, 'cards': data['cards'][c]} for c in data['cards'] \
+         if data['cards'][c]]
 
 
     # extract the calendar into a json format

@@ -141,17 +141,29 @@ h3 {
 
 #title {
     height: 600px;
-    background-image: URL('/static/images/skyline.png');
     background-repeat: no-repeat;
     background-size: cover;
     color: #FFF;
     margin: 2em;
+    position: relative;
+}
+#skyline {
+    width: 100%;
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 #title .card {
-    padding: 4em 2em;
     text-align: center;
-    margin-top: 150px;
+    margin-top: 115px;
 }
+#title .card.tropical {
+    background: rgba(0, 0, 0, 0.3);
+    width: 600px;
+}
+
 #title p {
     font-style: italic;
 }

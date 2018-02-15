@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "coin-generator": "git://github.com/mouse-reeve/coins.git"
+    "coin-generator": "git://github.com/mouse-reeve/coins.git",
+    "skyline": "https://github.com/mouse-reeve/skyline"
   }
 }

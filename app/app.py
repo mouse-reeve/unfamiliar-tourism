@@ -33,6 +33,8 @@ def load_city(seed):
     seed = clean_seed
     # attempt to load existing datafile for seed
     data = collect_data(seed)
+    if data == 'oops':
+        return render_template('error.html', error='Database failure')
 
     # remove cards with no template; oh that I had more thorough coverage
     # this is kind of janky?

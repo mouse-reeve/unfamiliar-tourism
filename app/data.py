@@ -38,7 +38,10 @@ def generate_datafile(seed):
     # ------------------------ GRAPH DATA ------------------------- #
     ''' everything that's stored in neo4j gets loaded now. the following
     fields depend on what is set at this point. '''
-    data.update(load_graph_data())
+    graph_dump = load_graph_data()
+    if not graph_dump:
+        return False
+    data.update(graph_dump)
 
     # ----- GENERAL FACTS
     data['country'] = lang.get_word('LOC', 'country')

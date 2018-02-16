@@ -7,9 +7,12 @@ def slogan(data):
     options = [
         urban_garden,
         wow_old,
-        flowers,
+        beacon_of,
         beacon_of,
         regional_gem,
+        regional_gem,
+        activity,
+        activity,
         activity,
     ]
     return format_text(random.choice(options)(data))
@@ -47,13 +50,6 @@ def wow_old(data):
     time = time[str(data['city_age'])]
     return 'The %s to %s' % (door, random.choice(time))
 
-def flowers(data):
-    ''' stroll through the cherry blossoms '''
-    walk = random.choice(['Stroll', 'Amble'])
-    fruit = get_latin(data['dictionary']['fruitNN'], capitalize=True)
-
-    return '%s through %s Blossoms' % (walk, fruit)
-
 
 def beacon_of(data):
     ''' a beacon of innovation '''
@@ -84,9 +80,9 @@ def regional_gem(data):
     ''' Gem of the Ashzvire Desert '''
     climate = data['climate']['id']
 
-    gem = random.choice(['Gem', 'Jewel', 'Crown'])
+    gem = random.choice(['Gem', 'Jewel', 'Crown', 'Treasure', 'Pride'])
     region = data['terrain']
-    region_name = get_latin(data['geography'][region], capitalize=True)
+    region_name = get_latin(data['geography']['region'], capitalize=True)
 
     interior_name = {
         'tropical_rainforest': 'rainforest',
@@ -118,19 +114,21 @@ def activity(data):
     ''' Spend a Fanciful Day '''
     dictionary = data['dictionary']
     industries = {
-        'art': ['Inhale a Breath of Beauty', 'Find an Artist\'s Inspiration'],
+        'art': ['Take a Breath of Beauty', 'Find an Artist\'s Inspiration'],
         'literature': ['Step into a Poem in %s' % \
                 data['secondary_material'][0].upper() + \
                 data['secondary_material'][1:]],
         'death': ['Brush the Hereafter', 'Reconnect with your Ancestors'],
         'technology': ['Peak at Tomorrow'],
-        'education': ['Study at the Seat of Knowledge'],
+        'education': ['Study at the Seat of Knowledge', 'Learn Something New'],
         'crop': ['Take a Bite of Just-Picked %s Fruit' % \
-                get_latin(dictionary['fruitNN'], capitalize=True)],
+                 get_latin(dictionary['fruitNN'], capitalize=True),
+                 'Stroll through the %s blossoms' % \
+                 get_latin(data['dictionary']['fruitNN'])],
         'weaving': ['Find a Bargain in the Fabric Market'],
         'fishing': ['Hear the Crash of the Ocean Waves'],
         'metalworking': ['Feel the Heat of an Artisan\'s Forge'],
-        'printing': ['Inhale the Old Book Smell'],
+        'printing': ['A Whiff of Old Book Smell'],
         'carving': ['Surround yourself with Architectural Beauty'],
         'pastry': ['Savor a Freshly Baked %s Pastry' % \
                 get_latin(dictionary['pastryNN'], capitalize=True)],

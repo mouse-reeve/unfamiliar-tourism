@@ -55,8 +55,9 @@ def generate_datafile(seed):
         'region': lang.get_word('LOC', 'region'),
         'river': lang.get_word('LOC', 'river'),
     }
-
     data['geography'][data['terrain']] = lang.get_word('LOC', data['terrain'])
+    data['geography']['neighborhoods'] = [
+        lang.get_word('LOC', 'neighborhood%d' % i) for i in range(5)]
 
 
     # great -- now we can have a card about language
@@ -189,9 +190,8 @@ def generate_datafile(seed):
     lang.get_word('NN', 'teahouse')
     data['teahouse'] = {
         'name': lang.get_word('JJ', 'serene'),
-        'description': architecture.building(data['primary_material'],
-                                             data['secondary_material'])
     }
+    data['teahouse']['description'] = architecture.teahouse(data)
     data['cards']['cuisine'].append('teahouse')
 
 

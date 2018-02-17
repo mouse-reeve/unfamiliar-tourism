@@ -1,6 +1,8 @@
-<h3>{{ foreign_word(teahouse.name) }}{{ foreign_word(dictionary['teahouseNN']) }}</h3>
+<h3>Teahouse {{ foreign_word(teahouse.name) }}{{ foreign_word(dictionary['teahouseNN']) }}</h3>
 
 <p>
-{{ foreign_word(teahouse.name, capitalize=True) }}{{ foreign_word(dictionary['teahouseNN']) }} ({{ foreign_word(dictionary['teahouseNN']) }} translates to "teahouse")
-is {{ teahouse.description }}.
+The perfect spot to step back and take a rest while exploring the bustling
+{{ foreign_word(geography.neighborhoods[0], capitalize=True) }} district,
+{{ foreign_word(teahouse.name, capitalize=True) }} is
+{{ teahouse.description }}
 </p>

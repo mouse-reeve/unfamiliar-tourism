@@ -68,11 +68,24 @@ def eatery(name, category, data):
             'local favorite',
             'popular place',
             'much loved #type#',
+            'prestigious',
+            'foodie oasis',
         ],
-        'vibe': ['so mellow, so chill'],
-        'space': ['cheery yellow walls'],
+        'vibe': [
+            'bustling',
+            'busy',
+            'relaxing',
+            'sophisticated',
+            'quaint',
+            'cozy',
+            'elegant',
+            'world-renowned',
+            'laid-back',
+        ],
+        'space': [],
 
         # wordlists
+        'atmosphere': ['atmosphere', 'charm'],
     }
     grammar = tracery.Grammar(rules)
     sentence = grammar.flatten('#start#')

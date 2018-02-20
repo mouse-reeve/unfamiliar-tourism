@@ -82,7 +82,7 @@ def eatery(name, category, data):
             'world-renowned',
             'laid-back',
         ],
-        'space': [],
+        'space': ['space'],
 
         # wordlists
         'atmosphere': ['atmosphere', 'charm'],

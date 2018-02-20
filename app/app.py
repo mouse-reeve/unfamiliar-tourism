@@ -6,7 +6,6 @@ from data import generate_datafile
 from flask import Flask, redirect, render_template
 from datetime import datetime, timedelta
 import json
-import os.path
 import random
 import re
 
@@ -37,16 +36,6 @@ def load_city(seed):
     if data == 'oops':
         return render_template('error.html', error='Database failure')
 
-    # remove cards with no template; oh that I had more thorough coverage
-    # this is kind of janky?
-    cleaned = []
-    for cardset in data['cards']:
-        cardset['cards'] = [c for c in cardset['cards'] if \
-                os.path.isfile(os.getcwd() + \
-                '/app/templates/sections/%s.html' % c)]
-        cleaned.append(cardset)
-    data['cards'] = cleaned
-
     return render_template('index.html', **data)
 
 
@@ -55,16 +44,6 @@ def load_city_data(seed):
     ''' create the webpage from the datafile '''
     # attempt to load existing datafile for seed
     data = collect_data(seed)
-
-    # remove cards with no template; oh that I had more thorough coverage
-    # this is kind of janky?
-    cleaned = []
-    for cardset in data['cards']:
-        cardset['cards'] = [c for c in cardset['cards'] if \
-                os.path.isfile(os.getcwd() + \
-                '/app/templates/sections/%s.html' % c)]
-        cleaned.append(cardset)
-    data['cards'] = cleaned
 
     return json.dumps(data, default=lambda x: x.__dict__)
 
@@ -123,16 +102,6 @@ def collect_data(seed):
                     seed,
                     forecast_date))
         forecast_date += timedelta(days=1)
-
-    date = datetime.now() + timedelta(days=1)
-    calendar_end = datetime.now() + timedelta(days=8)
-    data['cards'][0]['cards'] = []
-
-    while date < calendar_end:
-        if date.strftime('%m%d') in data['calendar']:
-            data['cards'][0]['cards'] += \
-                    data['calendar'][date.strftime('%m%d')]
-        date += timedelta(days=1)
 
     return data
 

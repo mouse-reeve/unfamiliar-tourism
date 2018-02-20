@@ -11,6 +11,7 @@ from graph import load_graph_data
 from foreigntongue import Language
 from utilities import get_latin
 
+from datetime import datetime
 from collections import defaultdict
 import random
 
@@ -58,8 +59,9 @@ def generate_datafile(seed):
         'region': lang.get_word('LOC', 'region'),
         'river': lang.get_word('LOC', 'river'),
     }
-
     data['geography'][data['terrain']] = lang.get_word('LOC', data['terrain'])
+    data['geography']['neighborhoods'] = [
+        lang.get_word('LOC', 'neighborhood%d' % i) for i in range(5)]
 
 
     # great -- now we can have a card about language
@@ -88,6 +90,7 @@ def generate_datafile(seed):
             'gender': random.randint(0, gender_count)
         }
 
+
     surname_first = bool(random.randint(0, 1))
     def get_name(given_name, surname):
         ''' just print out the latin name of whoever '''
@@ -98,6 +101,11 @@ def generate_datafile(seed):
     # ----- GENDER
     data['genders'] = []
     gender_count = random.choice([2, 3, 5])
+
+    # and make it easier to generate a random name
+    data['get_person'] = lambda title: get_person(str(random.random()),
+                                                  title,
+                                                  gender_count)
     if gender_count == 2:
         data['genders'] = [
             {'name': lang.get_word('NN', 'male')},
@@ -115,6 +123,8 @@ def generate_datafile(seed):
 
     # misc facts
     data['city_age'] = random.choice([50] + [500] * 5 + [1000] * 5)
+    data['founded'] = int(datetime.now().year - \
+        random.normalvariate(data['city_age'], data['city_age']/2))
 
     isolation = random.randint(4, 10) / 10.0
     data['stats'] = {
@@ -192,9 +202,12 @@ def generate_datafile(seed):
     lang.get_word('NN', 'teahouse')
     data['teahouse'] = {
         'name': lang.get_word('JJ', 'serene'),
-        'description': architecture.building(data['primary_material'],
-                                             data['secondary_material'])
     }
+    data['teahouse']['description'] = architecture.eatery(
+        get_latin(data['teahouse']['name'], capitalize=True),
+        'teahouse',
+        data
+    )
     data['cards']['cuisine'].append('teahouse')
 
 

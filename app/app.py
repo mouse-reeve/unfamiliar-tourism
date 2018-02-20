@@ -14,13 +14,14 @@ app = Flask(__name__)
 
 
 @app.route('/')
+@app.route('/city')
 def request_new_city():
     ''' send visitors to a particular seed '''
     seed = datetime.now().time().strftime('%H%M%S%f')
-    return redirect('/%s' % seed)
+    return redirect('/city/%s' % seed)
 
 
-@app.route('/<seed>')
+@app.route('/city/<seed>')
 def load_city(seed):
     ''' create the webpage from the datafile '''
     clean_seed = re.sub(r'(?![a-zA-Z0-9]).', '', seed)
@@ -49,7 +50,7 @@ def load_city(seed):
     return render_template('index.html', **data)
 
 
-@app.route('/<seed>/datafile')
+@app.route('/city/<seed>/datafile')
 def load_city_data(seed):
     ''' create the webpage from the datafile '''
     # attempt to load existing datafile for seed
@@ -68,7 +69,7 @@ def load_city_data(seed):
     return json.dumps(data, default=lambda x: x.__dict__)
 
 
-@app.route('/<seed>/<card>')
+@app.route('/city/<seed>/<card>')
 def load_card(seed, card):
     ''' load just a single card for the city '''
     data = collect_data(seed)
@@ -76,6 +77,11 @@ def load_card(seed, card):
     # so that the template knows who it is, and that it's a card
     data['this_card'] = card
     return render_template('section.html', **data)
+
+@app.errorhandler(404)
+def page_not_found(_):
+    ''' catch bad paths '''
+    return render_template('error.html', error='Not found'), 404
 
 
 def collect_data(seed):
@@ -88,7 +94,7 @@ def collect_data(seed):
     except IOError:
         data = generate_datafile(seed)
         if not data:
-            return render_template('error.html', error='Database failure')
+            return render_template('error.html', error='Database failure'), 500
 
         # save a copy for future (re)loads
         filepath = app.static_folder + '/datafiles/' + seed + '.json'

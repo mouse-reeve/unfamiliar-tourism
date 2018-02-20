@@ -14,8 +14,8 @@ def animal(climate, terrain):
                 'that #bird_behavior#',
         'rodent': '#size# #warm_color# rodents that #behavior#',
         'raccoon': '#size#, raccoon-like animals that #behavior#',
-        'coyote': '#size# species of wild dogs with #warm_color# and #color# coats. It is said that they #behavior#',
-        'fish': 'slimy fish that #behavior#',
+        'coyote': '#size# wild dogs with #warm_color# and #color# coats. '\
+                  'It is said that they #behavior#',
 
         # birds
         'bird_type': ['raptors'] + 10 * ['songbirds', 'birds'],
@@ -89,6 +89,8 @@ def animal(climate, terrain):
             'Locals believe #belief#',
             'Local children like to catch them and keep them as pets',
             'They are hunted for food, and considered a delicacy',
+            'They are considered a pest',
+            'Locals do not acknowledge their presence',
         ],
         'belief': [
             'they are manifestations of the spirits of the dead',
@@ -124,7 +126,6 @@ def animal(climate, terrain):
     ]
 
     if terrain == 'coast':
-        rules['type'].append('#fish#')
         rules['bird_type'] += ['sea birds', 'aquatic birds']
         rules['color'] += ['gray', 'pale blue']
 

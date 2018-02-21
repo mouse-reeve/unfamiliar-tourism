@@ -1,4 +1,5 @@
 ''' Nature! '''
+import random
 import tracery
 from utilities import format_text
 
@@ -55,6 +56,39 @@ def animal(climate, terrain):
 
             'can run as fast as 30 miles per hour',
             'can eat plastic',
+            'eat clay to aid their digestion',
+            'perform elaborate dances to attract a mate',
+            'can turn their heads almost all the way around',
+            'howl at the moon',
+            'hunt by smell',
+            'are totally blind, and navigate by sound',
+            'have to eat their bodyweight in food each day',
+            'can catch and spread human diseases',
+            'run faster than horses',
+            'are born a downy coat that they later shed',
+            'have digestive systems that can filter out toxins and poisons',
+            'rely on one variety of rare, native grass as a dietary staple',
+            'have perfectly #cold_color# eyes',
+            'have different colored eyes',
+            'vastly outnumber humans',
+            'have #cold_color#ish #warm_color# blood',
+            'scavenge scraps of cloth to swaddle their young',
+            'kidnap and raise other animal\'s young as their own',
+            'have complex family and social relationships',
+            'give each other gifts of particularly beautiful stones',
+            'have names for each other',
+            'are fastidiously tidy',
+            'eat their mates',
+            'are consumed by their own offspring',
+            'can change gender at will',
+            'can reproduce asexually if they are unable to find a mate',
+            'can go %d weeks without eating' % random.randint(2, 5),
+            'can solve complex puzzles and open doors',
+            'live up to %d years of age' % random.randint(20, 200),
+            'prefer to take over human structure\'s for nests',
+            'build huts for themselves out of woven branches',
+            'taste with their feet',
+            'have regional dialects and accents',
             'can drink near-freezing or boiling water',
             'can sever a person\'s head from their body in one stroke',
             'befriend spiders',
@@ -110,12 +144,23 @@ def animal(climate, terrain):
             'they are harbingers of death',
             'they are harbingers of change',
             'they watch our dreams as we sleep',
+            'they steal children who wander too far from their homes',
+            'they protect infants from sickness and ill fortune',
+            'they can transform into humans under certain conditions',
+            'they can return from death',
+            'their bones have healing properties',
+            'they can predict the weather',
+            'they can read and understand human language',
+            'it is bad luck to hurt them',
+            'they hold wild bacchanalias in the dead of night',
+            'they imitate voices of loved ones to lure people into traps',
         ],
     }
 
     # added after so that the odds aren't skewed
     rules['bird_behavior'] = rules['behavior'] + [
         'can mimick human speach'
+        'mimicks ambient noises and speach',
         '#cry_verb# ocean waves',
         '#cry_verb# radio static',
         '#cry_verb# gusts of wind',
@@ -132,7 +177,7 @@ def animal(climate, terrain):
     if 'tropical' in climate:
         rules['color'] += [
             'brightly colored', 'multicolored', '#warm_color#',
-            'bright #warm_color# and #cold_color', '#cold_color#'
+            'bright #warm_color# and #cold_color#', '#cold_color#'
         ]
         rules['type'].append('#insect#')
     elif climate in ['arid', 'semi_arid', 'hot_desert']:

@@ -4,48 +4,39 @@ import random
 import tracery
 from utilities import format_text, get_latin
 
-def building(primary_material, secondary_material):
-    ''' a generic building '''
 
-    rules = {
-        'start': 'a %s building with %s' % \
-            (primary_material, secondary_material)
-    }
-    grammar = tracery.Grammar(rules)
-    sentence = grammar.flatten('#start#')
-
-    return format_text(sentence)
-
-
-def eatery(name, category, data):
+def eatery(name, dish, category, data):
     ''' a charming stone hut where they serve tea '''
+    earliest = data['founded'] + 5 if data['founded'] > 1700 else 1700
+    founding = random.randint(earliest, datetime.now().year - 4)
+
     rules = {
         # structures
         'start': [
-            '''With a gourmet, #cuisine# menu and #vibe#, #name# is a
+            '''With a gourmet, #cuisine# menu and #vibe_part#, #name# is a
                #platitude#. It will have you craving perennial favorites
-               like #dish#. The setting in #space# is stunning, a perfect
-               #city# experience''',
-            '''Owner #chef# has given #cuisine# a modern edge while
+               like #dish#. The setting, in #space#, is stunning, a perfect
+               #city# experience.''',
+            '''Owner #chef# has given #cuisine# cuisine a modern edge while
                still staying true to the regional style. The venue is stunning,
-               #space# with #vibe#. Be sure to try the #dish#.''',
+               #space# with #vibe_part#. Be sure to try the #dish#.''',
             '''In this #vibe# #type#, you can settle down in #space#. The menu
-               features staples of #city# #cuisine#, and is best known for
+               features staples of #cuisine# cuisine, and is best known for
                traditional-style #dish#.''',
             '''#name# is a #cuisine# restaurant in #neighborhood# that's been
-               going strong since #founding#. With #vibe# and attentive service,
-               it serves #cuisine# in #space#.''',
-            '''#name# is a #vibe# #type#, and always welcoming. It offers
-               excellent #cuisine#. The #dish is hard to beat.''',
-            '''This #space# #type# in #neighborhood# gets rave reviews for
-               top notch and affordable #cuisine# and ambiance. The #vibe# makes
-               it a #platitude#''',
-            '''#name# is one of #city#'s best #cuisine# restaurants. It's
-               #platitude# where you can enjoy #space#. There's a greate range
-               of dishes on offer, including #dish#.''',
+               going strong since #founding#. With a #vibe_part# and attentive
+               service, it offers #cuisine# cuisine in #space#.''',
+            '''#name# is a #vibe# #type# in a welcoming #space#. It offers
+               excellent #cuisine# food. The #dish# is hard to beat.''',
+            '''This #space# in #neighborhood# gets rave reviews for
+               top notch and affordable #cuisine# food and ambiance. The
+               #vibe_part# makes it a #platitude#''',
+            '''#name# is one of #city#'s best #cuisine# restaurants. It's a
+               #platitude# where you can enjoy this #space#. There's a great
+               range of dishes on offer, including #dish#.''',
             '''This #platitude# opened in #founding# and has set the tone for
-               #city# cuisine ever since. Many regular order #dish# and sit back
-               and enjoy the #vibe#.''',
+               #city# cuisine ever since. Regulars like to order #dish#, sit
+               back, and enjoy the #vibe_part#.''',
         ],
 
         # info
@@ -54,15 +45,17 @@ def eatery(name, category, data):
         'city': get_latin(data['city_name'], capitalize=True),
         'neighborhood': 'the %s district' % get_latin(
             random.choice(data['geography']['neighborhoods']), capitalize=True),
-        'founding': str(random.randint(data['founded'] + 5,
-                                       datetime.now().year - 4)),
+        'founding': str(founding),
         'chef': data['get_person']('chef')['name'],
 
         # descriptive componenets
-        'cuisine': 'local cuisine',
-        'dish': 'local dish',
+        'cuisine': '%sian-style' % get_latin(
+            data['country'],
+            capitalize=True),
+        'dish': '"%s" (a %s)' % (get_latin(dish['name']),
+                                 dish['description']),
         'platitude': [
-            'enduring favorite'
+            'enduring favorite',
             'first-rate establishment',
             'local go-to',
             'local favorite',
@@ -71,6 +64,25 @@ def eatery(name, category, data):
             'prestigious',
             'foodie oasis',
         ],
+        'vibe_part': '#vibe# #atmosphere#',
+
+        'space': [
+            '#stories# with #color#-painted #material# walls and #accent#',
+            'stylish #material# and #secondary_material# #stories#',
+        ],
+        'stories': '#%s#' % data['stories'],
+        'single': ['building', '#type#'],
+        'multi': 'spacious #building#',
+        'many': '%s-floor #building#' % random.choice(
+            ['first', 'second', 'third', 'fourth', 'fifth', 'top']),
+        'accent': '#secondary_material# #accent_object#',
+        'accent_object': ['tables', 'doorways', 'lamps', 'dishes'],
+        'material': data['primary_material'],
+        'secondary_material': data['secondary_material'],
+        'building': ['suite', 'hall', 'spot', 'room', '#type#'],
+
+        # wordlists
+        'atmosphere': ['atmosphere', 'charm'],
         'vibe': [
             'bustling',
             'busy',
@@ -82,10 +94,8 @@ def eatery(name, category, data):
             'world-renowned',
             'laid-back',
         ],
-        'space': ['space'],
-
-        # wordlists
-        'atmosphere': ['atmosphere', 'charm'],
+        'color': ['red', 'orange', 'yellow', 'green',
+                  'purple', 'white', 'pink'],
     }
     grammar = tracery.Grammar(rules)
     sentence = grammar.flatten('#start#')

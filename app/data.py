@@ -39,7 +39,10 @@ def generate_datafile(seed):
     # ------------------------ GRAPH DATA ------------------------- #
     ''' everything that's stored in neo4j gets loaded now. the following
     fields depend on what is set at this point. '''
-    data.update(load_graph_data())
+    graph_dump = load_graph_data()
+    if not graph_dump:
+        return False
+    data.update(graph_dump)
 
     # ----- GENERAL FACTS
     data['country'] = lang.get_word('LOC', 'country')
@@ -179,40 +182,54 @@ def generate_datafile(seed):
     data['cuisine'] = {
         'fruit': cuisine.fruit(data['climate']['name']),
         'tea': cuisine.tea(data['climate']['name']),
-        'teacup': cuisine.teacup(data['primary_material'], data['motif'])
+        'teacup': cuisine.teacup(data['primary_material'], data['motif']),
+        'animals': [{'name': lang.get_word('NNP', 'critter%d' % i),
+                     'description': wildlife.animal(
+                         data['climate']['name'],
+                         data['terrain'])} for i in range(3)],
+        'vegetables': [{'name': lang.get_word('NNP', 'vegetable%d' % i),
+                        'description': cuisine.vegetable()} for i in range(2)],
     }
 
-    data['cards']['cuisine'].append('fruit')
+    data['cards']['learn'].append('fruit')
 
 
     # ------- WILDLIFE
-    data['wildlife'] = {
-        'name': lang.get_word('NNP', 'critter'),
-        'description': wildlife.animal(data['climate']['name'],
-                                       data['terrain'])}
+    data['wildlife'] = data['cuisine']['animals'][0]
     data['cards']['learn'].append('wildlife')
 
     # ------- FASHION
     data['body_mod'] = fashion.body_mod(gender_count, data['motif'])
 
     # ----- BUILDINGS
-    lang.get_word('NN', 'teahouse')
-    data['teahouse'] = {
+    lang.get_word('NN', 'restaurant')
+    data['restaurant'] = {
         'name': lang.get_word('JJ', 'serene'),
     }
-    data['teahouse']['description'] = architecture.eatery(
-        get_latin(data['teahouse']['name'], capitalize=True),
-        'teahouse',
+
+    data['cuisine']['dish'] = {
+        'name': lang.get_word('NN', 'local_dish'),
+        'description': cuisine.local_dish(data),
+    }
+    data['restaurant']['description'] = architecture.eatery(
+        get_latin(data['restaurant']['name'], capitalize=True),
+        data['cuisine']['dish'],
+        'restaurant',
         data
     )
-    data['cards']['cuisine'].append('teahouse')
+    data['cards']['cuisine'].append('restaurant')
 
 
     # ------------------------ DISPLAY ITEMS ------------------------- #
     # reformat the cards object to work with the ui
 
+    # ----- Whitelist cards that are ready
+    ready = ['language', 'fruit', 'wildlife', 'restaurant']
+    for group in data['cards']:
+        data['cards'][group] = [c for c in data['cards'][group] if c in ready]
     data['cards'] = [{'title': 'events', 'cards': []}] + \
-        [{'title': c, 'cards': data['cards'][c]} for c in data['cards']]
+        [{'title': c, 'cards': data['cards'][c]} for c in data['cards'] \
+         if data['cards'][c]]
 
 
     # extract the calendar into a json format

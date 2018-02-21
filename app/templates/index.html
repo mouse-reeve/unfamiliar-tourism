@@ -6,7 +6,7 @@
 {% if section_item.cards %}
 <section id="section_item.title">
     <h2><span>{{ section_item.title }}</span></h2>
-    <div class="grid-x grid-margin-x">
+    <div class="grid-x grid-margin-x grid-margin-y">
         {% for cardset in section_item.cards | group_cards %}
         <div class="cell medium-auto grid-y grid-margin-y">
             {% for item in cardset %}

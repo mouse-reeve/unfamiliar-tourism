@@ -1,6 +1,6 @@
 ''' local cuisine '''
 import tracery
-from utilities import format_text
+from utilities import format_text, get_latin
 
 def teacup(material, motif):
     ''' describe the cup tea is drunk from '''
@@ -119,6 +119,51 @@ def tea(climate):
 
     return format_text(sentence)
 
+
+def local_dish(data):
+    ''' a stew made from blip and blap '''
+    rules = {
+        'start': '#type# made with #main_ingredient# and #ingredient#',
+        'type': [
+            '#soup_adjective# soup',
+            'flatbread',
+            'dumpling',
+            'wrap',
+        ],
+        'soup_adjective': [
+            'thick', 'thin', 'clear', 'hot', 'creamy',
+            'rich', 'light'],
+        'main_ingredient': ['#meat#', '#vegetable#'],
+        'ingredient': ['a vegetable called #vegetable2#'],
+        'meat': [get_latin(a['name'])+' meat' \
+                 for a in data['cuisine']['animals']] + \
+                ['pork', 'beef', 'lamb'],
+        'vegetable': get_latin(data['cuisine']['vegetables'][0]['name']),
+        'vegetable2': get_latin(data['cuisine']['vegetables'][1]['name']),
+    }
+
+    grammar = tracery.Grammar(rules)
+    sentence = grammar.flatten('#start#')
+    return format_text(sentence)
+
+def vegetable():
+    ''' brief description of a vegetables '''
+    rules = {
+        'start': 'a #type#, with #texture#, '\
+                 '#color_part# flesh',
+        'type': ['squash', 'tuber', 'root vegetable', 'brassica',
+                 'leafy green', 'vegetable stalk', 'legume'],
+        'color_part': ['#color#', 'pale #color#', 'deep #color#',
+                       'mottled #color#-on-#color#',
+                       'spotted #color#-on-#color#',
+                       'speckled #color#-on-#color#'],
+        'color': ['red', 'orange', 'yellow', 'green', 'purple', 'white'],
+        'texture': ['firm', 'stringy', 'soft', 'sticky', 'spongy']
+    }
+
+    grammar = tracery.Grammar(rules)
+    sentence = grammar.flatten('#start#')
+    return format_text(sentence)
 
 def fruit(climate):
     ''' describe a so called .... "fruit" '''

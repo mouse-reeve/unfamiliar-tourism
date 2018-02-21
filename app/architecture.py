@@ -7,8 +7,8 @@ from utilities import format_text, get_latin
 
 def eatery(name, dish, category, data):
     ''' a charming stone hut where they serve tea '''
-    earliest = data['founded'] + 5 if data['founded'] > 1700 else 1700
-    founding = random.randint(earliest, datetime.now().year - 4)
+    earliest = data['founded'] if data['founded'] > 1700 else 1700
+    founding = random.randint(earliest - 4, datetime.now().year - 4)
 
     rules = {
         # structures

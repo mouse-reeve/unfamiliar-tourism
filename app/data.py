@@ -124,7 +124,7 @@ def generate_datafile(seed):
     # misc facts
     data['city_age'] = random.choice([50] + [500] * 5 + [1000] * 5)
     data['founded'] = int(datetime.now().year - \
-        random.normalvariate(data['city_age'], data['city_age']/2))
+        abs(random.normalvariate(data['city_age'], data['city_age']/2)))
 
     isolation = random.randint(4, 10) / 10.0
     data['stats'] = {

@@ -75,10 +75,11 @@ def collect_data(seed):
         if not data:
             return render_template('error.html', error='Database failure'), 500
 
-        # save a copy for future (re)loads
-        filepath = app.static_folder + '/datafiles/' + seed + '.json'
-        with open(filepath, 'w') as fp:
-            json.dump(data, fp, default=lambda x: x.__dict__)
+        if not app.debug:
+            # save a copy for future (re)loads
+            filepath = app.static_folder + '/datafiles/' + seed + '.json'
+            with open(filepath, 'w') as fp:
+                json.dump(data, fp, default=lambda x: x.__dict__)
 
     random.seed(seed)
 

@@ -204,7 +204,7 @@ def generate_datafile(seed):
     # ----- BUILDINGS
     lang.get_word('NN', 'restaurant')
     data['restaurant'] = {
-        'name': lang.get_word('JJ', 'serene'),
+        'name': lang.get_word('JJ', 'tasty'),
     }
 
     data['cuisine']['dish'] = {
@@ -219,6 +219,19 @@ def generate_datafile(seed):
     )
     data['cards']['cuisine'].append('restaurant')
 
+
+    if (random.random() > 0.0):
+        lang.get_word('NN', 'teahouse')
+        data['teahouse'] = {
+            'name': lang.get_word('JJ', 'serene'),
+        }
+        data['teahouse']['description'] = architecture.eatery(
+            get_latin(data['teahouse']['name'], capitalize=True),
+            data['cuisine']['dish'],
+            'teahouse',
+            data
+        )
+        data['cards']['cuisine'].append('teahouse')
 
     # ------------------------ DISPLAY ITEMS ------------------------- #
     # reformat the cards object to work with the ui

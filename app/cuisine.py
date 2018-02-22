@@ -135,11 +135,13 @@ def local_dish(data):
             'rich', 'light'],
         'main_ingredient': ['#meat#', '#vegetable#'],
         'ingredient': ['a vegetable called #vegetable2#'],
-        'meat': [get_latin(a['name'])+' meat' \
+        'meat': ['%s meat' % get_latin(a['name']) \
                  for a in data['cuisine']['animals']] + \
                 ['pork', 'beef', 'lamb'],
-        'vegetable': get_latin(data['cuisine']['vegetables'][0]['name']),
-        'vegetable2': get_latin(data['cuisine']['vegetables'][1]['name']),
+        'vegetable': '<em>%s</em>' % \
+                get_latin(data['cuisine']['vegetables'][0]['name']),
+        'vegetable2': '<em>%s</em>' % \
+                get_latin(data['cuisine']['vegetables'][1]['name']),
     }
 
     grammar = tracery.Grammar(rules)

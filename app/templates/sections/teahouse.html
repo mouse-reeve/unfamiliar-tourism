@@ -1,5 +1,5 @@
-<h3>Teahouse {{ foreign_word(teahouse.name) }}{{ foreign_word(dictionary['teahouseNN']) }}</h3>
+<h3>Teahouse {{ foreign_word(teahouse.name) }}</h3>
 
 <p>
-{{ teahouse.description | capitalize }}
+{{ teahouse.description | safe | capitalize }}
 </p>

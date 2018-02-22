@@ -4,7 +4,6 @@ import random
 import tracery
 from utilities import format_text, get_latin
 
-
 def eatery(name, dish, category, data):
     ''' a charming stone hut where they serve tea '''
     earliest = data['founded'] if data['founded'] > 1700 else 1700
@@ -40,20 +39,20 @@ def eatery(name, dish, category, data):
         ],
 
         # info
-        'name': name,
+        'name': '<em>%s</em>' % name,
         'type': category,
-        'city': get_latin(data['city_name'], capitalize=True),
-        'neighborhood': 'the %s district' % get_latin(
+        'city': '<em>%s</em>' % get_latin(data['city_name'], capitalize=True),
+        'neighborhood': 'the <em>%s</em> district' % get_latin(
             random.choice(data['geography']['neighborhoods']), capitalize=True),
         'founding': str(founding),
         'chef': data['get_person']('chef')['name'],
 
         # descriptive componenets
-        'cuisine': '%sian-style' % get_latin(
+        'cuisine': '<em>%s</em>ian-style' % get_latin(
             data['country'],
             capitalize=True),
-        'dish': '"%s" (a %s)' % (get_latin(dish['name']),
-                                 dish['description']),
+        'dish': '"<em>%s</em>" (a %s)' % (get_latin(dish['name']),
+                                          dish['description']),
         'platitude': [
             'enduring favorite',
             'first-rate establishment',
@@ -79,7 +78,7 @@ def eatery(name, dish, category, data):
         'accent_object': ['tables', 'doorways', 'lamps', 'dishes'],
         'material': data['primary_material'],
         'secondary_material': data['secondary_material'],
-        'building': ['suite', 'hall', 'spot', 'room', '#type#'],
+        'building': ['suite', 'hall', 'room', '#type#'],
 
         # wordlists
         'atmosphere': ['atmosphere', 'charm'],
@@ -101,3 +100,4 @@ def eatery(name, dish, category, data):
     sentence = grammar.flatten('#start#')
 
     return format_text(sentence)
+

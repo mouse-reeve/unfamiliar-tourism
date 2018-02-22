@@ -3,14 +3,13 @@ from climates import weather
 from utilities import get_latin
 from data import generate_datafile
 
-from flask import Flask, redirect, render_template
 from datetime import datetime, timedelta
+from flask import Flask, redirect, render_template
 import json
 import random
 import re
 
 app = Flask(__name__)
-
 
 @app.route('/')
 @app.route('/city')
@@ -195,6 +194,20 @@ def group_cards_filter(cards, column_count=3):
     grouped = [g for g in grouped if g]
     return grouped
 
+
+@app.template_filter('sort_dict')
+def sort_dictionary(dictionary):
+    ''' alphabetize the foreign language dictionary '''
+    try:
+        words = [w for w in dictionary.values() if w.pos != 'NNP']
+    except AttributeError:
+        words = [w for w in dictionary.values() if w['pos'] != 'NNP']
+    alphabetized = sorted(words, key=get_latin)
+    group_size = len(alphabetized) // 3
+    grouped = [alphabetized[0:group_size],
+               alphabetized[group_size:2*group_size],
+               alphabetized[2 * group_size:]]
+    return grouped
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

@@ -281,12 +281,13 @@ a:hover {
     font-size: 0.8em;
     cursor: pointer;
 }
+
 a.button {
     color: #000;
 }
-
 
 footer {
     padding: 0.5em 2em;
     margin-top: 3em;
 }
+

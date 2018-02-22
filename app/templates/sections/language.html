@@ -22,12 +22,33 @@ You are unlikely to find any English speakers in {{ foreign_word(city_name) }}, 
 </div>
 {% endif %}
 
-<p>Hello: {{ foreign_word(dictionary['helloNN']) }}</p>
-<p>Thank you: {{ foreign_word(dictionary['thanksNN']) }}</p>
-<p>Goodbye: {{ foreign_word(dictionary['goodbyeNN']) }}</p>
+<div class="grid-x grid-margin-x grid-margin-y">
+    <div class="cell medium-auto">
+        <p>Hello: {{ foreign_word(dictionary['helloNN']) }}</p>
+        <p>Thank you: {{ foreign_word(dictionary['thanksNN']) }}</p>
+        <p>Goodbye: {{ foreign_word(dictionary['goodbyeNN']) }}</p>
+    </div>
+
+    <div class="cell medium-auto hide-for-small-only">
+        <p>Sorry: {{ foreign_word(dictionary['sorryNN']) }}</p>
+        <p>My name is _: {{ foreign_word(dictionary['iPRP']) }} {{ foreign_word(dictionary['nameNN']) }} _</p>
+        <p>Where is _: {{ foreign_word(dictionary['whereRB']) }} _</p>
+    </div>
+</div>
 
 {% call more('language') %}
-<p>Sorry: {{ foreign_word(dictionary['sorryNN']) }}</p>
-<p>My name is _: {{ foreign_word(dictionary['iPRP']) }} {{ foreign_word(dictionary['nameNN']) }} _</p>
-<p>Where is _: {{ foreign_word(dictionary['whereNN']) }} _</p>
+<h3>Learn a New {{ foreign_word(language.name, capitalize=True) }} Word</h3>
+<div id="dictionary" class="grid-x grid-margin-x">
+    {% for section in (dictionary | sort_dict) %}
+        <div class="cell medium-auto grid-y">
+        {% for word in section %}
+            <div class="cell medium-auto">
+                <strong>{{ foreign_word(word, capitalize=True) }}</strong> [{{ word | ipa }}]<br>
+                <em>{{ word['display_pos'] }}</em>: {{ (word.definition or word.translation) | safe | capitalize }}
+            </div>
+        {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
 {% endcall %}

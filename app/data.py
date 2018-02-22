@@ -45,30 +45,48 @@ def generate_datafile(seed):
     data.update(graph_dump)
 
     # ----- GENERAL FACTS
-    data['country'] = lang.get_word('LOC', 'country')
     data['city_name'] = lang.get_word('LOC', 'city')
-    data['neighboring_city'] = lang.get_word('LOC', 'city2')
+    data['country'] = lang.get_word(
+        'LOC', 'country',
+        definition='The country in which %s is situated' % \
+                get_latin(data['city_name'], capitalize=True))
+    data['city_name'].set_definition('A city in %s' % \
+            get_latin(data['country'], capitalize=True))
+    data['neighboring_city'] = lang.get_word(
+        'LOC', 'city2', definition='A city near %s in %s' % \
+                (get_latin(data['city_name'], capitalize=True),
+                 get_latin(data['country'], capitalize=True)))
 
     data['language'] = {
-        'name': lang.get_word('NNP', 'language'),
+        'name': lang.get_word('NNP', 'language',
+                              definition='The local language'),
         'stats': lang.get_stats()
     }
 
     # ----- GEOGRAPHY
     data['geography'] = {
-        'region': lang.get_word('LOC', 'region'),
-        'river': lang.get_word('LOC', 'river'),
+        'region': lang.get_word(
+            'LOC', 'region',
+            definition='The region of %s in which %s is situated' % \
+                    (get_latin(data['country'], capitalize=True),
+                     get_latin(data['city_name'], capitalize=True))),
+        'river': lang.get_word('LOC', 'river', definition='A river in %s' % \
+                get_latin(data['country'], capitalize=True)),
     }
     data['geography'][data['terrain']] = lang.get_word('LOC', data['terrain'])
     data['geography']['neighborhoods'] = [
-        lang.get_word('LOC', 'neighborhood%d' % i) for i in range(5)]
+        lang.get_word('LOC', 'neighborhood%d' % i,
+                      definition='A neighborhood in %s' % \
+                      get_latin(data['city_name'], capitalize=True))
+        for i in range(5)]
 
 
     # great -- now we can have a card about language
     data['cards']['survive'].append('language')
 
     # economy -- this goes in the top bar, so no card
-    data['currency'] = lang.get_word('NN', 'currency')
+    data['currency'] = lang.get_word('NN', 'currency',
+                                     definition='The local currency')
     data['exchange_rate'] = abs(random.normalvariate(0, 10))
     data['bills'] = [5, 10, 15, 20, 50, 100]
     data['coins'] = [1, 5, 10, 100]
@@ -114,7 +132,8 @@ def generate_datafile(seed):
     else:
         for i in range(0, gender_count):
             data['genders'].append(
-                {'name': lang.get_word('NN', 'gender-%d' % i)})
+                {'name': lang.get_word('NN', 'gender-%d' % i,
+                                       definition='A gender')})
 
     if gender_count > 2:
         # the presence of multiple genders is worth noting, so add a card
@@ -187,9 +206,14 @@ def generate_datafile(seed):
                      'description': wildlife.animal(
                          data['climate']['name'],
                          data['terrain'])} for i in range(3)],
-        'vegetables': [{'name': lang.get_word('NNP', 'vegetable%d' % i),
+        'vegetables': [{'name': lang.get_word('NN', 'vegetable%d' % i),
                         'description': cuisine.vegetable()} for i in range(2)],
     }
+
+    for veggie in data['cuisine']['vegetables']:
+        veggie['name'].set_definition('A vegetable native to %s; %s' % \
+                (get_latin(data['city_name'], capitalize=True),
+                 veggie['description']))
 
     data['cards']['learn'].append('fruit')
 
@@ -211,6 +235,8 @@ def generate_datafile(seed):
         'name': lang.get_word('NN', 'local_dish'),
         'description': cuisine.local_dish(data),
     }
+    lang.get_word('NN', 'local_dish').set_definition(
+        data['cuisine']['dish']['description'])
     data['restaurant']['description'] = architecture.eatery(
         get_latin(data['restaurant']['name'], capitalize=True),
         data['cuisine']['dish'],
@@ -251,7 +277,11 @@ def generate_datafile(seed):
     # lookup words we'll need later. doing this now instead of on the fly
     # so that the lang library isn't a dependency
     lang.get_word('NN', 'market')
-    lang.get_word('NN', 'fruit')
+    lang.get_word(
+        'NN', 'fruit',
+        definition='A type of fruit native to the %s region' % \
+                    get_latin(data['geography']['region'],
+                              capitalize=True))
     lang.get_word('NN', 'pastry')
     lang.get_word('NN', 'alcohol')
     lang.get_word('NN', 'tea')
@@ -260,10 +290,11 @@ def generate_datafile(seed):
     lang.get_word('NN', 'thanks')
     lang.get_word('NN', 'goodbye')
     lang.get_word('NN', 'sorry')
-    lang.get_word('NN', 'where')
+    lang.get_word('RB', 'where')
     lang.get_word('NN', 'name')
-    lang.get_word('PRP', 'i')
+    lang.get_word('PRP', 'i', definition='I; first-person pronoun')
     lang.get_word('NN', 'coin')
+    lang.get_word('VB', 'be', definition='To be')
 
     data['dictionary'] = lang.dictionary
 

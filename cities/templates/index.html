@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+<section id="map">
+    <h2><span>Explore</span></h2>
+    <img src="/static/images/map-{{ seed }}.png" alt="A map of the city">
+</section>
+
+{% for section_item in cards %}
+
+{% if section_item.cards %}
+<section id="section_item.title">
+    <h2><span>{{ section_item.title }}</span></h2>
+    <div class="grid-x grid-margin-x grid-margin-y">
+        {% for cardset in section_item.cards | group_cards %}
+        <div class="cell medium-auto grid-y grid-margin-y">
+            {% for item in cardset %}
+            <div class="card cell medium-auto" style="background-color: {{ color() }}">
+                {% if item is mapping %}
+                {{ generated_card(item) }}
+                {% else %}
+                {% include '/sections/' + item + '.html' ignore missing %}
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+<h3>Currency</h3>
+
+<!--
+<div id="coin" data-text="5 {{ dictionary['coinNN'] | latin | allcaps }}"
+               data-font="/static/fonts/Lato-Bold.ttf"
+               data-seed="{{ seed }}"></div>
+-->
+
+<p>{{ foreign_word(city_name) }} uses a currency called {{ foreign_word(currency) }}.
+The current exchange rate to US Dollars is {{ get_exchange_rate() }}.</p>
+
+<p>{{ foreign_word(currency, capitalize=True) }} comes in denominations of {{ bills | length | number_format }} paper bills and {{ coins | length | number_format }} coins:</p>
+<p>
+<span class="comma-separated">{% for bill in bills | sort %}<span> {{ bill }}</span>{% endfor %}</span>
+{{ foreign_word(currency) }} bills
+</p>
+
+<p>
+<span class="comma-separated">{% for coin in coins | sort %}<span> {{ coin }}</span>{% endfor %}</span>
+{{ foreign_word(currency) }} cent coins
+</p>
+
+<!--<script src="/static/js/bower_components/coin-generator/coins.js"></script>-->

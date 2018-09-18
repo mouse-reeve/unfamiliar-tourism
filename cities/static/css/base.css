@@ -1,0 +1,295 @@
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(/static/fonts/Lato-Regular.ttf) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(/static/fonts/Lato-Regular.ttf) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+
+body {
+    font-size: 14pt;
+    font-family: 'Garamond', Georgia, serif;
+    margin: 0;
+    padding: 0;
+}
+
+body > * > * {
+    margin: 0 auto;
+    max-width: 85rem;
+}
+
+header {
+    text-align: center;
+    margin-top: 3.5em;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+}
+
+h5 {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+}
+
+header h1 {
+    font-size: 3em;
+    letter-spacing: 0.1em;
+    line-height: 1.2em;
+}
+
+header h1, header::after {
+    color: #ccc;
+    text-shadow:
+        0.02em 0.02em 0 #f00,
+        -0.02em 0.02em 0 #0f0,
+        -0.02em -0.02em 0 #00f;
+}
+
+header::after {
+    content: '\2756';
+    margin: 1em 0;
+    font-size: 2em;
+    display: block;
+}
+
+nav {
+    margin-top: 2em;
+}
+
+nav a {
+    color: black;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+nav a::after {
+    content: '\2B29';
+    color: #dc4405;
+    margin: 1em;
+}
+nav a:last-child::after {
+    content: '';
+    margin: 0;
+}
+
+section h1 {
+    text-align: center;
+    font-size: 4em;
+    line-height: 0.7em;
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+@media (max-device-width: 800px) {
+    section h1 {
+        font-size: 2em;
+    }
+}
+
+section h1 small {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.3rem;
+}
+
+.container, header {
+    line-height: 1.45em;
+    padding: 0;
+    max-width: 1165px;
+    margin: 0 auto;
+}
+
+header {
+    margin-top: 5em;
+    margin-bottom: 5em;
+}
+
+section {
+    padding: 2em 0;
+    max-width: 1000px;
+}
+
+section h2 {
+    text-align: center;
+    border-bottom: 1px solid black;
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    top: -1em;
+}
+section h2 span {
+    background-color: #fff;
+    position: relative;
+    top: 0.4em;
+    padding: 0 1em;
+}
+
+section .card {
+    padding: 2em;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+h3 {
+    letter-spacing: 0.1em;
+    margin-top: 0;
+}
+
+#title {
+    height: 500px;
+    width: 1000px;
+    margin: 0 auto;
+    color: #FFF;
+    position: relative;
+}
+
+#skyline-bg {
+    width: 100%;
+    height: 580px;
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#skyline {
+    width: 100%;
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#title .card {
+    text-align: center;
+    margin-top: 100px;
+    padding: 0;
+}
+
+#title p {
+    font-style: italic;
+}
+
+#infopanel {
+    max-width: 1165px;
+    background-color: #eee;
+    padding: 1.5em 2em 1em;
+    margin: 2em 0;
+}
+#infopanel .card {
+    padding: 0 2em;
+}
+#infopanel h3 {
+    font-size: 0.8em;
+}
+
+#infopanel .icon {
+    font-size: 3em;
+    float: right;
+    display: block;
+}
+#infopanel .weather-now {
+    margin-top: 1rem;
+    font-size: 2em;
+    float: left;
+    display: block;
+}
+#infopanel .weather-detail {
+    clear: both;
+    color: #333;
+    display: block;
+}
+
+.forecast .cell {
+    background-color: rgba(255, 255, 255, 0.65);
+    text-align: center;
+}
+
+.forecast .icon {
+    display: block;
+    font-size: 3em;
+}
+
+.forecast .weather-detail {
+    font-size: 0.9rem;
+}
+
+.cell {
+    min-height: auto;
+}
+
+.ipa {
+    font-family: serif;
+}
+p .word {
+    font-style: italic;
+}
+
+.comma-separated span::after {
+    content: ', ';
+}
+.comma-separated span:nth-last-child(2)::after {
+    content: ', and ';
+}
+.comma-separated span:last-child::after {
+    content: '';
+}
+
+#coin {
+    float: right;
+}
+
+.travel-advisory {
+    background-color: #FD0;
+    padding: 1em 2em;
+    text-align: center;
+    font-family: lato;
+    margin-bottom: 2em;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+a:hover {
+    color: #444;
+}
+.button {
+    font-family: 'Lato', sans-serif;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.65);
+    border: 1px solid #fff;
+    border-radius: 3px;
+    padding: 0.6em;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 10em;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+a.button {
+    color: #000;
+}
+
+footer {
+    padding: 0.5em 2em;
+    margin-top: 3em;
+}
+

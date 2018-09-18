@@ -88,11 +88,16 @@ nav a:last-child::after {
 
 #map-wrapper {
     position: relative;
-    overflow-y: hidden;
-    overflow-x: scroll;
 }
 #map-wrapper img {
-    min-width: 1000px;
+    width: 1000px;
+}
+#map-labels {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 500px;
+    overflow: hidden;
 }
 
 .street-label {
@@ -125,11 +130,15 @@ nav a:last-child::after {
     display: none;
     background: white;
     border-radius: 5px;
-    width: 25em;
+    width: 450px;
     padding: 1em;
     position: relative;
     left: 15px;
+    box-shadow: 2px 2px 6px #E8E8E8;
     z-index: 1;
+}
+.pin.left .info-popup {
+    left: -450px;
 }
 .pin:hover .info-popup {
     display: block;

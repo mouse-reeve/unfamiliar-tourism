@@ -7,6 +7,7 @@
     <div id="map-wrapper">
         <img src="/static/images/map-{{ seed }}.png" alt="A map of the city">
 
+        <div id="map-labels">
         {% for street in map.road_labels %}
         {% if geography.streets[loop.index] %}
         {% set name = geography.streets[loop.index] | latin | capitalize %}
@@ -22,12 +23,13 @@
             {{ hood.name | latin | allcaps }}
         </span>
         {% endfor %}
+        </div>
 
         {% for pin in pins %}
-        <div style="position: absolute; top: {{ pin.y }}px; left: {{ pin.x }}px;" class="pin">
+        <div style="position: absolute; top: {{ pin.y }}px; left: {{ pin.x }}px;" class="pin{% if pin.x > 540 %} left{% endif %}">
             <div class="info-popup">
-                <h3>{{ pin.name | safe }}</h3>
-                <p>{{ pin.description | safe }}</p>
+                {% if pin.name %}<h3>{{ pin.name | safe }}</h3>{% endif %}
+                {% if pin.description %}<p>{{ pin.description | safe }}</p>{% endif %}
             </div>
         </div>
         {% endfor %}

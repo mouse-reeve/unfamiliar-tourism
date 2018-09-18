@@ -208,7 +208,7 @@ def generate_datafile(seed):
             god = random.choice(data['religion']['gods'])
             data['pins'].append({
                 'description':
-                    'A shrine to the god %s, who %s' %
+                    'Shrine to the god %s, who %s' %
                     (get_latin(god['name'], capitalize=True),
                      god['description']),
             })

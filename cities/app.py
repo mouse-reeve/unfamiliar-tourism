@@ -97,6 +97,14 @@ def collect_data(seed):
             # this happens because I didn't generate enough neighborhood names
             break
 
+    for (idx, pin) in enumerate(map_data['pins']):
+        try:
+            data['pins'][idx]['x'] = pin['x']
+            data['pins'][idx]['y'] = pin['y']
+            data['pins'][idx]['neighborhood'] = pin['neighborhood']
+        except IndexError:
+            break
+
     data['map'] = map_data
 
     return data

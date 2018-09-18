@@ -99,6 +99,27 @@ nav a:last-child::after {
     color: #8392A7;
 }
 
+.pin {
+    width: 20px;
+    height: 20px;
+    background-color: #f00;
+    border-radius: 10px;
+}
+.pin .info-popup {
+    display: none;
+    background: white;
+    border-radius: 5px;
+    width: 25em;
+    padding: 1em;
+    position: relative;
+    bottom: 10em;
+    left: 15px;
+    z-index: 1;
+}
+.pin:hover .info-popup {
+    display: block;
+}
+
 section h1 {
     text-align: center;
     font-size: 4em;

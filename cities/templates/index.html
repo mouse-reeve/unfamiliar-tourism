@@ -12,6 +12,14 @@
         </span>
         {% endfor %}
 
+        {% for pin in pins %}
+        <div style="position: absolute; top: {{ pin.y }}px; left: {{ pin.x }}px;" class="pin">
+            <div class="info-popup">
+                <h3>{{ pin.name | safe }}</h3>
+                <p>{{ pin.description | safe }}</p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </section>
 

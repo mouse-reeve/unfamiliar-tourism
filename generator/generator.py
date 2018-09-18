@@ -229,23 +229,30 @@ def generate_datafile(seed):
 
     # ----- BUILDINGS
     lang.get_word('NN', 'restaurant')
-    data['restaurant'] = {
-        'name': lang.get_word('JJ', 'tasty'),
-    }
 
-    data['cuisine']['dish'] = {
-        'name': lang.get_word('NN', 'local_dish'),
-        'description': cuisine.local_dish(data),
-    }
-    lang.get_word('NN', 'local_dish').set_definition(
-        data['cuisine']['dish']['description'])
-    data['restaurant']['description'] = architecture.eatery(
-        get_latin(data['restaurant']['name'], capitalize=True),
-        data['cuisine']['dish'],
-        'restaurant',
-        data
-    )
-    data['cards']['cuisine'].append('restaurant')
+    data['cuisine']['dish'] = []
+    data['pins'] = []
+
+    # TODO: these should be generated
+    name_options = ['tasty', 'delicious', 'outsider']
+    for i in range(3):
+        data['cuisine']['dish'].append({
+            'name': lang.get_word('NN', 'local_dish%d' % i),
+            'description': cuisine.local_dish(data),
+        })
+        lang.get_word('NN', 'local_dish%d' % i).set_definition(
+            data['cuisine']['dish'][i]['description'])
+
+        restaurant_name = lang.get_word('JJ', name_options[i])
+        data['pins'].append({
+            'type': 'food',
+            'name': get_latin(restaurant_name, capitalize=True),
+            'description': architecture.eatery(
+                get_latin(restaurant_name, capitalize=True),
+                data['cuisine']['dish'][i],
+                'restaurant',
+                data),
+        })
 
 
     if (random.random() > 0.0):
@@ -255,7 +262,7 @@ def generate_datafile(seed):
         }
         data['teahouse']['description'] = architecture.eatery(
             get_latin(data['teahouse']['name'], capitalize=True),
-            data['cuisine']['dish'],
+            data['cuisine']['dish'][0],
             'teahouse',
             data
         )

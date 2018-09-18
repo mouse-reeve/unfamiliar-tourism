@@ -14,6 +14,7 @@ from utilities import get_latin
 from datetime import datetime
 from collections import defaultdict
 import random
+import json
 import sys
 
 def generate_datafile(seed):
@@ -309,4 +310,7 @@ if __name__ == '__main__':
         seed = sys.argv[1]
     except IndexError:
         seed = 0
-    print(generate_datafile(seed))
+
+    sys.stdout.write(
+        json.dumps(generate_datafile(seed), default=lambda x: x.__dict__)
+    )

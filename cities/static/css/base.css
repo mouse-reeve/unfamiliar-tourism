@@ -128,7 +128,6 @@ nav a:last-child::after {
     width: 25em;
     padding: 1em;
     position: relative;
-    bottom: 10em;
     left: 15px;
     z-index: 1;
 }

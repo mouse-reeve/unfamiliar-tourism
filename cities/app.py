@@ -30,19 +30,9 @@ def load_city(seed):
     # load seed data
     data = collect_data(seed)
     if not data:
-        render_template('error.html', error='City Not Found')
+        return render_template('error.html', error='City Not Found')
 
     return render_template('index.html', **data)
-
-
-@app.route('/city/<seed>/datafile')
-def load_city_data(seed):
-    ''' create the webpage from the datafile '''
-    # attempt to load existing datafile for seed
-    data = collect_data(seed)
-
-    return json.dumps(data, default=lambda x: x.__dict__)
-
 
 
 @app.errorhandler(404)
@@ -58,10 +48,10 @@ def collect_data(seed):
     try:
         data = json.load(open(
             app.static_folder + '/data/' + seed + '/city.json', 'r'))
-        data['skyline'] = open(
-            app.static_folder + '/data/' + seed + '/skyline.json', 'r').read()
         data['map'] = open(
             app.static_folder + '/data/' + seed + '/map.json', 'r').read()
+        data['skyline'] = open(
+            app.static_folder + '/data/' + seed + '/skyline.json', 'r').read()
     except IOError:
         return False
 

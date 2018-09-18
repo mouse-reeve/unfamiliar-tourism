@@ -78,9 +78,7 @@ def generate_datafile(seed):
     }
     data['geography'][data['terrain']] = lang.get_word('LOC', data['terrain'])
     data['geography']['neighborhoods'] = [
-        lang.get_word('LOC', 'neighborhood%d' % i,
-                      definition='A neighborhood in %s' % \
-                      get_latin(data['city_name'], capitalize=True))
+        lang.get_word('LOC', 'neighborhood%d' % i)
         for i in range(10)]
     data['geography']['streets'] = [
         lang.get_word('LOC', 'hood%d' % i,
@@ -200,11 +198,12 @@ def generate_datafile(seed):
     # lets have some religious buildings
     for building in data['building']:
         if building == 'shrine':
+            god = random.choice(data['religion']['gods'])
             data['pins'].append({
                 'description':
-                    'A shrine to the god %s.' %
-                    get_latin(random.choice(data['religion']['gods']),
-                              capitalize=True),
+                    'A shrine to the god %s, who %s' %
+                    (get_latin(god['name'], capitalize=True),
+                     god['description']),
             })
 
 

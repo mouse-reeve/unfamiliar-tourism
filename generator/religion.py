@@ -1,5 +1,7 @@
 ''' facts about the city's religion '''
 import random
+import tracery
+from utilities import format_text
 
 def get_religion(data, lang):
     ''' generate religion '''
@@ -17,8 +19,11 @@ def get_religion(data, lang):
     religion['god_count'] = god_count
 
     for i in range(god_count):
-        religion['gods'].append(
-            lang.get_word('NNP', 'god-%d' % i))
+        religion['gods'].append({
+            'name': lang.get_word('NNP', 'god-%d' % i),
+        })
+    religion['gods'] = describe_gods(
+        religion['gods'], data)
 
     if data['divine_structure'] == 'hierarchical':
         religion['gods'] = create_hierarchy(religion['gods'])
@@ -43,13 +48,66 @@ def create_hierarchy(gods):
     pantheon = []
     top_max = 1 + int(len(gods) * 0.3)
     top = random.randint(1, top_max)
-    pantheon.append(gods[:top])
+    for god in gods[:top]:
+        god['rank'] = 1
+
     # only create three tiers if there are enough gods
     if len(gods) - top < 5:
-        pantheon.append(gods[top:])
+        for god in gods[top:]:
+            god['rank'] = 2
     else:
         mid_max = 1 + int((len(gods) - top_max) * 0.4)
         pantheon.append(gods[top:mid_max])
-        pantheon.append(gods[mid_max:])
+        for god in gods[top:mid_max]:
+            god['rank'] = 2
 
-    return pantheon
+        for god in gods[mid_max:]:
+            god['rank'] = 3
+
+    return gods
+
+def describe_gods(gods, data):
+    ''' basic description of the deity '''
+
+    rules = {
+        'start': [
+            'is depicted as #depiction#'],
+        'depiction': '#single#' \
+            if data['deity_form_secondary'] == 'none' \
+            else '#dual#',
+        'single': '#primary_form#',
+        'dual': [
+            'a hybrid #primary_form# and #secondary_form#',
+            'a #primary_form# with a #secondary_form# head',
+            'half #primary_form# and half #secondary_form#',
+        ],
+        'primary_form': '#%s#' % data['deity_form'],
+        'secondary_form': '#%s#' % data['deity_form_secondary'],
+        'animal': [
+            'serpent', 'bird', 'fish', 'feline', 'canine', 'lizard', 'deer',
+            'rabbit', 'rodent', 'beetle', 'spider', 'snake', 'cat'],
+        'plant': [
+            'tree', 'tangle of vines', 'flower', 'seed pod', 'thick foliage',
+            'tuft of grass'],
+        'element': [
+            'flame', 'ball of fire', 'boulder', 'gust of wind',
+            'winding river', 'rain', 'cloud', 'plume of smoke',
+            'pillar of stone', 'pillar of packed earth', 'slab of stone',
+            'waterfall'],
+        'human': '#descriptor# #person#',
+        'descriptor': [
+            'ancient', 'beautiful', 'hideous', 'wizended',
+            'elderly', 'young', 'handsome', 'gigantic', 'diminutive', 'rotund',
+            'athletic'],
+        'person': ['person', 'human', 'child'],
+    }
+    if len(data['genders']) == 2:
+        rules['person'].concat('man', 'woman')
+
+
+    grammar = tracery.Grammar(rules)
+    for god in gods:
+        description = grammar.flatten('#start#')
+        god['description'] = format_text(description)
+
+    return gods

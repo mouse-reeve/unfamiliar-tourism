@@ -88,10 +88,21 @@ nav a:last-child::after {
 
 #map-wrapper {
     position: relative;
-    overflow-y: scroll;
+    overflow-y: hidden;
+    overflow-x: scroll;
 }
 #map-wrapper img {
     min-width: 1000px;
+}
+
+.street-label {
+    font-family: Lato;
+    text-shadow: 0.05em 0.05em 0 white,
+                -0.05em 0.05em 0 white,
+                -0.05em -0.05em 0 white,
+                 0.05em -0.05em 0 white;
+    color: #737D83;
+    font-size: 8pt;
 }
 
 .hood-label {
@@ -101,6 +112,7 @@ nav a:last-child::after {
                 -0.05em -0.05em 0 white,
                  0.05em -0.05em 0 white;
     color: #8392A7;
+    font-size: 12pt;
 }
 
 .pin {

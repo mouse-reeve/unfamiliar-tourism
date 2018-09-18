@@ -6,6 +6,17 @@
     <h2><span>Explore</span></h2>
     <div id="map-wrapper">
         <img src="/static/images/map-{{ seed }}.png" alt="A map of the city">
+
+        {% for street in map.road_labels %}
+        {% if geography.streets[loop.index] %}
+        {% set name = geography.streets[loop.index] | latin | capitalize %}
+        {% set y_transform = '1em' if street.theta < 0 else '2em' if street.theta < 1 else '1em' if street.theta < 3.14 else '-2em' %}
+        <span style="position: absolute; top: {{ street.y }}px; left: {{ street.x }}px; transform: rotate({{ street.theta }}rad) translate(-{{ name | length / 4 }}em, {{ y_transform }});" class="street-label">
+            {{ name }}
+        </span>
+        {% endif %}
+        {% endfor %}
+
         {% for hood in map.neighborhoods %}
         <span style="position: absolute; top: {{ hood.y }}px; left: {{ hood.x }}px;" class="hood-label">
             {{ hood.name | latin | allcaps }}

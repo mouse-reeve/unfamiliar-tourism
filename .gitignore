@@ -1,6 +1,6 @@
 *.swp
 *.pyc
 venv/
-app/settings.py
+settings.py
 __pycache__/
 bower_components/

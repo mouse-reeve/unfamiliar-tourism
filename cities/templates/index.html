@@ -4,7 +4,15 @@
 
 <section id="map">
     <h2><span>Explore</span></h2>
-    <img src="/static/images/map-{{ seed }}.png" alt="A map of the city">
+    <div id="map-wrapper">
+        <img src="/static/images/map-{{ seed }}.png" alt="A map of the city">
+        {% for hood in map.neighborhoods %}
+        <span style="position: absolute; top: {{ hood.y }}px; left: {{ hood.x }}px;" class="hood-label">
+            {{ hood.name | latin | allcaps }}
+        </span>
+        {% endfor %}
+
+    </div>
 </section>
 
 {% for section_item in cards %}

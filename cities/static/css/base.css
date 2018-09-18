@@ -86,6 +86,19 @@ nav a:last-child::after {
     margin: 0;
 }
 
+#map-wrapper {
+    position: relative;
+}
+
+.hood-label {
+    font-family: Lato;
+    text-shadow: 0.05em 0.05em 0 white,
+                -0.05em 0.05em 0 white,
+                -0.05em -0.05em 0 white,
+                 0.05em -0.05em 0 white;
+    color: #8392A7;
+}
+
 section h1 {
     text-align: center;
     font-size: 4em;

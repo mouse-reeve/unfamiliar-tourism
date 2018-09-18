@@ -92,12 +92,12 @@ def collect_data(seed):
     map_data = json.loads(data['map'])
     for (idx, hood) in enumerate(map_data['neighborhoods']):
         try:
-            hood['name'] = data['dictionary']['neighborhood%dLOC' % idx]
+            hood['name'] = data['geography']['neighborhoods'][idx]
         except KeyError:
             # this happens because I didn't generate enough neighborhood names
             break
 
-    data['map'] = json.dumps(map_data)
+    data['map'] = map_data
 
     return data
 

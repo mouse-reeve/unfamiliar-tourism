@@ -12,3 +12,9 @@ function showForecast() {
     }
     document.getElementById('showForecast').innerHTML = forecast ? 'Hide' : 'Show';
 }
+
+function showMore(self) {
+    var content = self.previousSibling;
+    self.innerHTML = content.style.display == 'none' ? 'Show less' : 'Show more';
+    content.style.display = content.style.display == 'none' ? 'block' : 'none';
+}

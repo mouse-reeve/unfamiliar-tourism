@@ -45,3 +45,4 @@ def weather(climate, seed, now):
     }
     random.setstate(rand_state)
     return report
+

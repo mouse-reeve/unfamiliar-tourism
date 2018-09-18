@@ -11,10 +11,9 @@ hi
 
 
 {% macro more(card) %}
-    <span class="clickable">Show more</span>
     <div style="display: none">
         {{ caller() }}
-    </div>
+    </div><span class="clickable button" onclick="showMore(this)">Show more</span>
 {% endmacro %}
 
 
@@ -48,7 +47,7 @@ hi
     <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico">
 
     <style>
-        a {
+        a, .clickable {
             color: {{ color(bg=False) }};
         }
     </style>

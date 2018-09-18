@@ -88,6 +88,10 @@ nav a:last-child::after {
 
 #map-wrapper {
     position: relative;
+    overflow-y: scroll;
+}
+#map-wrapper img {
+    min-width: 1000px;
 }
 
 .hood-label {
@@ -102,7 +106,7 @@ nav a:last-child::after {
 .pin {
     width: 20px;
     height: 20px;
-    background-color: #f00;
+    background-color: #CA0803;
     border-radius: 10px;
 }
 .pin .info-popup {
@@ -184,7 +188,6 @@ h3 {
 
 #title {
     height: 500px;
-    width: 1000px;
     margin: 0 auto;
     color: #FFF;
     position: relative;
@@ -222,7 +225,7 @@ h3 {
 #infopanel {
     max-width: 1165px;
     background-color: #eee;
-    padding: 1.5em 2em 1em;
+    padding: 1.5em 1em 1em;
     margin: 2em 0;
 }
 #infopanel .card {
@@ -249,6 +252,9 @@ h3 {
     display: block;
 }
 
+.forecast {
+    margin-top: 1em;
+}
 .forecast .cell {
     background-color: rgba(255, 255, 255, 0.65);
     text-align: center;
@@ -296,11 +302,12 @@ p .word {
     margin-bottom: 2em;
 }
 
-a {
+a, .clickable {
     text-decoration: none;
     color: #000;
+    cursor: pointer;
 }
-a:hover {
+a:hover, .clickable {
     color: #444;
 }
 .button {

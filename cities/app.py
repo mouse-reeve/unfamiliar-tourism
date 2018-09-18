@@ -80,7 +80,8 @@ def collect_data(seed):
     data['weather'] = weather(data['climate'], seed, datetime.utcnow())
     data['weather']['forecast'] = []
 
-    forecast_date = datetime.utcnow()
+    now = datetime.utcnow()
+    forecast_date = datetime(now.year, now.month, now.day, 12)
     for _ in range(0, 7):
         data['weather']['forecast'].append(
             weather(data['climate'],

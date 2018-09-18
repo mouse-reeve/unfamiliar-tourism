@@ -45,7 +45,7 @@ You are unlikely to find any English speakers in {{ foreign_word(city_name) }}, 
         {% for word in section %}
             <div class="cell medium-auto">
                 <strong>{{ foreign_word(word, capitalize=True) }}</strong> [<span class="ipa">{{ word | ipa }}</span>]<br>
-                <em>{{ word['display_pos'] }}</em>: {{ (word.definition) | safe | capitalize }}
+                <em>{{ word['display_pos'] }}</em>: {{ (word.definition or word.translation) | safe | capitalize }}
             </div>
         {% endfor %}
         </div>

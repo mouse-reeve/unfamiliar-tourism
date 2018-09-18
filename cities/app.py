@@ -194,7 +194,7 @@ def group_cards_filter(cards, column_count=3):
 def sort_dictionary(dictionary):
     ''' alphabetize the foreign language dictionary '''
     words = [w for w in dictionary.values() if w['pos'] != 'NNP' \
-             and w['definition']]
+             and not (not w['definition'] and w['pos'] == 'LOC')]
     alphabetized = sorted(words, key=get_latin)
     group_size = len(alphabetized) // 3
     grouped = [alphabetized[0:group_size],

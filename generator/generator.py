@@ -127,14 +127,22 @@ def generate_datafile(seed):
                                                   gender_count)
     if gender_count == 2:
         data['genders'] = [
-            {'name': lang.get_word('NN', 'male')},
-            {'name': lang.get_word('NN', 'female')}
+            {'name': lang.get_word('NN', 'male', definition='Male')},
+            {'name': lang.get_word('NN', 'female', definiteion='Female')}
         ]
     else:
         for i in range(0, gender_count):
+            definition = 'One of the %d genders in %s culture' % \
+                 (gender_count,
+                  get_latin(data['city_name'],
+                            capitalize=True))
             data['genders'].append(
-                {'name': lang.get_word('NN', 'gender-%d' % i,
-                                       definition='A gender')})
+                {'name': lang.get_word(
+                    'NN',
+                    'gender-%d' % i,
+                     definition=definition
+                    )
+                })
 
     if gender_count > 2:
         # the presence of multiple genders is worth noting, so add a card
@@ -237,7 +245,7 @@ def generate_datafile(seed):
     data['body_mod'] = fashion.body_mod(gender_count, data['motif'])
 
     # ----- BUILDINGS
-    lang.get_word('NN', 'restaurant')
+    lang.get_word('NN', 'restaurant', definition='Restaurant'))
 
     data['cuisine']['dish'] = []
 
@@ -251,7 +259,8 @@ def generate_datafile(seed):
         lang.get_word('NN', 'local_dish%d' % i).set_definition(
             data['cuisine']['dish'][i]['description'])
 
-        restaurant_name = lang.get_word('JJ', name_options[i])
+        restaurant_name = lang.get_word('JJ', name_options[i],
+                                        definition=name_options[i])
         data['pins'].append({
             'type': 'food',
             'name': get_latin(restaurant_name, capitalize=True),
@@ -264,9 +273,9 @@ def generate_datafile(seed):
 
 
     if (random.random() > 0.0):
-        lang.get_word('NN', 'teahouse')
+        lang.get_word('NN', 'teahouse', definition='Teahouse')
         data['teahouse'] = {
-            'name': lang.get_word('JJ', 'serene'),
+            'name': lang.get_word('JJ', 'serene', definition='Placid; serene'),
         }
         data['teahouse']['description'] = architecture.eatery(
             get_latin(data['teahouse']['name'], capitalize=True),
@@ -293,7 +302,7 @@ def generate_datafile(seed):
 
     # lookup words we'll need later. doing this now instead of on the fly
     # so that the lang library isn't a dependency
-    lang.get_word('NN', 'market')
+    lang.get_word('NN', 'market', 'Market; shopping district')
     lang.get_word(
         'NN', 'fruit',
         definition='A type of fruit native to the %s region' % \

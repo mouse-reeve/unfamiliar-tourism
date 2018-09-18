@@ -43,12 +43,10 @@ You are unlikely to find any English speakers in {{ foreign_word(city_name) }}, 
     {% for section in (dictionary | sort_dict) %}
         <div class="cell medium-auto grid-y">
         {% for word in section %}
-        {% if word.definition %}
             <div class="cell medium-auto">
                 <strong>{{ foreign_word(word, capitalize=True) }}</strong> [<span class="ipa">{{ word | ipa }}</span>]<br>
                 <em>{{ word['display_pos'] }}</em>: {{ (word.definition) | safe | capitalize }}
             </div>
-        {% endif %}
         {% endfor %}
         </div>
     {% endfor %}

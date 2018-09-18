@@ -193,10 +193,8 @@ def group_cards_filter(cards, column_count=3):
 @app.template_filter('sort_dict')
 def sort_dictionary(dictionary):
     ''' alphabetize the foreign language dictionary '''
-    try:
-        words = [w for w in dictionary.values() if w.pos != 'NNP']
-    except AttributeError:
-        words = [w for w in dictionary.values() if w['pos'] != 'NNP']
+    words = [w for w in dictionary.values() if w['pos'] != 'NNP' \
+             and w['definition']]
     alphabetized = sorted(words, key=get_latin)
     group_size = len(alphabetized) // 3
     grouped = [alphabetized[0:group_size],

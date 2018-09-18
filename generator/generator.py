@@ -36,6 +36,7 @@ def generate_datafile(seed):
         'seed': seed,
         'cards': defaultdict(lambda: []),
         'calendar': Calendar(),
+        'pins': [],
     }
 
     # ------------------------ GRAPH DATA ------------------------- #
@@ -81,6 +82,10 @@ def generate_datafile(seed):
                       definition='A neighborhood in %s' % \
                       get_latin(data['city_name'], capitalize=True))
         for i in range(10)]
+    data['geography']['streets'] = [
+        lang.get_word('LOC', 'hood%d' % i,
+                      get_latin(data['city_name'], capitalize=True))
+        for i in range(10)]
 
 
     # great -- now we can have a card about language
@@ -92,9 +97,6 @@ def generate_datafile(seed):
     data['exchange_rate'] = abs(random.normalvariate(0, 10))
     data['bills'] = [5, 10, 15, 20, 50, 100]
     data['coins'] = [1, 5, 10, 100]
-
-    # the graph got us a handful of places to visit
-    data['cards']['visit'] += data['building']
 
     # ----- helper functions for naming folks
     def get_person(identifier, title, gender_count, surname=None):
@@ -196,6 +198,15 @@ def generate_datafile(seed):
     del data['worship']
 
     # lets have some religious buildings
+    for building in data['building']:
+        if building == 'shrine':
+            data['pins'].append({
+                'description':
+                    'A shrine to the god %s.' %
+                    get_latin(random.choice(data['religion']['gods']),
+                              capitalize=True),
+            })
+
 
     # ------------------------ DESCRIPTIONS ------------------------- #
 
@@ -231,7 +242,6 @@ def generate_datafile(seed):
     lang.get_word('NN', 'restaurant')
 
     data['cuisine']['dish'] = []
-    data['pins'] = []
 
     # TODO: these should be generated
     name_options = ['tasty', 'delicious', 'outsider']

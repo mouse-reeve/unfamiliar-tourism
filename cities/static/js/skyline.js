@@ -2,8 +2,6 @@ var black;
 var white;
 
 function setup() {
-    randomSeed(seed);
-
     var container = document.getElementById('skyline');
     var canvas = createCanvas(1000, 500);
     canvas.parent(container);

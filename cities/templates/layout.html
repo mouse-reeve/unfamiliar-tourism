@@ -122,10 +122,25 @@ hi
                 </span>
             </p>
             <p>
-                <a href="/city/{{ seed }}/weather#content">7 Day Forecast</a>
+            <span class="clickable" onclick="showForecast()" href="/city/{{ seed }}/weather#content"><span id="showForecast">Show</span> 7 Day Forecast</span>
             </p>
         </div>
-        <div class="card cell medium-auto">
+        <div class="card cell medium-9" style="display: none" id="weather">
+            <div class="forecast grid-x grid-padding-x grid-padding-y">
+                {% for day in weather.forecast %}
+                <div class="cell medium-auto">
+                    <h5>{{ day.date }}</h5>
+                    {{ weather_icon(day) }}
+
+                    <span class="weather-detail">
+                        <span class="high">{{ day.high | int }}&deg;C</span> /
+                        <span class="low">{{ day.low | int }}&deg;C</span>
+                    </span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="card cell medium-auto not-weather">
             <h3>Region</h3>
             <p>{{ foreign_word(city_name) }} is situated in the
             {% if climate.id in ['tropical_rainforest', 'tropical_monsoon'] %}
@@ -147,7 +162,7 @@ hi
             {{ terrain }} region of {{ foreign_word(country) }} known as {{ foreign_word(geography.region) }}.
             </p>
         </div>
-        <div class="card cell medium-auto">
+        <div class="card cell medium-auto not-weather">
             <h3>Get In</h3>
             {% if stats.insularity < 0.3 and stats.population > 10000 %}
             <p>Book a flight to the {{ foreign_word(city_name) }} International Airport.</p>
@@ -159,7 +174,7 @@ hi
             <p>The best way in to {{ foreign_word(city_name) }} is to hire a local guide in the nearby city of {{ foreign_word(neighboring_city) }}.</p>
             {% endif %}
         </div>
-        <div class="card cell medium-auto">
+        <div class="card cell medium-auto not-weather">
             <h3>Exchange Rate</h3>
             <p>$1 USD = {{ get_exchange_rate() }} {{ foreign_word(currency) }}</p>
         </div>
@@ -176,6 +191,7 @@ hi
     <p>created by <a href="https://www.mousereeve.com" target="_blank">Mouse Reeve</a></p>
 </footer>
 
+<script src="/static/js/functionality.js"></script>
 <script src="/static/js/p5.min.js"></script>
 <script>
     var skyline_data = {{ skyline|safe }};

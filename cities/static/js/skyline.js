@@ -2,8 +2,6 @@ var black;
 var white;
 
 function setup() {
-    var start_time = new Date();
-    var seed = 0;
     randomSeed(seed);
 
     var container = document.getElementById('skyline');
@@ -22,7 +20,6 @@ function setup() {
         noLoop();
     }
     var end_time = new Date();
-    console.log('finished setup', (end_time - start_time) / 1000);
 }
 
 function draw() {

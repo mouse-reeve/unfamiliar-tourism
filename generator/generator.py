@@ -81,8 +81,7 @@ def generate_datafile(seed):
         lang.get_word('LOC', 'neighborhood%d' % i)
         for i in range(10)]
     data['geography']['streets'] = [
-        lang.get_word('LOC', 'hood%d' % i,
-                      get_latin(data['city_name'], capitalize=True))
+        lang.get_word('LOC', 'hood%d' % i)
         for i in range(10)]
 
 

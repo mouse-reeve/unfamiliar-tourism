@@ -102,7 +102,7 @@ def describe_gods(gods, data):
         'person': ['person', 'human', 'child'],
     }
     if len(data['genders']) == 2:
-        rules['person'].concat('man', 'woman')
+        rules['person'] += ['man', 'woman']
 
 
     grammar = tracery.Grammar(rules)

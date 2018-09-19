@@ -25,17 +25,33 @@ def eatery(name, dish, category, data):
             '''#name# is a #cuisine# restaurant in #neighborhood# that's been
                going strong since #founding#. With a #vibe_part# and attentive
                service, it offers #cuisine# cuisine in #space#.''',
-            '''#name# is a #vibe# #type# in a welcoming #space#. It offers
+            '''#name# is a #vibe# #type# in a welcoming environment. It offers
                excellent #cuisine# food. The #dish# is hard to beat.''',
             '''This #space# in #neighborhood# gets rave reviews for
                top notch and affordable #cuisine# food and ambiance. The
-               #vibe_part# makes it a #platitude#''',
+               #vibe_part# makes it a #platitude#.''',
             '''#name# is one of #city#'s best #cuisine# restaurants. It's a
                #platitude# where you can enjoy this #space#. There's a great
                range of dishes on offer, including #dish#.''',
             '''This #platitude# opened in #founding# and has set the tone for
                #city# cuisine ever since. Regulars like to order #dish#, sit
                back, and enjoy the #vibe_part#.''',
+            '''Something of a social hub in #neighborhood#, this #vibe# #type#
+               doesn't exactly advertise itself, but the #dish# is #positive#.
+               Overall a #platitude#.''',
+            '''A popular #vibe# cafe in the heart of #neighborhood# serving
+               #dish# and drinks.''',
+            '''Founded in early #founding#, #name# serves arguably the best
+               know #dish# in town and it does a #positive# job. It has a
+               #secondary_material#-decked interior and a #vibe_part#.''',
+            '''This simple place, popular with the city workers, covers the
+               bases for a #positive# lunch of #dish#.''',
+            '''#name# is a rather dark and seedy place to say the least, but
+               within its #material# walls you'll get a #positive# range of
+               local dishes.''',
+            '''This simple seven-table place offers #positive# breakfasts and
+               gets packed by lunchtime -- and rightly so. The #dish# is a
+               killer (not literally!).''',
         ],
 
         # info
@@ -76,12 +92,14 @@ def eatery(name, dish, category, data):
             ['first', 'second', 'third', 'fourth', 'fifth', 'top']),
         'accent': '#secondary_material# #accent_object#',
         'accent_object': ['wall-hangings', 'doorways', 'lamps'],
-        'material': data['primary_material'] ,
+        'material': data['primary_material'],
         'secondary_material': data['secondary_material'],
         'building': ['suite', 'hall', 'room', '#type#'],
 
         # wordlists
         'atmosphere': ['atmosphere', 'charm'],
+        'positive': ['top notch', 'good', 'great', 'fantastic', 'beloved',
+            'excellent', 'high caliber', 'wonderful', 'popular',],
         'vibe': [
             'bustling',
             'busy',

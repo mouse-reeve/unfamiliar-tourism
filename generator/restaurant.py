@@ -76,7 +76,7 @@ def eatery(name, dish, category, data):
             ['first', 'second', 'third', 'fourth', 'fifth', 'top']),
         'accent': '#secondary_material# #accent_object#',
         'accent_object': ['wall-hangings', 'doorways', 'lamps'],
-        'material': data['primary_material'],
+        'material': data['primary_material'] ,
         'secondary_material': data['secondary_material'],
         'building': ['suite', 'hall', 'room', '#type#'],
 

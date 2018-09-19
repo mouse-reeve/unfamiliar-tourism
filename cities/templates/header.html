@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ city_name | latin | capitalize }} - Unfamiliar City</title>
+    <title>
+        {% if city_name %}{{ city_name | latin | capitalize }} - {% endif %}Unfamiliar City
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" rel="stylesheet" href="/static/css/foundation.min.css">
     <link type="text/css" rel="stylesheet" href="/static/css/base.css">
@@ -9,11 +11,13 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico">
 
+    {% if color %}
     <style>
         a, .clickable {
             color: {{ color(bg=False) }};
         }
     </style>
+    {% endif %}
 
 <!-- Piwik -->
 <script type="text/javascript">

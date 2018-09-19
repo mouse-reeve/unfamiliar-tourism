@@ -209,7 +209,7 @@ def generate_datafile(seed):
             god = available_gods.pop()
             data['pins'].append({
                 'type': building,
-                'description': religion.describe_shrine(god, data)
+                'description': religion.describe_shrine(god, random.choice(data['religion']['worship']), data)
             })
         if building == 'temple':
             god = available_gods.pop()

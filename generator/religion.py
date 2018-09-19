@@ -110,7 +110,7 @@ def describe_gods(gods, data):
 
     return gods
 
-def describe_shrine(god, data):
+def describe_shrine(god, activity, data):
     rules = {
         'start': 'A #descriptor# shrine to #god#.',
         'descriptor': '#adjective# #material#',
@@ -125,7 +125,13 @@ def describe_shrine(god, data):
         'god_name': get_latin(god['name'], capitalize=True),
         'depiction': god['description'],
         'material': [data['primary_material'], '' * 10],
+        'sacrifice': 'Look for small sacrifices of #sacrifice_item# left by followers of the religion',
+        'sacrifice_item': ['blood', 'hair', 'teeth', 'fresh fruit' * 5, 'loose change', 'bread', 'handmade icons' * 3],
+        'omen': 'You may find a local there to cast their fortune with #omen_object#.',
+        'omen_object': ['polished stones', 'divining cards', 'lots', 'finger bones', 'animal bones', 'stones', 'ceramic tiles', 'marble tiles', 'carved sticks'],
     }
+    if activity in ['sacrifice', 'omens']:
+        rules['start'] += ' #%s#' % activity
     grammar = tracery.Grammar(rules)
     return format_text(grammar.flatten('#start#'))
 
@@ -144,7 +150,7 @@ def describe_temple(god, activity, data):
     rules = {
         'start': [
             'This temple, devoted to #god#, is famous for its artfully crafted #material# icons and decorations.',
-            'Believers gather at this temple #activity#',
+            'Believers gather at this temple #activity#.',
         ],
         'god': [
             'the god #god_name#, who #appearance#',
@@ -152,14 +158,14 @@ def describe_temple(god, activity, data):
         ],
         'appearance': 'is depicted as #depiction#',
         'activity': '#%s#' % activity,
-        'prayer': 'to pray to #god# for #outcome#',
+        'prayer': 'to pray to #god# for good fortune and health',
         'oracle': 'to consult the oracle, who sits on a #secondary_material# dais and dispenses advice and wisdom',
         'posession': 'for a ceremony in which #god_name#, who is believed to '\
                      'take the form of #depiction#, posesses a true believer '\
                      'and acts through their body, causing them to #movement#.',
         'glossolalia': 'for a ritual in which believers channel the word of '\
                        '#god#, and chant in a mysterious divine language.',
-        'sacrifice': 'for the ritual sacrifice of #sacrificial_items# to #god#',
+        'sacrifice': '#prayer#',
         'omen': '#prayer#',
         'movement': ['dance', 'spasm', 'leap and cavort', 'sway and sing', 'contort into unnatural positions'],
         'god_name': get_latin(god['name'], capitalize=True),

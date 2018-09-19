@@ -27,6 +27,8 @@
 
         {% for pin in pins %}
         <div style="position: absolute; top: {{ pin.y }}px; left: {{ pin.x }}px;" class="pin{% if pin.x > 540 %} left{% endif %}">
+            <div class="shape"></div>
+            {{ pin_icon(pin.type) }}
             <div class="info-popup">
                 {% if pin.name %}<h3>{{ pin.name | safe }}</h3>{% endif %}
                 {% if pin.description %}<p>{{ pin.description | safe }}</p>{% endif %}

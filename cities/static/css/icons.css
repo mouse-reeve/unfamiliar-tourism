@@ -1,16 +1,16 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('/static/fonts/icomoon.eot?pfm2e');
-  src:  url('/static/fonts/icomoon.eot?pfm2e#iefix') format('embedded-opentype'),
-    url('/static/fonts/icomoon.ttf?pfm2e') format('truetype'),
-    url('/static/fonts/icomoon.woff?pfm2e') format('woff'),
-    url('/static/fonts/icomoon.svg?pfm2e#icomoon') format('svg');
+  src:  url('/static/fonts/icomoon.eot?96hu3e');
+  src:  url('/static/fonts/icomoon.eot?96hu3e#iefix') format('embedded-opentype'),
+    url('/static/fonts/icomoon.ttf?96hu3e') format('truetype'),
+    url('/static/fonts/icomoon.woff?96hu3e') format('woff'),
+    url('/static/fonts/icomoon.svg?96hu3e#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
+  /* use !important to prevent issues with browser extensions that change /static/fonts */
   font-family: 'icomoon' !important;
   speak: none;
   font-style: normal;
@@ -50,4 +50,28 @@
 }
 .icon-sun:before {
   content: "\e908";
+}
+.icon-castle:before {
+  content: "\e909";
+}
+.icon-coffee:before {
+  content: "\e90a";
+}
+.icon-shopping:before {
+  content: "\e90b";
+}
+.icon-leaf:before {
+  content: "\e90c";
+}
+.icon-book:before {
+  content: "\e90d";
+}
+.icon-sight:before {
+  content: "\e90e";
+}
+.icon-star:before {
+  content: "\e90f";
+}
+.icon-restaurant:before {
+  content: "\e910";
 }

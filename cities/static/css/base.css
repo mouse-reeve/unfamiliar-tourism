@@ -97,6 +97,7 @@ nav a:last-child::after {
     top: 0;
     left: 0;
     height: 500px;
+    width: 1000px;
     overflow: hidden;
 }
 
@@ -123,8 +124,20 @@ nav a:last-child::after {
 .pin {
     width: 20px;
     height: 20px;
+}
+.pin .shape {
     background-color: #CA0803;
-    border-radius: 10px;
+    border-radius: 10px 10px 0;
+    transform: rotate(45deg);
+    width: 21px;
+    height: 21px;
+}
+.pin-icon {
+    position: absolute;
+    top: 2px;
+    left: 2.5px;
+    font-size: 0.9em;
+    color: white;
 }
 .pin .info-popup {
     display: none;
@@ -133,7 +146,8 @@ nav a:last-child::after {
     width: 450px;
     padding: 1em;
     position: relative;
-    left: 15px;
+    left: 7px;
+    top: -15px;
     box-shadow: 2px 2px 6px #E8E8E8;
     z-index: 1;
 }

@@ -17,6 +17,19 @@ hi
 {% endmacro %}
 
 
+{% macro pin_icon(type) %}
+<span class="pin-icon icon
+{% if type == 'food' %}
+    icon-restaurant
+{% elif type == 'temple' %}
+    icon-star
+{% else %}
+    icon-sight
+{% endif %}
+"></span>
+{% endmacro %}
+
+
 {% macro weather_icon(weather) %}
 {% if weather.precipitation == 'rain' %}
 <span class="icon icon-cloud-rain"></span>

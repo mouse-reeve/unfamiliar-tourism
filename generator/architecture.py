@@ -75,7 +75,7 @@ def eatery(name, dish, category, data):
         'many': '%s-floor #building#' % random.choice(
             ['first', 'second', 'third', 'fourth', 'fifth', 'top']),
         'accent': '#secondary_material# #accent_object#',
-        'accent_object': ['tables', 'doorways', 'lamps', 'dishes'],
+        'accent_object': ['wall-hangings', 'doorways', 'lamps'],
         'material': data['primary_material'],
         'secondary_material': data['secondary_material'],
         'building': ['suite', 'hall', 'room', '#type#'],

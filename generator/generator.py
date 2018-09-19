@@ -127,8 +127,8 @@ def generate_datafile(seed):
                                                   gender_count)
     if gender_count == 2:
         data['genders'] = [
-            {'name': lang.get_word('NN', 'male', definition='Male')},
-            {'name': lang.get_word('NN', 'female', definiteion='Female')}
+            {'name': lang.get_word('NN', 'male')},
+            {'name': lang.get_word('NN', 'female')}
         ]
     else:
         for i in range(0, gender_count):
@@ -202,16 +202,24 @@ def generate_datafile(seed):
     del data['deity_form_secondary']
     del data['worship']
 
-    # lets have some religious buildings
+    # lets have some buildings
+    available_gods = data['religion']['gods']
     for building in data['building']:
         if building == 'shrine':
-            god = random.choice(data['religion']['gods'])
+            god = available_gods.pop()
             data['pins'].append({
-                'description':
-                    'Shrine to the god %s, who %s' %
-                    (get_latin(god['name'], capitalize=True),
-                     god['description']),
+                'type': building,
+                'description': religion.describe_shrine(god, data)
             })
+        if building == 'temple':
+            god = available_gods.pop()
+            data['pins'].append({
+                'type': building,
+                'name': '%s Temple' % \
+                        get_latin(data['religion']['name'], capitalize=True),
+                'description': religion.describe_temple(god, random.choice(data['religion']['worship']), data),
+            })
+
 
 
     # ------------------------ DESCRIPTIONS ------------------------- #
@@ -245,7 +253,7 @@ def generate_datafile(seed):
     data['body_mod'] = fashion.body_mod(gender_count, data['motif'])
 
     # ----- BUILDINGS
-    lang.get_word('NN', 'restaurant', definition='Restaurant'))
+    lang.get_word('NN', 'restaurant')
 
     data['cuisine']['dish'] = []
 

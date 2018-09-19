@@ -1,7 +1,7 @@
 ''' facts about the city's religion '''
 import random
 import tracery
-from utilities import format_text
+from utilities import format_text, get_latin
 
 def get_religion(data, lang):
     ''' generate religion '''
@@ -70,12 +70,10 @@ def describe_gods(gods, data):
     ''' basic description of the deity '''
 
     rules = {
-        'start': [
-            'is depicted as #depiction#'],
-        'depiction': '#single#' \
+        'start': '#single#' \
             if data['deity_form_secondary'] == 'none' \
             else '#dual#',
-        'single': '#primary_form#',
+        'single': 'a #primary_form#',
         'dual': [
             'a hybrid #primary_form# and #secondary_form#',
             'a #primary_form# with a #secondary_form# head',
@@ -111,3 +109,63 @@ def describe_gods(gods, data):
         god['description'] = format_text(description)
 
     return gods
+
+def describe_shrine(god, data):
+    rules = {
+        'start': 'A #descriptor# shrine to #god#.',
+        'descriptor': '#adjective# #material#',
+        'adjective': [
+            'small', 'elaborate', 'popular', 'charming', 'sacred',
+            'tucked-away', '' * 5],
+        'god': [
+            'the god #god_name#, who #appearance#',
+            '#god_name#, a god who #appearance#',
+        ],
+        'appearance': 'is depicted as #depiction#',
+        'god_name': get_latin(god['name'], capitalize=True),
+        'depiction': god['description'],
+        'material': [data['primary_material'], '' * 10],
+    }
+    grammar = tracery.Grammar(rules)
+    return format_text(grammar.flatten('#start#'))
+
+def describe_temple(god, activity, data):
+    materials = {
+        'mudbrick': ['clay', 'ceramic'],
+        'thatch': ['woven straw', 'woven'],
+        'wood': ['wooden', 'carved wood'],
+        'stone': ['carved stone', 'stone', 'marble', 'stone inlayed'],
+        'cloth': ['woven', 'tapestry'],
+        'glass': ['blown glass', 'glass', 'stained glass'],
+        'metal': ['hammered metal', 'metal', 'metal inlayed'],
+        'tile': ['mosaic', 'tile mosaic'],
+        'concrete': ['cement', 'brutalist', 'molded concrete'],
+    }
+    rules = {
+        'start': [
+            'This temple, devoted to #god#, is famous for its artfully crafted #material# icons and decorations.',
+            'Believers gather at this temple #activity#',
+        ],
+        'god': [
+            'the god #god_name#, who #appearance#',
+            '#god_name#, a god who #appearance#',
+        ],
+        'appearance': 'is depicted as #depiction#',
+        'activity': '#%s#' % activity,
+        'prayer': 'to pray to #god# for #outcome#',
+        'oracle': 'to consult the oracle, who sits on a #secondary_material# dais and dispenses advice and wisdom',
+        'posession': 'for a ceremony in which #god_name#, who is believed to '\
+                     'take the form of #depiction#, posesses a true believer '\
+                     'and acts through their body, causing them to #movement#.',
+        'glossolalia': 'for a ritual in which believers channel the word of '\
+                       '#god#, and chant in a mysterious divine language.',
+        'sacrifice': 'for the ritual sacrifice of #sacrificial_items# to #god#',
+        'omen': '#prayer#',
+        'movement': ['dance', 'spasm', 'leap and cavort', 'sway and sing', 'contort into unnatural positions'],
+        'god_name': get_latin(god['name'], capitalize=True),
+        'depiction': god['description'],
+        'material': materials[data['primary_material']] + materials[data['secondary_material']],
+    }
+    grammar = tracery.Grammar(rules)
+    return format_text(grammar.flatten('#start#'))
+

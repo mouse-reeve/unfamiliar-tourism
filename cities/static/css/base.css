@@ -158,6 +158,22 @@ nav a:last-child::after {
     display: block;
 }
 
+.pin ul {
+    list-style: none;
+    padding: 0;
+    font-size: 10pt;
+    text-transform: uppercase;
+    color: #333;
+    font-family: Lato, sans-serif;
+    margin-top: 0;
+}
+.pin * {
+    margin: 0;
+}
+.pin .info {
+    margin-bottom: 0.5em;
+}
+
 section h1 {
     text-align: center;
     font-size: 4em;

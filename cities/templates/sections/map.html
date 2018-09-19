@@ -27,6 +27,11 @@
             {{ pin_icon(pin.type) }}
             <div class="info-popup">
                 {% if pin.name %}<h3>{{ pin.name | safe }}</h3>{% endif %}
+                <div class="info">
+                    <ul>
+                        <li>{{ map.neighborhoods[pin.neighborhood].name | latin | capitalize }} neighborhood</li>
+                    </ul>
+                </div>
                 {% if pin.description %}<p>{{ pin.description | safe }}</p>{% endif %}
             </div>
         </div>

@@ -1,4 +1,4 @@
-Flask==0.12.2
+Flask==1.0.2
 git+https://github.com/mouse-reeve/foreign-tongue.git
 py2neo==3.1.2
 tracery==0.1.1

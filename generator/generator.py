@@ -1,5 +1,5 @@
 ''' all the information about a city in one json blob '''
-import architecture
+import restaurant
 from calendar import Calendar
 import cuisine
 import fashion
@@ -272,7 +272,7 @@ def generate_datafile(seed):
         data['pins'].append({
             'type': 'food',
             'name': get_latin(restaurant_name, capitalize=True),
-            'description': architecture.eatery(
+            'description': restaurant.eatery(
                 get_latin(restaurant_name, capitalize=True),
                 data['cuisine']['dish'][i],
                 'restaurant',
@@ -285,7 +285,7 @@ def generate_datafile(seed):
         data['teahouse'] = {
             'name': lang.get_word('JJ', 'serene', definition='Placid; serene'),
         }
-        data['teahouse']['description'] = architecture.eatery(
+        data['teahouse']['description'] = restaurant.eatery(
             get_latin(data['teahouse']['name'], capitalize=True),
             data['cuisine']['dish'][0],
             'teahouse',

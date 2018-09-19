@@ -137,7 +137,7 @@ def describe_shrine(god, activity, data):
 
 def describe_temple(god, activity, data):
     materials = {
-        'mudbrick': ['clay', 'ceramic'],
+        'brick': ['clay', 'ceramic'],
         'thatch': ['woven straw', 'woven'],
         'wood': ['wooden', 'carved wood'],
         'stone': ['carved stone', 'stone', 'marble', 'stone inlayed'],

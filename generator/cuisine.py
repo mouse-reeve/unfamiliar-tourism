@@ -10,7 +10,7 @@ def teacup(material, motif):
         'stone': '#shape_part# stone cups with ' \
                 '#motif# caved along the rim',
         'cloth': '#shape_part# ceramic cups glazed with #motif#',
-        'mudbrick': '#shape_part# ceramic cups glazed with #motif#',
+        'brick': '#shape_part# ceramic cups glazed with #motif#',
         'thatch': '#shape_part# ceramic cups glazed with #motif#',
         'glass': '#shape_part# glass cups painted with #motif#',
         'metal': '#shape_part# metal cups embossed with #motif#',

@@ -1,42 +1,13 @@
-{% extends "layout.html" %}
+{% extends "simple-layout.html" %}
 {% block body %}
 
+{% include 'sections/skyline-header.html' %}
 
-<section id="map">
-    <h2><span>Explore</span></h2>
-    <div id="map-wrapper">
-        <img src="/static/images/map-{{ seed }}.png" alt="A map of the city">
+{% include 'sections/travel-advisory.html' %}
 
-        <div id="map-labels">
-        {% for street in map.road_labels %}
-        {% if geography.streets[loop.index] %}
-        {% set name = geography.streets[loop.index] | latin | capitalize %}
-        {% set y_transform = '1em' if street.theta < 0 else '2em' if street.theta < 1 else '1em' if street.theta < 3.14 else '-2em' %}
-        <span style="position: absolute; top: {{ street.y }}px; left: {{ street.x }}px; transform: rotate({{ street.theta }}rad) translate(-{{ name | length / 4 }}em, {{ y_transform }});" class="street-label">
-            {{ name }}
-        </span>
-        {% endif %}
-        {% endfor %}
+{% include 'sections/infopanel.html' %}
 
-        {% for hood in map.neighborhoods %}
-        <span style="position: absolute; top: {{ hood.y }}px; left: {{ hood.x }}px;" class="hood-label">
-            {{ hood.name | latin | allcaps }}
-        </span>
-        {% endfor %}
-        </div>
-
-        {% for pin in pins %}
-        <div style="position: absolute; top: {{ pin.y }}px; left: {{ pin.x }}px;" class="pin{% if pin.x > 540 %} left{% endif %}">
-            <div class="shape"></div>
-            {{ pin_icon(pin.type) }}
-            <div class="info-popup">
-                {% if pin.name %}<h3>{{ pin.name | safe }}</h3>{% endif %}
-                {% if pin.description %}<p>{{ pin.description | safe }}</p>{% endif %}
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
+{% include 'sections/map.html' %}
 
 {% for section_item in cards %}
 
@@ -51,7 +22,7 @@
                 {% if item is mapping %}
                 {{ generated_card(item) }}
                 {% else %}
-                {% include '/sections/' + item + '.html' ignore missing %}
+                {% include '/cards/' + item + '.html' ignore missing %}
                 {% endif %}
             </div>
             {% endfor %}
@@ -62,4 +33,60 @@
 {% endif %}
 {% endfor %}
 
+<script src="/static/js/functionality.js"></script>
+<script src="/static/js/p5.min.js"></script>
+<script>
+    var skyline_data = {{ skyline|safe }};
+</script>
+<script src="/static/js/skyline.js"></script>
+
 {% endblock %}
+
+## ----------------- MACROS
+
+{% macro foreign_word(word, with_ipa=False, capitalize=False) %}<span class="word">{% if word.pos in ['LOC', 'NNP'] or capitalize%}{{ word | latin | capitalize }}{% else %}{{ word | latin }}{% endif %}</span>{%if with_ipa %}<span class="ipa"> ({{ word | ipa }})</span>{% endif %}{% endmacro %}
+
+{% macro generated_card(item) %}
+<h3>{{ item.title }}</h3>
+
+<p>{{ item.description }}</p>
+{% endmacro %}
+
+
+{% macro more(card) %}
+    <div style="display: none">
+        {{ caller() }}
+    </div><span class="clickable button" onclick="showMore(this)">Show more</span>
+{% endmacro %}
+
+
+{% macro pin_icon(type) %}
+<span class="pin-icon icon
+{% if type == 'food' %}
+    icon-restaurant
+{% elif type == 'temple' %}
+    icon-star
+{% else %}
+    icon-sight
+{% endif %}
+"></span>
+{% endmacro %}
+
+
+{% macro weather_icon(weather) %}
+{% if weather.precipitation == 'rain' %}
+<span class="icon icon-cloud-rain"></span>
+{% elif weather.precipitation == 'snow' %}
+<span class="icon icon-cloud-snow"></span>
+{% elif weather.humidity < 70 and weather.is_day %}
+<span class="icon icon-sun"></span>
+{% elif weather.humidity < 70 %}
+<span class="icon icon-moon-stars"></span>
+{% elif weather.humidity < 80 and weather.is_day %}
+<span class="icon icon-cloud-sun"></span>
+{% elif weather.humidity < 80 %}
+<span class="icon icon-cloud-moon"></span>
+{% else %}
+<span class="icon icon-clouds"></span>
+{% endif %}
+{% endmacro %}

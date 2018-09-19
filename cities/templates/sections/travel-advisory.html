@@ -1,0 +1,12 @@
+{% if advisory %}
+<section class="travel-advisory">
+    <div>
+        <h3>Safety Notice</h3>
+        <p>The Travel Commission advises against any travel to {{ city_name | latin | capitalize }} due to
+        <span class="comma-separated">{% for badthing in advisory %}<span>{{ badthing }}</span>{% endfor %}</span>.
+        </p>
+    </div>
+</section>
+{% endif %}
+
+

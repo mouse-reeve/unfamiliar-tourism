@@ -1,5 +1,16 @@
 <h3>Local Produce</h3>
 
 <p>
-{{ foreign_word(dictionary['fruitNN'], capitalize=True) }} is {{ cuisine.fruit }}
+{% if climate.name in ['subarctic', 'subpolar_oceanic'] %}
+Despite the chilly climate,
+{% elif climate.name in ['hot_desert', 'arid', 'steppe'] %}
+Although the hot, dry climate may seem harsh,
+{% elif climate.name in ['tropical_rainforest', 'tropical_monsoon'] %}
+Set in the midst of a verdant topical ecosystem,
+{% else %}
+With it's rich soil and {{ climate.name }} climate,
+{% endif %}
+{{ foreign_word(city_name) }} is the home to some delicious native plant species.
+
+Just to name one, {{ foreign_word(dictionary['fruitNN'], capitalize=True) }} is {{ cuisine.fruit }}
 </p>

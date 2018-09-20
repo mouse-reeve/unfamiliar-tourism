@@ -14,25 +14,25 @@ def eatery(name, dish, category, data):
         'start': [
             '''With a gourmet, #cuisine# menu and #vibe_part#, #name# is a
                #platitude#. It will have you craving perennial favorites
-               like #dish#. The setting, in #space#, is stunning, a perfect
+               like #dish#. The setting, in a #space#, is stunning, a perfect
                #city# experience.''',
             '''Owner #chef# has given #cuisine# cuisine a modern edge while
                still staying true to the regional style. The venue is stunning,
-               #space# with #vibe_part#. Be sure to try the #dish#.''',
-            '''In this #vibe# #type#, you can settle down in #space#. The menu
+               a #space# and #vibe_part#. Be sure to try the #dish#.''',
+            '''In this #vibe# #type#, you can settle down in a #space#. The menu
                features staples of #cuisine# cuisine, and is best known for
                traditional-style #dish#.''',
             '''#name# is a #cuisine# restaurant in #city# that's been
                going strong since #founding#. With a #vibe_part# and attentive
-               service, it offers #cuisine# cuisine in #space#.''',
+               service, it offers #cuisine# cuisine in a #space#.''',
             '''#name# is a #vibe# #type# in a welcoming environment. It offers
                excellent #cuisine# food. The #dish# is hard to beat.''',
             '''This #space# gets rave reviews for
                #positive# and affordable #cuisine# food and ambiance. The
                #vibe_part# makes it a #platitude#.''',
             '''#name# is one of #city#'s best #cuisine# restaurants. It's a
-               #platitude# where you can enjoy this #space#. There's a great
-               range of dishes on offer, including #dish#.''',
+               #platitude# where you can enjoy this #space#. There are a
+               #positive# range of dishes on offer, including #dish#.''',
             '''This #platitude# opened in #founding# and has set the tone for
                #city# cuisine ever since. Regulars like to order #dish#, sit
                back, and enjoy the #vibe_part#.''',
@@ -42,7 +42,7 @@ def eatery(name, dish, category, data):
             '''A popular #vibe# cafe in the heart of #city# serving
                #dish# and drinks.''',
             '''Founded in early #founding#, #name# serves arguably the best
-               know #dish# in town and it does a #positive# job. It has a
+               know #dish# in town and it deserves that distinction. It has a
                #secondary_material#-decked interior and a #vibe_part#.''',
             '''This simple place, popular with the city workers, covers the
                bases for a #positive# lunch of #dish#.''',
@@ -98,8 +98,9 @@ def eatery(name, dish, category, data):
 
         # wordlists
         'atmosphere': ['atmosphere', 'charm'],
-        'positive': ['top notch', 'good', 'great', 'fantastic', 'beloved',
-            'excellent', 'high caliber', 'wonderful', 'popular',],
+        'positive': [
+            'top notch', 'good', 'great', 'fantastic',
+            'excellent', 'high caliber', 'wonderful', 'abundant'],
         'vibe': [
             'bustling',
             'busy',

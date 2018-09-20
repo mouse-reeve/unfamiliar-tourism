@@ -29,6 +29,7 @@ def generate_datafile(seed):
 
     random.seed(seed)
     lang = Language()
+    random.random()
 
     # for events, populate a calendar, and then on pageload, the appropriate
     # cards for time of year will show up.
@@ -194,7 +195,7 @@ def generate_datafile(seed):
     elif data['government'] == 'theocracy':
         # a theocratic government should have hella religious holidays
         data['calendar'].recurring_event('The weekly religious observance')
-        ruler_title += [['high priest', 'high priestess'], 'religious leader']
+        ruler_title += [['high priest', 'high priestess']]
     if data['government'] in ['monarchy', 'theocracy'] and \
             random.random() > 0.7:
         data['calendar'].arbitrary_date('Coronation of a new ruler')

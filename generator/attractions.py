@@ -15,14 +15,33 @@ def describe_buildings(data, lang):
                 get_latin(god['name'], capitalize=True)
             pin['description'] = religion.describe_shrine(
                 god, random.choice(data['religion']['worship']), data)
-        if building == 'temple':
+        elif building == 'temple':
             god = available_gods.pop()
             pin['name'] = '%s Temple' % \
                 get_latin(data['religion']['name'], capitalize=True)
             pin['description'] = religion.describe_temple(
                 god, random.choice(data['religion']['worship']), data)
-        if building == 'statue':
+        elif building == 'statue':
             pin['name'] = describe_statue(data)
+        elif building == 'capitol':
+            earliest = data['founded']
+            authoritarianism = data['stats']['authoritarianism']
+            pin['name'] = '%s Capitol Building' % \
+                get_latin(data['country'], capitalize=True)
+            pin['description'] = \
+                '''Built in {date}, this imposing {material} building houses
+                the seat of the {country} nation's government. You aren't likely to set
+                eyes on the {feeling} {title}, but the building is abuzz
+                with clerks and functionaries.'''.format(
+                    country=get_latin(data['country'], capitalize=True),
+                    date=random.randint(earliest - 1, earliest + 20),
+                    material=data['primary_material'],
+                    feeling='beloved' \
+                            if authoritarianism < 0.5 \
+                            else 'controversial' \
+                            if authoritarianism > 0.7 else '',
+                    title=data['ruler']['title']
+                )
         else:
             name = lang.get_word('NNP', '%s%d' % (building, i))
             pin['name'] = '%s %s' % \

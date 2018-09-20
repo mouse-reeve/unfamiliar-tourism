@@ -76,13 +76,13 @@ def describe_gods(gods, data):
         'single': 'a #primary_form#',
         'dual': [
             'a hybrid #primary_form# and #secondary_form#',
-            'a #primary_form# with a #secondary_form# head',
+            'a #primary_form# with a #secondary_form#\'s head',
             'half #primary_form# and half #secondary_form#',
         ],
         'primary_form': '#%s#' % data['deity_form'],
         'secondary_form': '#%s#' % data['deity_form_secondary'],
         'animal': [
-            'serpent', 'bird', 'fish', 'feline', 'canine', 'lizard', 'deer',
+            'serpent', 'bird', 'fish', 'lizard', 'deer', 'rat', 'dog',
             'rabbit', 'rodent', 'beetle', 'spider', 'snake', 'cat'],
         'plant': [
             'tree', 'tangle of vines', 'flower', 'seed pod', 'thick foliage',
@@ -131,7 +131,7 @@ def describe_shrine(god, activity, data):
         'sacrifice_item': [
             'blood', 'hair', 'teeth', 'fresh fruit' * 5,
             'loose change', 'bread', 'handmade icons' * 3],
-        'omens': 'You may find a local there to cast their fortune with '\
+        'omens': 'You may find a believer casting their fortune with '\
                  '#omen_object#.',
         'omen_object': [
             'polished stones', 'divining cards', 'lots', 'finger bones',
@@ -147,7 +147,7 @@ def describe_temple(god, activity, data):
     ''' longer description of a temple and religious activity '''
     materials = {
         'brick': ['clay', 'ceramic'],
-        'thatch': ['woven straw', 'woven'],
+        'straw': ['woven straw', 'woven'],
         'wood': ['wooden', 'carved wood'],
         'stone': ['carved stone', 'stone', 'marble', 'stone inlayed'],
         'cloth': ['woven', 'tapestry'],

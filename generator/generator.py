@@ -245,7 +245,7 @@ def generate_datafile(seed):
     data['cards']['learn'].append('wildlife')
 
     # ------- FASHION
-    if random.random() > 0.0:
+    if random.random() > 0.7:
         data['body_mod'] = fashion.body_mod(gender_count, data['motif'])
         data['cards']['learn'].append('style')
 

@@ -1,6 +1,7 @@
 ''' what the natives wear '''
 import tracery
 from utilities import format_text
+import random
 
 def body_mod(genders, motif):
     ''' describe a body modification '''
@@ -38,7 +39,8 @@ def body_mod(genders, motif):
     }
     rules = {
         'start': '#genders# #type# and #hair_mod#.',
-        'genders': 'the women' if genders == 2 else 'people',
+        'genders': [random.choice(['women', 'men']) * 5 if genders == 2 else 'people',
+            'children', 'adolescents', 'adults', 'locals'],
         'type': [
             'pierce their #pierce_spot# with #jewelry#',
             'tattoo their #tattoo_spot# with #motif#',
@@ -55,7 +57,7 @@ def body_mod(genders, motif):
         'hair_removal': ['pluck', 'shave'],
         'hair_spot': ['eyebrows', 'temples', 'faces'],
         'hair_mod': [
-            'dye their hair #colors# with plant extracts, #hair_style#',
+            'dye their hair #colors#, wearing it #hair_style#',
             'wear their hair cut short, #hair_style#',
             'sheer the hair to the scalp on parts of their head and ' \
                     'leave the rest long, #hair_style#',
@@ -79,9 +81,9 @@ def body_mod(genders, motif):
             'glass', 'clay', 'ceramic',
         ],
         'carvable_material': [
-            'stone', 'obsidian', 'crystal',
+            'obsidian', 'crystal',
             'bone', 'ivory',
-            'wood',
+            'wood' * 5,
         ],
     }
 

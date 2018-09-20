@@ -1,4 +1,5 @@
 ''' all the information about a city in one json blob '''
+import attractions
 import restaurant
 from calendar import Calendar
 import cuisine
@@ -119,7 +120,7 @@ def generate_datafile(seed):
 
     # ----- GENDER
     data['genders'] = []
-    gender_count = random.choice([2, 3, 5])
+    gender_count = random.choice([1, 2, 2, 2, 2, 3, 5])
 
     # and make it easier to generate a random name
     data['get_person'] = lambda title: get_person(str(random.random()),
@@ -130,7 +131,7 @@ def generate_datafile(seed):
             {'name': lang.get_word('NN', 'male')},
             {'name': lang.get_word('NN', 'female')}
         ]
-    else:
+    elif gender_count > 2:
         for i in range(0, gender_count):
             definition = 'One of the %d genders in %s culture' % \
                  (gender_count,
@@ -155,19 +156,20 @@ def generate_datafile(seed):
         abs(random.normalvariate(data['city_age'], data['city_age']/2)))
 
     isolation = random.randint(4, 10) / 10.0
+
     data['stats'] = {
         'isolation': isolation,
         'insularity': random.randint(int(isolation * 10), 10) / 10.0,
         'population': random.randint(
             1000 * isolation, int(10000000/(isolation ** 4))),
         'minorities': random.randint(0, 3),
-        'ruler': get_person('ruler', 'Ruler', gender_count),
         'authoritarianism': random.random(),
     }
 
-
+    ruler_title = []
     if data['stats']['authoritarianism'] > 0.8:
         data['cards']['survive'].append('authoritarianism')
+        ruler_title += ['dictator', 'general', 'autocrat', 'head of state']
     if data['stats']['authoritarianism'] > 0.97:
         data['advisory'] = random.sample(
             ['crime', 'civil unrest', 'terrorism', 'armed conflict',
@@ -182,18 +184,29 @@ def generate_datafile(seed):
     # on the topic of government, maybe we should have related events
     if data['government'] == 'republic':
         data['calendar'].arbitrary_date('Elections! Or something like that.')
+        ruler_title += ['president', 'prime minister']
     elif data['government'] == 'monarchy':
         data['calendar'].arbitrary_date('A day all about the great ruler')
+        ruler_title += [['king', 'queen'], ['emperor', 'empress']]
     elif data['government'] == 'oligarchy':
         data['calendar'].arbitrary_date('Gathering of the ruling families')
+        ruler_title += ['cabinet member', 'prince', 'duke', 'dutchess']
     elif data['government'] == 'theocracy':
         # a theocratic government should have hella religious holidays
         data['calendar'].recurring_event('The weekly religious observance')
-
+        ruler_title += [['high priest', 'high priestess'], 'religious leader']
     if data['government'] in ['monarchy', 'theocracy'] and \
             random.random() > 0.7:
         data['calendar'].arbitrary_date('Coronation of a new ruler')
 
+    # create a ruler
+    ruler_title = random.choice(ruler_title)
+    if isinstance(ruler_title, list):
+        if gender_count == 2:
+            ruler_title = random.choice(ruler_title)
+        else:
+            ruler_title = ruler_title[0]
+    data['ruler'] = get_person('ruler', ruler_title, gender_count)
 
     # ----- RELIGION
     data['religion'] = religion.get_religion(data, lang)
@@ -203,24 +216,7 @@ def generate_datafile(seed):
     del data['worship']
 
     # lets have some buildings
-    available_gods = data['religion']['gods']
-    for building in data['building']:
-        if building == 'shrine':
-            god = available_gods.pop()
-            data['pins'].append({
-                'type': building,
-                'description': religion.describe_shrine(god, random.choice(data['religion']['worship']), data)
-            })
-        if building == 'temple':
-            god = available_gods.pop()
-            data['pins'].append({
-                'type': building,
-                'name': '%s Temple' % \
-                        get_latin(data['religion']['name'], capitalize=True),
-                'description': religion.describe_temple(god, random.choice(data['religion']['worship']), data),
-            })
-
-
+    data['pins'] += attractions.describe_buildings(data, lang)
 
     # ------------------------ DESCRIPTIONS ------------------------- #
 
@@ -259,6 +255,7 @@ def generate_datafile(seed):
 
     # TODO: these should be generated
     name_options = ['tasty', 'delicious', 'outsider']
+    type_options = ['restaraunt', 'cafe', 'restaurant']
     for i in range(3):
         data['cuisine']['dish'].append({
             'name': lang.get_word('NN', 'local_dish%d' % i),
@@ -267,11 +264,14 @@ def generate_datafile(seed):
         lang.get_word('NN', 'local_dish%d' % i).set_definition(
             data['cuisine']['dish'][i]['description'])
 
-        restaurant_name = lang.get_word('JJ', name_options[i],
-                                        definition=name_options[i])
+        restaurant_name = lang.get_word('JJ', name_options[i])
+        restaurant_type = lang.get_word('NN', type_options[i])
+
         data['pins'].append({
-            'type': 'food',
-            'name': get_latin(restaurant_name, capitalize=True),
+            'type': 'restaurant',
+            'name': '%s %s' % (
+                get_latin(restaurant_name, capitalize=True),
+                get_latin(restaurant_type, capitalize=True)),
             'description': restaurant.eatery(
                 get_latin(restaurant_name, capitalize=True),
                 data['cuisine']['dish'][i],

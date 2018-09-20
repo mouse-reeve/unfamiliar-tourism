@@ -22,13 +22,13 @@ def eatery(name, dish, category, data):
             '''In this #vibe# #type#, you can settle down in #space#. The menu
                features staples of #cuisine# cuisine, and is best known for
                traditional-style #dish#.''',
-            '''#name# is a #cuisine# restaurant in #neighborhood# that's been
+            '''#name# is a #cuisine# restaurant in #city# that's been
                going strong since #founding#. With a #vibe_part# and attentive
                service, it offers #cuisine# cuisine in #space#.''',
             '''#name# is a #vibe# #type# in a welcoming environment. It offers
                excellent #cuisine# food. The #dish# is hard to beat.''',
-            '''This #space# in #neighborhood# gets rave reviews for
-               top notch and affordable #cuisine# food and ambiance. The
+            '''This #space# gets rave reviews for
+               #positive# and affordable #cuisine# food and ambiance. The
                #vibe_part# makes it a #platitude#.''',
             '''#name# is one of #city#'s best #cuisine# restaurants. It's a
                #platitude# where you can enjoy this #space#. There's a great
@@ -36,10 +36,10 @@ def eatery(name, dish, category, data):
             '''This #platitude# opened in #founding# and has set the tone for
                #city# cuisine ever since. Regulars like to order #dish#, sit
                back, and enjoy the #vibe_part#.''',
-            '''Something of a social hub in #neighborhood#, this #vibe# #type#
+            '''Something of a social hub in #city#, this #vibe# #type#
                doesn't exactly advertise itself, but the #dish# is #positive#.
                Overall a #platitude#.''',
-            '''A popular #vibe# cafe in the heart of #neighborhood# serving
+            '''A popular #vibe# cafe in the heart of #city# serving
                #dish# and drinks.''',
             '''Founded in early #founding#, #name# serves arguably the best
                know #dish# in town and it does a #positive# job. It has a

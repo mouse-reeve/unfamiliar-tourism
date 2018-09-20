@@ -62,12 +62,20 @@
 
 {% macro pin_icon(type) %}
 <span class="pin-icon icon
-{% if type == 'food' %}
+{% if type in ['restaurant', 'bakery'] %}
     icon-restaurant
 {% elif type == 'temple' %}
     icon-star
+{% elif type in ['statue', 'mural'] %}
+    icon-camera
+{% elif type in ['palace', 'monastery', 'museum', 'capitol'] %}
+    icon-castle
+{% elif type in ['university', 'library'] %}
+    icon-book
+{% elif type in ['perfume_shop', 'bookstore', 'kiln'] %}
+    icon-shopping
 {% else %}
-    icon-sight
+    icon-eye
 {% endif %}
 "></span>
 {% endmacro %}

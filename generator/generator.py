@@ -279,6 +279,7 @@ def generate_datafile(seed):
                 data['cuisine']['dish'][i],
                 'restaurant',
                 data),
+            'rating': random.choice([2.5, 3, 3.5, 4, 4.5, 5]),
         })
 
 

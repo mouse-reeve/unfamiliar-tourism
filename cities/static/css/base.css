@@ -167,6 +167,13 @@ nav a:last-child::after {
     font-family: Lato, sans-serif;
     margin-top: 0;
 }
+.pin li {
+    display: inline-block;
+    margin-right: 1em;
+}
+.pin li::last-child {
+    margin-right: 0;
+}
 .pin * {
     margin: 0;
 }

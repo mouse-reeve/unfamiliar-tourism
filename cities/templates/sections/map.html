@@ -30,6 +30,11 @@
                 <div class="info">
                     <ul>
                         <li>{{ map.neighborhoods[pin.neighborhood].name | latin | capitalize }} neighborhood</li>
+                        {% if pin.rating %}
+                        <li>
+                            {% for star in range(pin.rating | int) %}<span class="icon icon-star"></span>{% endfor %}{% if pin.rating > (pin.rating | int) %}<span class="icon icon-star_half">{% endif %}{% for star in range((5 - pin.rating) | int) %}<span class="icon icon-star_empty"></span>{% endfor %}
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
                 {% if pin.description %}<p>{{ pin.description | safe }}</p>{% endif %}

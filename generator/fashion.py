@@ -1,7 +1,6 @@
 ''' what the natives wear '''
 import tracery
 from utilities import format_text
-from wordlists import hard_materials
 
 def body_mod(genders, motif):
     ''' describe a body modification '''
@@ -51,7 +50,7 @@ def body_mod(genders, motif):
         'motif': pattern[motif],
         'jewelry': [
             '#material# bangles', 'polished #material# spikes',
-            'jewelry carved from #material#',
+            'jewelry carved from #carvable_material#',
             'finely crafted #material# jewelry'],
         'hair_removal': ['pluck', 'shave'],
         'hair_spot': ['eyebrows', 'temples', 'faces'],
@@ -64,7 +63,7 @@ def body_mod(genders, motif):
                     'their hair, #hair_style#',
             'braid their hair, #hair_style#'],
         'hair_style': [
-            'pulled back with carved #material# combs',
+            'pulled back with carved #carvable_material# combs',
             'letting it hang straight and loose',
             'slicked down against the scalp',
             'kept in place with colored ribbons',
@@ -72,7 +71,18 @@ def body_mod(genders, motif):
             'the wiry curls quite voluminous',
         ],
         'colors': ['black', 'unnatural colors', 'white', 'dark red'],
-        'material': hard_materials,
+        'material': [
+            'stone', 'obsidian', 'crystal',
+            'bone', 'ivory',
+            'wood',
+            'brass', 'gold', 'silver', 'copper', 'metal',
+            'glass', 'clay', 'ceramic',
+        ],
+        'carvable_material': [
+            'stone', 'obsidian', 'crystal',
+            'bone', 'ivory',
+            'wood',
+        ],
     }
 
     grammar = tracery.Grammar(rules)

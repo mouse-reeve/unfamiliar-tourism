@@ -50,15 +50,16 @@ def generate_datafile(seed):
 
     # ----- GENERAL FACTS
     data['city_name'] = lang.get_word('LOC', 'city')
+    city_name = get_latin(data['city_name'], capitalize=True)
+
     data['country'] = lang.get_word(
         'LOC', 'country',
-        definition='The country in which %s is situated' % \
-                get_latin(data['city_name'], capitalize=True))
+        definition='The country in which %s is situated' % city_name)
     data['city_name'].set_definition('A city in %s' % \
             get_latin(data['country'], capitalize=True))
     data['neighboring_city'] = lang.get_word(
         'LOC', 'city2', definition='A city near %s in %s' % \
-                (get_latin(data['city_name'], capitalize=True),
+                (city_name,
                  get_latin(data['country'], capitalize=True)))
 
     data['language'] = {
@@ -72,8 +73,7 @@ def generate_datafile(seed):
         'region': lang.get_word(
             'LOC', 'region',
             definition='The region of %s in which %s is situated' % \
-                    (get_latin(data['country'], capitalize=True),
-                     get_latin(data['city_name'], capitalize=True))),
+                    (get_latin(data['country'], capitalize=True), city_name)),
         'river': lang.get_word('LOC', 'river', definition='A river in %s' % \
                 get_latin(data['country'], capitalize=True)),
     }
@@ -134,9 +134,7 @@ def generate_datafile(seed):
     elif gender_count > 2:
         for i in range(0, gender_count):
             definition = 'One of the %d genders in %s culture' % \
-                 (gender_count,
-                  get_latin(data['city_name'],
-                            capitalize=True))
+                 (gender_count, city_name)
             data['genders'].append(
                 {'name': lang.get_word(
                     'NN',
@@ -237,10 +235,9 @@ def generate_datafile(seed):
 
     for veggie in data['cuisine']['vegetables']:
         veggie['name'].set_definition('A vegetable native to %s; %s' % \
-                (get_latin(data['city_name'], capitalize=True),
-                 veggie['description']))
+                (city_name, veggie['description']))
 
-    data['cards']['learn'].append('fruit')
+    data['cards']['cuisine'].append('fruit')
 
 
     # ------- WILDLIFE
@@ -248,7 +245,9 @@ def generate_datafile(seed):
     data['cards']['learn'].append('wildlife')
 
     # ------- FASHION
-    data['body_mod'] = fashion.body_mod(gender_count, data['motif'])
+    if random.random() > 0.0:
+        data['body_mod'] = fashion.body_mod(gender_count, data['motif'])
+        data['cards']['learn'].append('style')
 
     # ----- BUILDINGS
     lang.get_word('NN', 'restaurant')
@@ -296,11 +295,6 @@ def generate_datafile(seed):
     # ------------------------ DISPLAY ITEMS ------------------------- #
     # reformat the cards object to work with the ui
 
-    # ----- whitelist cards that are ready
-    ready = [
-        'language', 'fruit', 'wildlife', 'restaurant', 'gender', 'teahouse']
-    for group in data['cards']:
-        data['cards'][group] = [c for c in data['cards'][group] if c in ready]
     data['cards'] = [{'title': 'events', 'cards': []}] + \
         [{'title': c, 'cards': data['cards'][c]} for c in data['cards'] \
          if data['cards'][c]]

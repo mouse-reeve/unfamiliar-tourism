@@ -22,7 +22,7 @@
         </div>
 
         {% for pin in pins %}
-        <div style="position: absolute; top: {{ pin.y }}px; left: {{ pin.x }}px;" class="pin{% if pin.x > 540 %} left{% endif %}">
+        <div style="position: absolute; top: {{ pin.y - 20 }}px; left: {{ pin.x }}px;" class="pin{% if pin.x > 540 %} left{% endif %}">
             <div class="shape"></div>
             {{ pin_icon(pin.type) }}
             <div class="info-popup">

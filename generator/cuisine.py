@@ -67,8 +67,8 @@ def tea(climate):
         'start': [
             'is served #temperature#. ' \
             'It is steeped to #milk_part#, and #tea_flavor#. ' \
-            'People sometimes drink it with #additive#. ' \
-            'It has a mild #drug# effect.' \
+            'People sometimes drink it with #additive#, ' \
+            'and it is thought to have a mild #drug# effect.' \
         ],
         'temperature': ['scalding hot and #too_hot#',
                         'steaming hot, #container#',
@@ -142,7 +142,7 @@ def local_dish(data):
         'ingredient': ['a vegetable called #vegetable2#'],
         'meat': ['%s meat' % get_latin(a['name']) \
                  for a in data['cuisine']['animals']] + \
-                ['pork', 'beef', 'lamb'],
+                ['pork', 'beef', 'lamb', 'chicken', 'game', 'fish'],
         'vegetable': '<em>%s</em>' % \
                 get_latin(data['cuisine']['vegetables'][0]['name']),
         'vegetable2': '<em>%s</em>' % \

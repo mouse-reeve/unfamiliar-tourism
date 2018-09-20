@@ -72,8 +72,9 @@
 .icon-castle:before {
   content: "\e909";
 }
-.icon-coffee:before {
+.icon-cup:before {
   content: "\e90a";
+  font-size: 0.9em;
 }
 .icon-shopping:before {
   content: "\e90b";

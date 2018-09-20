@@ -141,13 +141,13 @@ def generate_datafile(seed):
                 {'name': lang.get_word(
                     'NN',
                     'gender-%d' % i,
-                     definition=definition
-                    )
-                })
+                    definition=definition
+                )}
+            )
 
-    if gender_count > 2:
-        # the presence of multiple genders is worth noting, so add a card
-        data['cards']['survive'].append('gender')
+    # I'm only ready with copy for non-gendered societies
+    if gender_count == 1:
+        data['cards']['learn'].append('gender')
 
 
     # misc facts
@@ -279,28 +279,26 @@ def generate_datafile(seed):
                 data['cuisine']['dish'][i],
                 'restaurant',
                 data),
-            'rating': random.choice([2.5, 3, 3.5, 4, 4.5, 5]),
+            'rating': get_rating(),
         })
 
 
-    if (random.random() > 0.0):
+    if (random.random() > 0.6):
         lang.get_word('NN', 'teahouse', definition='Teahouse')
-        data['teahouse'] = {
-            'name': lang.get_word('JJ', 'serene', definition='Placid; serene'),
-        }
-        data['teahouse']['description'] = restaurant.eatery(
-            get_latin(data['teahouse']['name'], capitalize=True),
-            data['cuisine']['dish'][0],
-            'teahouse',
-            data
-        )
+        data['pins'].append({
+            'name': get_latin(lang.get_word(
+                'JJ', 'serene', definition='Placid; serene')) + ' Teahouse',
+            'type': 'teahouse',
+            'rating': get_rating(),
+        })
         data['cards']['cuisine'].append('teahouse')
 
     # ------------------------ DISPLAY ITEMS ------------------------- #
     # reformat the cards object to work with the ui
 
-    # ----- Whitelist cards that are ready
-    ready = ['language', 'fruit', 'wildlife', 'restaurant']
+    # ----- whitelist cards that are ready
+    ready = [
+        'language', 'fruit', 'wildlife', 'restaurant', 'gender', 'teahouse']
     for group in data['cards']:
         data['cards'][group] = [c for c in data['cards'][group] if c in ready]
     data['cards'] = [{'title': 'events', 'cards': []}] + \
@@ -339,6 +337,10 @@ def generate_datafile(seed):
     data['slogan'] = slogan(data)
 
     return data
+
+def get_rating():
+    ''' a star rating of a business '''
+    return random.choice([2.5, 3, 3.5, 4, 4.5, 5])
 
 if __name__ == '__main__':
     try:

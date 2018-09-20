@@ -32,7 +32,7 @@ def load_city(seed):
     if not data:
         return render_template('error.html', error='City Not Found')
 
-    return render_template('index.html', **data)
+    return render_template('index.html', max_seed=seeds[-1], **data)
 
 
 @app.errorhandler(404)
@@ -172,6 +172,17 @@ def number_format_filter(n):
     if n < 10:
         return words[n]
     return '{:,}'.format(n)
+
+
+@app.template_filter('sort_card_groups')
+def sort_card_groups(cards):
+    order = ['survive', 'learn', 'cuisine']
+    order += [g['title'] for g in cards if g['title'] not in order]
+
+    for cardset in cards:
+        order[order.index(cardset['title'])] = cardset
+    return order
+
 
 
 @app.template_filter('group_cards')

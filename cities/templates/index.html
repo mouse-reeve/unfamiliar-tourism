@@ -9,8 +9,7 @@
 
 {% include 'sections/map.html' %}
 
-{% for section_item in cards %}
-
+{% for section_item in cards | sort_card_groups %}
 {% if section_item.cards %}
 <section id="section_item.title">
     <h2><span>{{ section_item.title }}</span></h2>
@@ -64,6 +63,8 @@
 <span class="pin-icon icon
 {% if type in ['restaurant', 'bakery'] %}
     icon-restaurant
+{% elif type == 'teahouse' %}
+    icon-cup
 {% elif type == 'temple' %}
     icon-star
 {% elif type in ['statue', 'mural'] %}

@@ -41,7 +41,8 @@
 <header>
     <h1>Unfamiliar City</h1>
     <nav>
-        <a href="/">New city</a>
+        {% if seed != 0 %}<a href="/city/{{ seed | int - 1 }}">Previous City</a>{% endif %}
+        {% if seed != max_seed %}<a href="/city/{{ seed | int + 1 }}">Next City</a>{% endif %}
         <!--<a href="https://twitter.com/unfamiliar_city" target="_blank">Twitter</a>-->
         <!--<a href="/">About</a>-->
     </nav>

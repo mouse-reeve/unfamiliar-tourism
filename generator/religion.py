@@ -127,9 +127,9 @@ def describe_shrine(god, activity, data):
         'depiction': god['description'],
         'material': [data['primary_material'], '' * 10],
         'sacrifice': 'Look for small sacrifices of #sacrifice_item# left ' \
-                     'by belivers.',
+                     'by believers.',
         'sacrifice_item': [
-            'blood', 'hair', 'teeth', 'fresh fruit' * 5,
+            'blood', 'hair', 'teeth', 'fresh fruit' * 5, 'secrets',
             'loose change', 'bread', 'handmade icons' * 3],
         'omens': 'You may find a believer casting their fortune with '\
                  '#omen_object#.',

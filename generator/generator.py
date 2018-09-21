@@ -342,6 +342,43 @@ if __name__ == '__main__':
     except IndexError:
         seed = 0
 
-    sys.stdout.write(
-        json.dumps(generate_datafile(seed), default=lambda x: x.__dict__)
-    )
+    city_data = generate_datafile(seed)
+
+    park_max = 100 if city_data['climate'] in \
+            ['mediterranean', 'oceanic', 'continental'] else 50
+    map_params = {
+        'seed': seed,
+        'ocean':
+            city_data['terrain'] == 'coast' \
+                or (city_data['terrain'] not in \
+                ['interior', 'mountains', 'valley'] \
+                and random.random() > 0.5),
+        'river': random.random() > 0.6,
+        'park': random.randrange(0, park_max) / 100,
+        'beach': random.random(),
+        'perterbation': random.random(),
+        'elevation_range': random.random(),
+        'layer': 'urban',
+    }
+
+    skyline_params = {
+        'seed': seed,
+        'background': 'mountains',
+        'sky': 'block',
+        'composition': random.choice(['hill', 'onepoint', 'coastline']),
+    }
+
+    import urllib
+    import os
+    print('file:///Users/mouse/Personal/maps/index.html'
+          + urllib.parse.urlencode(map_params))
+    print('file:///Users/mouse/Personal/skyline-sketch/index.html'
+          + urllib.parse.urlencode(skyline_params))
+
+    data_dir = 'cities/static/data/%s'
+    if not os.path.exists(data_dir):
+        os.makedirs(data_dir)
+    json.dump(city_data,
+              open('%s/city.json' % (data_dir), 'w'),
+              default=lambda x: x.__dict__)
+

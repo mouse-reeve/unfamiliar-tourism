@@ -19,6 +19,12 @@ function draw() {
     if (skyline_data.mountains) {
         draw_from_data(skyline_data.mountains);
     }
+    if (skyline_data.hills) {
+        draw_from_data(skyline_data.hills);
+    }
+    if (skyline_data.clouds) {
+        draw_from_data(skyline_data.clouds);
+    }
     draw_from_data(skyline_data.foreground);
     if ('buildings' in skyline_data) {
         draw_from_data(skyline_data.reflection);

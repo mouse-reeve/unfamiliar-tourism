@@ -375,7 +375,7 @@ if __name__ == '__main__':
     print('file:///Users/mouse/Personal/skyline-sketch/index.html'
           + urllib.parse.urlencode(skyline_params))
 
-    data_dir = 'cities/static/data/%s'
+    data_dir = 'cities/static/data/%s' % seed
     if not os.path.exists(data_dir):
         os.makedirs(data_dir)
     json.dump(city_data,

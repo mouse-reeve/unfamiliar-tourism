@@ -9,6 +9,16 @@ def eatery(name, dish, category, data):
     earliest = data['founded'] if data['founded'] > 1700 else 1700
     founding = random.randint(earliest - 4, datetime.now().year - 4)
 
+    materials = {
+        'brick': ['pottery', 'ceramic'],
+        'straw': ['woven straw', 'straw'],
+        'wood': ['wood'],
+        'stone': ['marble', 'stonework'],
+        'cloth': ['textile', 'tapestry'],
+        'glass': ['glass', 'stained glass'],
+        'metal': ['metal'],
+        'tile': ['mosaic', 'tile'],
+    }
     rules = {
         # structures
         'start': [
@@ -43,7 +53,7 @@ def eatery(name, dish, category, data):
                #dish# and drinks.''',
             '''Founded in early #founding#, #name# serves arguably the best
                know #dish# in town and it deserves that distinction. It has a
-               #secondary_material#-decked interior and a #vibe_part#.''',
+               #secondary_material_fancy#-decked interior and a #vibe_part#.''',
             '''This simple place, popular with the city workers, covers the
                bases for a #positive# lunch of #dish#.''',
             '''#name# is a rather dark and seedy place to say the least, but
@@ -94,6 +104,7 @@ def eatery(name, dish, category, data):
         'accent_object': ['wall-hangings', 'doorways', 'lamps'],
         'material': data['primary_material'],
         'secondary_material': data['secondary_material'],
+        'secondary_material_fancy': materials[data['secondary_material']],
         'building': ['suite', 'hall', 'room', '#type#'],
 
         # wordlists

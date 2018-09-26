@@ -178,6 +178,7 @@ def describe_temple(god, activity, data):
                        '#god#, and chant in a mysterious divine language.',
         'sacrifice': '#prayer#',
         'omen': '#prayer#',
+        'visions': '#prayer#',
         'movement': [
             'dance', 'spasm', 'leap and cavort', 'sway and sing',
             'contort into unnatural positions'],

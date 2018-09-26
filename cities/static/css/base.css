@@ -157,7 +157,9 @@ nav a:last-child::after {
 .pin:hover .info-popup {
     display: block;
 }
-
+.info-popup p:first-letter {
+    text-transform: capitalize;
+}
 .pin ul {
     list-style: none;
     padding: 0;
@@ -262,6 +264,8 @@ h3 {
 
 #skyline {
     width: 100%;
+    background-color: #888;
+    height: 500px;
     z-index: -1;
     overflow: hidden;
     position: absolute;

@@ -80,7 +80,7 @@ def generate_datafile(seed):
     data['geography'][data['terrain']] = lang.get_word('LOC', data['terrain'])
     data['geography']['neighborhoods'] = [
         lang.get_word('LOC', 'neighborhood%d' % i)
-        for i in range(10)]
+        for i in range(15)]
     data['geography']['streets'] = [
         lang.get_word('LOC', 'hood%d' % i)
         for i in range(10)]
@@ -370,10 +370,8 @@ if __name__ == '__main__':
 
     import urllib
     import os
-    print('file:///Users/mouse/Personal/maps/index.html'
-          + urllib.parse.urlencode(map_params))
-    print('file:///Users/mouse/Personal/skyline-sketch/index.html'
-          + urllib.parse.urlencode(skyline_params))
+    print(urllib.parse.urlencode(map_params))
+    print(urllib.parse.urlencode(skyline_params))
 
     data_dir = 'cities/static/data/%s' % seed
     if not os.path.exists(data_dir):

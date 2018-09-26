@@ -43,7 +43,7 @@
     <nav>
         {% if seed %}
         {% if seed != '0' %}<a href="/city/{{ seed | int - 1 }}">Previous City</a>{% endif %}
-        {% if (seed | int) != max_seed %}<a href="/city/{{ seed | int + 1 }}">Next City</a>{% endif %}
+        {% if seed != max_seed %}<a href="/city/{{ seed | int + 1 }}">Next City</a>{% endif %}
         {% endif %}
         <!--<a href="https://twitter.com/unfamiliar_city" target="_blank">Twitter</a>-->
     </nav>

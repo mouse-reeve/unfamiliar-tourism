@@ -96,7 +96,7 @@ nav a:last-child::after {
     position: absolute;
     top: 0;
     left: 0;
-    height: 500px;
+    height: 700px;
     width: 1000px;
     overflow: hidden;
 }
@@ -387,7 +387,14 @@ a.button {
 }
 
 footer {
-    padding: 0.5em 2em;
+    padding: 2em 0;
     margin-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    font-family: Roboto, sans-serif;
+    text-transform: uppercase;
+    font-size: 8pt;
+    color: #333;
 }
 

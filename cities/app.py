@@ -25,7 +25,7 @@ def request_new_city():
 def load_city(seed):
     ''' create the webpage from the datafile '''
     if not seed in seeds:
-        return redirect('/%s' % seeds[-1])
+        return redirect('/city/%s' % seeds[-1])
 
     # load seed data
     data = collect_data(seed)

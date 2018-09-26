@@ -10,18 +10,12 @@ function setup() {
     white = color(255);
     // this is important
     colorMode(HSL, 100);
-
-    // the gradient is too complex to re-render
-    if ('sky' in skyline_data) {
-        draw_from_data(skyline_data.sky);
-    } else {
-        noLoop();
-    }
-    var end_time = new Date();
 }
 
 function draw() {
-    var start_time = new Date();
+    if ('sky' in skyline_data) {
+        draw_from_data(skyline_data.sky);
+    }
     if (skyline_data.mountains) {
         draw_from_data(skyline_data.mountains);
     }
@@ -30,12 +24,11 @@ function draw() {
         draw_from_data(skyline_data.reflection);
         draw_from_data(skyline_data.buildings);
     }
-    var end_time = new Date();
 }
 
 var createColor = function (color_data) {
     return color(color_data.as_string);
-}
+};
 
 var draw_from_data = function(image_data) {
     if (!image_data) return;
@@ -77,6 +70,8 @@ var draw_from_data = function(image_data) {
             for (var v = 0; v < item.vertices.length; v++) {
                 var vert = item.vertices[v];
                 var offsets = [vert[2] || 0, vert[3] || 0];
+
+                // animation
                 for (var j = 0; j < offsets.length; j++) {
                     if (!offsets[j]) continue;
 
@@ -100,6 +95,22 @@ var draw_from_data = function(image_data) {
                 endContour();
             }
             endShape(CLOSE);
+            pop();
+        }
+    }
+
+    if ('beziers' in image_data) {
+        for (var i = 0; i < image_data.beziers.length; i++) {
+            var item = image_data.beziers[i];
+            push();
+            noStroke();
+            fill(createColor(item.color));
+
+            bezier_fields = [];
+            for (var v = 0; v < item.points.length; v++) {
+                bezier_fields = bezier_fields.concat(item.points[v]);
+            }
+            bezier(...bezier_fields);
             pop();
         }
     }

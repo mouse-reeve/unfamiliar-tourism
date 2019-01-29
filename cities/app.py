@@ -12,6 +12,7 @@ app = Flask(__name__)
 
 import glob
 seeds = [c[-1] for c in glob.glob(app.static_folder + '/data/*')]
+seeds.sort()
 
 
 @app.route('/')

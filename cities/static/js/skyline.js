@@ -25,10 +25,18 @@ function draw() {
     if (skyline_data.clouds) {
         draw_from_data(skyline_data.clouds);
     }
-    draw_from_data(skyline_data.foreground);
+    if (skyline_data.ground) {
+        draw_from_data(skyline_data.ground);
+    }
+    if (!skyline_data.ground && skyline_data.foreground) {
+        draw_from_data(skyline_data.foreground);
+    }
     if ('buildings' in skyline_data) {
         draw_from_data(skyline_data.reflection);
         draw_from_data(skyline_data.buildings);
+    }
+    if (skyline_data.foreground && skyline_data.ground) {
+        draw_from_data(skyline_data.foreground);
     }
 }
 
